@@ -1,0 +1,3 @@
+Este proyecto es un sistema para administrar y manejar la evaluacion de un alumno desde lo adminitrativo hasta lo que hace el maestro para evaluar.
+
+Lo unico que esta realizado aun es el maquetado de la pagina y los enlaces de los menus. Se agrego un enlace en la pagina de inicio a las parte donde estan las imagenes, esto para poder enlazr las paginas y que se pudiera mostrar lo que habia adentro del sistema.
