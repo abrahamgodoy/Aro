@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="shorcut icon" href="favicon.ico">
+        <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/MaesAltaAlumno.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <header>
+            <section class="wrapper" id="seccion-header">
+                <div id="logo"></div>
+                <div id="titulo1"><h1>Harvard University</h1></div>
+                <article id="redes">
+                    <div class="icon-red" style="background: url('img/fb.jpg');"></div>
+                    <div class="icon-red" style="background: url('img/twiter.jpg');"></div>
+                </article>
+                
+            </section>
+        </header>
+
+        
+        <nav>
+            <ul>
+                <li><a href="MaesAltaCursos.html">Alta de Cursos</a></li>
+                <li><a href="MaesAltaAlumno.html">Alta de Alumnos</a></li>
+                <li><a href="MaesAltaAlumnosaCursos.html">Matricular Alumno</a></li>
+                <li><a href="MaesAsistencias.html">Lista de Asistencias</a></li>
+                <li><a href="MaesCalificaciones.html">Calificaciones</a></li>
+                <li><a href="index.html">Salir</a></li>
+                <div class="clear"></div>
+            </ul>
+        </nav>
+
+
+        <section id="contenido">
+                <fieldset class="fieldsetf">
+                    <legend class="leg">Alta de Alumno</legend>
+                    <form id="formulario" method="post" action="#">
+                        <div>
+                            <label class="labelform" for="curso">Curso</label>
+                            <select class="selectform" name="curso">
+                                <option selected value="0">Elige un curso</option>  
+                                <option value="CC300">Sistema Operativos</option>
+                                <option value="CC302">Bases de Datos</option>
+                                <option value="CC212">Redes</option>
+                                <option value="CC400">Sistemas Expertos</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="labelform" for="codigo">Codigo</label>
+                            <input class="formatinput" type="text" id="cod" name="codigo" />
+                        </div>
+                        <div>
+                            <label class="labelform" for="nombre">Nombre</label>
+                            <input class="formatinput" type="text" id="nom" name="nombre" />
+                        </div>
+                        <div>
+                            <label class="labelform" for="apellidop">Apellido Paterno</label>
+                            <input class="formatinput" type="text" id="app" name="apellidop" />
+                        </div>
+                        <div>
+                            <label class="labelform" for="apellidom">Apellido Materno</label>
+                            <input class="formatinput" type="text" id="apm" name="apellidom" />
+                        </div>
+                        <div>
+                            <label class="labelform" for="carrera">Carrera</label>
+                            <select class="selectform" name="carrera">
+                                <option selected value="0">Elige una carrera</option>  
+                                <option value="COM">Ing. en Computación</option>
+                                <option value="INF">Lic. en Informatica</option>
+                                <option value="BIM">Ing. Biomédica</option>
+                                <option value="CEL">Ing. en Electrónica</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="labelform" for="ciclo">Ciclo</label>
+                            <select class="selectform" name="ciclo">
+                                <option selected value="0">Elige un ciclo</option>  
+                                <option value="2013B">2013B</option>
+                                <option value="2014A">2014A</option>
+                                <option value="2014V">2014V</option>
+                                <option value="2014B">2014B</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="labelform" for="correo">Correo</label>
+                            <input class="formatinput" type="email" id="correo" name="correo" />
+                        </div>
+                        <div>
+                            <button class="boton" type="submit">Registrar</button>
+                        </div>
+                    </form>
+                </fieldset>
+
+                <fieldset class="fieldsetf">
+                    <legend class="leg">Registro por archivo</legend>
+                    <form id="examinar" method="post" action="#">
+                        <div>
+                            <label class="labelarchivo" for="lista">Elija el archivo con la lista de alumnos...</label>
+                            <input class="labelarchivo" id="lista" name="lista" type="file" />
+                        </div>
+                        <div>
+                            <button class="boton" type="submit">Registrar Alumnos</button>
+                        </div>
+                    </form>
+                </fieldset>
+
+        </section>
+
+        <footer>
+            <section class="wrapper" id="seccion-footer">
+                <img class="footer" src="img/footer.png" alt="Logo" width="90" height="90">
+                    <pre class="footer" id="infofooter">
+                        Esta página fue realizada y desarrollada por Grupo ARO
+                        Soporte a Ambientes Virtuales
+                        Guadalajara, Jalisco
+                        Telefono: (33) 1527 4067
+                    </pre>
+            </section>
+        </footer>
+        <!-- Your content finishes here-->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src='//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>
