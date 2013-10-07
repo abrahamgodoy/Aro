@@ -27,18 +27,17 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <header>
+        <header>            
             <section class="wrapper" id="seccion-header">
-                <div id="logo"></div>
-                <div id="titulo1"><h1>Harvard University</h1></div>
-                <article id="redes">
-                    <div class="icon-red" style="background: url('img/fb.jpg');"></div>
-                    <div class="icon-red" style="background: url('img/twiter.jpg');"></div>
-                </article>
+                <img id="logo" src="img/HarvardCrimson.png">
+                <h1>Harvard University</h1>
+                <div id="redes">
+                    <img class="icon-red" src="img/fb.jpg">
+                    <img class="icon-red" src="img/twiter.jpg">
+                </div>
                 
             </section>
         </header>
-
         
         <nav>
             <ul>
@@ -67,14 +66,34 @@
                                 <option value="CC400">Sistemas Expertos</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="divListas">
+                            <select class="listas" id="listaIzquierda" size="15" multiple>
+                                <option>a</option>
+                                <option>b</option>
+                                <option>c</option>
+                                <option>d</option>
+                                <option>e</option>
+                                <option>f</option>
+                            </select>
+                            <input class="btnCentro" type="button" id="btnIzquierda" value="&lt;&lt;" />
+                            <input class="btnCentro" type="button" id="btnDerecha"  value="&gt;&gt;" />
+                            <select class="listas" id="listaDerecha" size="15" multiple>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+<!--                        <div>
                             <label class="labelform" for="codigo">Codigo</label>
                             <input class="formatinput" type="text" id="cod" name="codigo" />
                         </div>
                         <div>
                             <label class="labelform" for="nombre">Nombre</label>
                             <input class="formatinput" type="text" id="nom" name="nombre" />
-                        </div>
+                        </div>-->
                         <div>
                             <button class="boton" type="submit">Matricular</button>
                         </div>
@@ -84,7 +103,7 @@
 
         <footer>
             <section class="wrapper" id="seccion-footer">
-                <img class="footer" src="img/footer.png" alt="Logo" width="90" height="90">
+                <img id="imgfooter" class="footer" src="img/footer.png" alt="Logo">
                     <pre class="footer" id="infofooter">
                         Esta página fue realizada y desarrollada por Grupo ARO
                         Soporte a Ambientes Virtuales
@@ -99,6 +118,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/MaesAltaAlumnosaCursos.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

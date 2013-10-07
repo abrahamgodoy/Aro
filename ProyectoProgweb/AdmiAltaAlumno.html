@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -27,14 +29,14 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <header>
+        <header>            
             <section class="wrapper" id="seccion-header">
-                <div id="logo"></div>
-                <div id="titulo1"><h1>Harvard University</h1></div>
-                <article id="redes">
-                    <div class="icon-red" style="background: url('img/fb.jpg');"></div>
-                    <div class="icon-red" style="background: url('img/twiter.jpg');"></div>
-                </article>
+                <img id="logo" src="img/HarvardCrimson.png">
+                <h1>Harvard University</h1>
+                <div id="redes">
+                    <img class="icon-red" src="img/fb.jpg">
+                    <img class="icon-red" src="img/twiter.jpg">
+                </div>
                 
             </section>
         </header>
@@ -54,59 +56,54 @@
         <section id="contenido">
                 <fieldset class="fieldsetf">
                     <legend class="leg">Alta de Alumno</legend>
-                    <form id="formulario" method="post" action="#">
-                        <div>
-                            <label class="labelform" for="curso">Curso</label>
-                            <select class="selectform" name="curso">
-                                <option selected value="0">Elige un curso</option>  
-                                <option value="CC300">Sistema Operativos</option>
-                                <option value="CC302">Bases de Datos</option>
-                                <option value="CC212">Redes</option>
-                                <option value="CC400">Sistemas Expertos</option>
-                            </select>
-                        </div>
+                    <form id="formulario" method="POST" action="registro.php">
                         <div>
                             <label class="labelform" for="codigo">Codigo</label>
                             <input class="formatinput" type="text" id="cod" name="codigo" />
+                            <div class="errores" id="errorCod">Escribe tu codigo</div>
                         </div>
                         <div>
                             <label class="labelform" for="nombre">Nombre</label>
                             <input class="formatinput" type="text" id="nom" name="nombre" />
+                            <div class="errores" id="errorNom">Escribe tu nombre</div>
                         </div>
                         <div>
                             <label class="labelform" for="apellidop">Apellido Paterno</label>
                             <input class="formatinput" type="text" id="app" name="apellidop" />
+                            <div class="errores" id="errorApp">Escribe tu apellido paterno</div>
                         </div>
                         <div>
                             <label class="labelform" for="apellidom">Apellido Materno</label>
                             <input class="formatinput" type="text" id="apm" name="apellidom" />
+                            <div class="errores" id="errorApm">Escribe tu apellido Materno</div>
                         </div>
                         <div>
                             <label class="labelform" for="carrera">Carrera</label>
-                            <select class="selectform" name="carrera">
+                            <select class="selectform" name="carrera" id="carrera">
                                 <option selected value="0">Elige una carrera</option>  
                                 <option value="COM">Ing. en Computación</option>
                                 <option value="INF">Lic. en Informatica</option>
                                 <option value="BIM">Ing. Biomédica</option>
                                 <option value="CEL">Ing. en Electrónica</option>
                             </select>
-                        </div>
-                        <div>
-                            <label class="labelform" for="ciclo">Ciclo</label>
-                            <select class="selectform" name="ciclo">
-                                <option selected value="0">Elige un ciclo</option>  
-                                <option value="2013B">2013B</option>
-                                <option value="2014A">2014A</option>
-                                <option value="2014V">2014V</option>
-                                <option value="2014B">2014B</option>
-                            </select>
+                            <div class="errores" id="errorCarr">Selecciona una carrera</div>
                         </div>
                         <div>
                             <label class="labelform" for="correo">Correo</label>
                             <input class="formatinput" type="email" id="correo" name="correo" />
+                            <div class="errores" id="errorCorr">Escribe tu correo</div>
                         </div>
                         <div>
-                            <button class="boton" type="submit">Registrar</button>
+                            <label class="labelform" for="status">Status</label>
+                            <select class="selectform" name="status" id="status">
+                                <option selected value="0">Elige un status</option>  
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
+                            <div class="errores" id="errorStatus">Selecciona un Status</div>
+                        </div>
+                        <div>
+                            <button class="boton" type="button" id="btnRegistrar">Registrar</button>
                         </div>
                     </form>
                 </fieldset>
@@ -128,7 +125,7 @@
 
         <footer>
             <section class="wrapper" id="seccion-footer">
-                <img class="footer" src="img/footer.png" alt="Logo" width="90" height="90">
+                <img id="imgfooter" class="footer" src="img/footer.png" alt="Logo">
                     <pre class="footer" id="infofooter">
                         Esta página fue realizada y desarrollada por Grupo ARO
                         Soporte a Ambientes Virtuales
@@ -143,6 +140,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/AdmiAltaAlumno.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -151,5 +149,8 @@
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
+
+
+
     </body>
 </html>

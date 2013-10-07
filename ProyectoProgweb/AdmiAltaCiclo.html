@@ -27,14 +27,14 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <header>
+        <header>            
             <section class="wrapper" id="seccion-header">
-                <div id="logo"></div>
-                <div id="titulo1"><h1>Harvard University</h1></div>
-                <article id="redes">
-                    <div class="icon-red" style="background: url('img/fb.jpg');"></div>
-                    <div class="icon-red" style="background: url('img/twiter.jpg');"></div>
-                </article>
+                <img id="logo" src="img/HarvardCrimson.png">
+                <h1>Harvard University</h1>
+                <div id="redes">
+                    <img class="icon-red" src="img/fb.jpg">
+                    <img class="icon-red" src="img/twiter.jpg">
+                </div>
                 
             </section>
         </header>
@@ -58,25 +58,29 @@
                         <div>
                             <label class="labelform" for="nciclo">Ciclo</label>
                             <input class="formatinput" type="text" id="nciclo" name="nciclo" />
+                            <div class="errores" id="errorCiclo">Selecciona un ciclo</div>
                         </div>
 
                         <div>
                             <label class="labelform" for="inicio">Fecha de inicio</label>
                             <input class="formatinput" type="date" id="inicio" name="inicio" />
+                            <div class="errores" id="errorFecha1">Selecciona una fecha</div>
                         </div>
                         
                         <div>
                             <label class="labelform" for="finalizacion">Fecha de Finalizacion</label>
                             <input class="formatinput" type="date" id="finalizacion" name="finalizacion" />
+                            <div class="errores" id="errorFecha2">Selecciona una fecha</div> 
                         </div>
 
                          <div>
                             <label class="labelform" for="festivos">Dias Festivos</label>
                             <input class="formatinput" type="date" id="festivos" name="festivos" />
+                            <button class="boton2" type="boton">+</button>
                         </div>
                         
                         <div>
-                            <button class="boton" type="submit">Registrar</button>
+                            <button class="boton" id="btnRegistrar" type="button">Registrar</button>
                         </div>
                     </form>
                 </fieldset>
@@ -84,7 +88,7 @@
 
         <footer>
             <section class="wrapper" id="seccion-footer">
-                <img class="footer" src="img/footer.png" alt="Logo" width="90" height="90">
+                <img id="imgfooter" class="footer" src="img/footer.png" alt="Logo">
                     <pre class="footer" id="infofooter">
                         Esta página fue realizada y desarrollada por Grupo ARO
                         Soporte a Ambientes Virtuales
@@ -99,6 +103,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/AdmiAltaCiclo.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

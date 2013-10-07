@@ -27,14 +27,14 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <header>
+        <header>            
             <section class="wrapper" id="seccion-header">
-                <div id="logo"></div>
-                <div id="titulo1"><h1>Harvard University</h1></div>
-                <article id="redes">
-                    <div class="icon-red" style="background: url('img/fb.jpg');"></div>
-                    <div class="icon-red" style="background: url('img/twiter.jpg');"></div>
-                </article>
+                <img id="logo" src="img/HarvardCrimson.png">
+                <h1>Harvard University</h1>
+                <div id="redes">
+                    <img class="icon-red" src="img/fb.jpg">
+                    <img class="icon-red" src="img/twiter.jpg">
+                </div>
                 
             </section>
         </header>
@@ -56,9 +56,24 @@
             <div>
                 <p>LISTA DE ASISTENCIA</p>
             </div>
-            <div>   
-                <input class="formatinput" type="week" id="cod" name="semana" />
-            </div>
+            <form id="formulario" method="POST" action="">
+                <div>
+                    <label class="labelform" for="curso">Curso</label>
+                    <select class="selectform" id="curso" name="curso">
+                        <option selected value="0">Elige un curso</option>  
+                        <option value="CC300">Sistema Operativos</option>
+                        <option value="CC302">Bases de Datos</option>
+                        <option value="CC212">Redes</option>
+                        <option value="CC400">Sistemas Expertos</option>
+                    </select>
+                    <div class="errores" id="errorCurso">Selecciona un curso</div>
+                </div>
+                <div>
+                    <label class="labelform" for="semana">Semana</label>   
+                    <input class="formatinput" type="week" id="semana" name="semana" />
+                    <div class="errores" id="errorSemana">Selecciona una semana</div>
+                </div>
+            </form>
             <table id="lista">
                 <thead>
                     <tr>
@@ -124,11 +139,14 @@
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <button class="boton" type="button" id="btnRegistrar">Registrar</button>
+            </div>
         </section>
 
         <footer>
             <section class="wrapper" id="seccion-footer">
-                <img class="footer" src="img/footer.png" alt="Logo" width="90" height="90">
+                <img id="imgfooter" class="footer" src="img/footer.png" alt="Logo">
                     <pre class="footer" id="infofooter">
                         Esta página fue realizada y desarrollada por Grupo ARO
                         Soporte a Ambientes Virtuales
@@ -143,6 +161,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/MaesAsistencias.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
