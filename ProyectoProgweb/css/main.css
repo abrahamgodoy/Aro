@@ -317,6 +317,13 @@ section#imagen-login{
 
 }
 
+.errores{
+    float:right;
+    color: #C58A13;
+    font-size: .8em;
+    display: none;
+}
+
 #olvidaste{
     float:right;
     text-decoration: none;

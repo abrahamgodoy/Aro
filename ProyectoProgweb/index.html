@@ -71,21 +71,21 @@
             <div id="login">
                 <section id="imagen-login"></section>
 
-                <form mothod="POST" action="#">
+                <form method="POST" action="#">
                     <fieldset>
                         <legend>Entrar</legend>
                         <div>
-                            <label for="nombre">Codigo</label>
-                            <input type="text" id="nombre" name="nombre">
+                            <label for="codigo">Codigo</label>
+                            <input type="text" id="codigo" name="codigo">
                         </div>
-                        
+                        <p class="errores" id="errorCodigo">Debes escribir tu codigo</p>
                         <div>
                             <label for="contraseña">Contraseña</label>
                             <input type="password" id="contraseña" name"contraseña">
                         </div>
-
+                        <p class="errores" id="errorPass">Debes escribir tu contraseña</p>
                         <div>
-                            <button type"submit">Iniciar Sesion</button>
+                            <button id="buttonlogin" type"button">Iniciar Sesion</button>
                             <a id="olvidaste" href="#">¿Olvidaste tu Contraseña?</a>
                         </div>
                     </fieldset>
@@ -115,6 +115,7 @@
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
+        <script src="js/index.js"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
