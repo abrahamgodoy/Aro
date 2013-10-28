@@ -77,15 +77,15 @@
                         <div>
                             <label for="codigo">Codigo</label>
                             <input type="text" id="codigo" name="codigo">
+                            <div class="errores" id="errorCodigo">Debes escribir tu codigo</div>
                         </div>
-                        <p class="errores" id="errorCodigo">Debes escribir tu codigo</p>
                         <div>
                             <label for="contraseña">Contraseña</label>
-                            <input type="password" id="contraseña" name"contraseña">
+                            <input type="password" id="contra" name="contra">
+                            <div class="errores" id="errorPass">Debes escribir tu contraseña</div>
                         </div>
-                        <p class="errores" id="errorPass">Debes escribir tu contraseña</p>
                         <div>
-                            <button id="buttonlogin" type"button">Iniciar Sesion</button>
+                            <button id="buttonlogin" type="button" onclick="cifrar()">Iniciar Sesion</button>
                             <a id="olvidaste" href="#">¿Olvidaste tu Contraseña?</a>
                         </div>
                     </fieldset>
@@ -114,8 +114,16 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-
         <script src="js/index.js"></script>
+        <script src="js/sha1.js"></script>
+        <script>
+            function cifrar(){
+                var input_pass = document.getElementById("contra");
+                input_pass.value = sha1(input_pass.value);
+            }
+        </script>
+
+
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

@@ -348,6 +348,10 @@ div.dias{
     .inputchico{
         width: 14.6%;
     }
+
+    nav li{
+        margin: 3%;
+    }
     
 }
 
@@ -386,11 +390,11 @@ div.dias{
 @media screen and (max-width: 480px){
 
     body{
-        font-size: 60%;
+        font-size: 75%;
     }
 
     header{
-        font-size: 50%
+        font-size: 40%
     }
 
     .wrapper{

@@ -63,22 +63,24 @@
 
                         <div>
                             <label class="labelform" for="inicio">Fecha de inicio</label>
-                            <input class="formatinput" type="date" id="inicio" name="inicio" />
+                            <input class="formatinput date" type="text" id="inicio" name="inicio" />
                             <div class="errores" id="errorFecha1">Selecciona una fecha</div>
                         </div>
-                        
                         <div>
                             <label class="labelform" for="finalizacion">Fecha de Finalizacion</label>
-                            <input class="formatinput" type="date" id="finalizacion" name="finalizacion" />
+                            <input class="formatinput date" type="text" id="finalizacion" name="finalizacion" />
                             <div class="errores" id="errorFecha2">Selecciona una fecha</div> 
                         </div>
-
-                         <div>
+                        <div id="dia1">
                             <label class="labelform" for="festivos">Dias Festivos</label>
-                            <input class="formatinput" type="date" id="festivos" name="festivos" />
-                            <button class="boton2" type="boton">+</button>
+                            <input class="formatinput date" type="text" id="festivos" name="festivos" />
+                            <button id="otroDia" class="boton2" type="button">+</button>
                         </div>
-                        
+                        <div id="motivo1">
+                            <label class="labelform" for="motivo">Motivo</label>
+                            <input class="formatinput" type="text" id="motivo" name="motivo" />
+                            <div class="errores" id="errorMotivo">Escribe un motivo</div> 
+                        </div>
                         <div>
                             <button class="boton" id="btnRegistrar" type="button">Registrar</button>
                         </div>
@@ -98,6 +100,13 @@
             </section>
         </footer>
         <!-- Your content finishes here-->
+
+        <!-- Jquery ui-->
+        <link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.10.3.custom.css">
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/jquery-ui-1.10.3.custom.js"></script>
+        <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+        <!-- END Jquery ui-->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>

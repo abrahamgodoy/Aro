@@ -92,12 +92,13 @@
                              
                         </div>
                         <div class="horario dias">                                              
-                            <div class="checkformat"><input type="checkbox" name="dias" value="L" />L</div>
-                            <div class="checkformat"><input type="checkbox" name="dias" value="M" />M</div>
-                            <div class="checkformat"><input type="checkbox" name="dias" value="I" />I</div>
-                            <div class="checkformat"><input type="checkbox" name="dias" value="J" />J</div>
-                            <div class="checkformat"><input type="checkbox" name="dias" value="V" />V</div>
-                            <div class="checkformat"><input type="checkbox" name="dias" value="S" />S</div>
+                            <div class="checkformat"><input type="checkbox" name="dias[]" value="L" />L</div>
+                            <div class="checkformat"><input type="checkbox" name="dias[]" value="M" />M</div>
+                            <div class="checkformat"><input type="checkbox" name="dias[]" value="I" />I</div>
+                            <div class="checkformat"><input type="checkbox" name="dias[]" value="J" />J</div>
+                            <div class="checkformat"><input type="checkbox" name="dias[]" value="V" />V</div>
+                            <div class="checkformat"><input type="checkbox" name="dias[]" value="S" />S</div>
+                            <div class="errores" id="errorDias">Selecciona un dia</div>
                         </div>
 
                         <div id="criterio1" class="duplicarcri">
@@ -122,29 +123,31 @@
                     <legend class="leg">Clonar Curso</legend>
                     <form id="Clonar curso" method="post" action="#">
                         <div>
-                            <label class="labelform" for="ciclo">Ciclo</label>
-                            <select class="selectform" name="ciclo">
+                            <label class="labelform" for="ciclo2">Ciclo</label>
+                            <select class="selectform" name="ciclo2" id="ciclo2">
                                 <option selected value="0">Elige un ciclo</option>  
                                 <option value="2013A">2013A</option>
                                 <option value="2013B">2013B</option>
                                 <option value="2014A">2014A</option>
                                 <option value="2014B">2014B</option>
                             </select>
+                            <div class="errores" id="errorCiclo2">Elige un Ciclo</div>
                         </div>
 
                         <div>
-                            <label class="labelform" for="ciclo">Curso</label>
-                            <select class="selectform" name="ciclo">
+                            <label class="labelform" for="curso2">Curso</label>
+                            <select class="selectform" name="curso2" id="curso2">
                                 <option selected value="0">Elige un curso</option>  
                                 <option value="cc202">cc302</option>
                                 <option value="cc402">cc402</option>
                                 <option value="cc508">cc508</option>
                                 <option value="cc206">cc206</option>
                             </select>
+                            <div class="errores" id="errorCurso2">Elige un Curso</div>
                         </div>
                         
                         <div>
-                            <button class="boton" type="submit">Clonar</button>
+                            <button id="btnClonar" class="boton" type="button">Clonar</button>
                         </div>
                 </form>
             </fieldset>

@@ -1,12 +1,13 @@
-var exprnum= /^[0-9]+?/;
+var exprNum = /^[0-9]+$/;
 
 $("#buttonlogin").click(function(){
 
 	var $codigo = $("#codigo").val();
-	var $password = $("#contraseña").val(); 
+	var $password = $("#contra").val();
+
 
 	if($codigo == ""){
-		$("#errorCodigo").replaceWith("<p class=\"errores\" id=\"errorCodigo\">Escribe tu codigo</p>");
+		//$("#errorCodigo").replaceWith("<div class=\"errores\" id=\"errorCodigo\">Escribe tu codigo</div>");
 		$("#errorCodigo").fadeIn("slow");
 	}
 	else
@@ -14,12 +15,12 @@ $("#buttonlogin").click(function(){
 		$("#errorCodigo").fadeOut();
 		if(!exprNum.test($codigo))
 		{
-			$("#errorCodigo").replaceWith("<p class=\"errores\" id=\"errorCodigo\">Codigo inválido</p>");
+			$("#errorCodigo").replaceWith("<div class=\"errores\" id=\"errorCodigo\">Codigo inválido</div>");
 			$("#errorCodigo").fadeIn("slow");
 		}
 	}
 
-	if($password==""){
+	if($password == ""){
 		$("#errorPass").fadeIn("slow");
 	}
 }

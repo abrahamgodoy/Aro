@@ -361,6 +361,10 @@ section form div{
         width: 80%
     }
 
+    nav li{
+        margin: 3%;
+    }
+
     
 }
 
@@ -395,11 +399,11 @@ section form div{
 @media screen and (max-width: 480px){
 
     body{
-        font-size: 60%;
+        font-size: 75%;
     }
 
     header{
-        font-size: 50%
+        font-size: 40%
     }
 
     .wrapper{

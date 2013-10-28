@@ -77,6 +77,13 @@ $("#btnRegistrar").click(function (){
 		}
 	}
 
+	if(!$("input[name='dias[]']").is(":checked"))
+	{
+		$("#errorDias").fadeIn("slow");
+	}
+	else
+		$("#errorDias").fadeOut()
+
 	for (var i = 1; i < numHorario; i++) {
 
 		var id = "horario" + i;
@@ -121,3 +128,17 @@ $("#btnRegistrar").click(function (){
 	};
 });
 
+$("#btnClonar").click(function(){
+	var $curso = $("#curso2").val();
+	var $ciclo = $("#ciclo2").val();
+
+	if($curso == 0)
+		$("#errorCiclo2").fadeIn("slow");
+	else
+		$("#errorCiclo2").fadeOut();
+
+	if($ciclo == 0)
+		$("#errorCurso2").fadeIn("slow");
+	else
+		$("#errorCurso2").fadeOut();
+});

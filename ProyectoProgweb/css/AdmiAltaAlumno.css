@@ -313,6 +313,10 @@ section p{
         width: 80%
     }
 
+    nav li{
+        margin: 3%;
+    }
+
     
 }
 
@@ -327,7 +331,7 @@ section p{
     }
 
     #contenido{
-        width: 80%
+        width: 85%
     }
 
     .errores{
@@ -348,11 +352,11 @@ section p{
 @media screen and (max-width: 480px){
 
     body{
-        font-size: 60%;
+        font-size: 75%;
     }
 
     header{
-        font-size: 50%
+        font-size: 40%
     }
 
     .wrapper{
@@ -377,8 +381,6 @@ section p{
     }
 
 }
-
-
 
 
 

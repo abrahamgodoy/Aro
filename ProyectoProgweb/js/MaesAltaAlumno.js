@@ -2,6 +2,17 @@
 	var exprCorreo = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-]+\.?[a-zA-Z0-9\-]*$/;
 	var exprNum = /^[0-9]+$/;
 
+$("#btnArchivo").click(function(){
+
+	var $archivo = $("#lista").val();
+
+	if($archivo == "")
+	{
+		$("#errorArchivo").fadeIn("slow");
+	}
+
+});
+
 $("#btnRegistrar").click(function (){
 
 	var $codigo = $("#cod").val();

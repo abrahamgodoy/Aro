@@ -90,6 +90,10 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+div.ui-datepicker{
+ font-size:90%;
+}
+
 #contenido{
     width: 60%;
     margin: 0 auto;
@@ -309,6 +313,10 @@ section p{
         width: 80%
     }
 
+    nav li{
+        margin: 3%;
+    }
+
     
 }
 
@@ -344,11 +352,11 @@ section p{
 @media screen and (max-width: 480px){
 
     body{
-        font-size: 60%;
+        font-size: 75%;
     }
 
     header{
-        font-size: 50%
+        font-size: 40%
     }
 
     .wrapper{
@@ -373,6 +381,7 @@ section p{
     }
 
 }
+
 
 
 
