@@ -118,8 +118,10 @@
         <script src="js/sha1.js"></script>
         <script>
             function cifrar(){
-                var input_pass = document.getElementById("contra");
-                input_pass.value = sha1(input_pass.value);
+                var login = document.getElementById("codigo");
+                var pass = document.getElementById("contra");
+                if(!pass.value == "" && !codigo.value == "")
+                    pass.value = sha1(pass.value);
             }
         </script>
 

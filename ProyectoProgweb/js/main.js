@@ -5,7 +5,6 @@ $("#buttonlogin").click(function(){
 	var $codigo = $("#codigo").val();
 	var $password = $("#contra").val();
 
-
 	if($codigo == ""){
 		//$("#errorCodigo").replaceWith("<div class=\"errores\" id=\"errorCodigo\">Escribe tu codigo</div>");
 		$("#errorCodigo").fadeIn("slow");
@@ -23,6 +22,6 @@ $("#buttonlogin").click(function(){
 	if($password == ""){
 		$("#errorPass").fadeIn("slow");
 	}
-}
-
-);
+	else
+		$("#errorPass").fadeOut();
+});
