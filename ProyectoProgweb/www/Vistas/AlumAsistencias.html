@@ -17,9 +17,9 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/MaesAsistencias.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <link rel="stylesheet" href="./www/css/normalize.css">
+        <link rel="stylesheet" href="./www/css/AlumAsistencias.css">
+        <script src="./www/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -29,11 +29,11 @@
         <!-- Add your site or application content here -->
         <header>            
             <section class="wrapper" id="seccion-header">
-                <img id="logo" src="img/HarvardCrimson.png">
+                <img id="logo" src="./www/img/HarvardCrimson.png">
                 <h1>Harvard University</h1>
                 <div id="redes">
-                    <img class="icon-red" src="img/fb.jpg">
-                    <img class="icon-red" src="img/twiter.jpg">
+                    <img class="icon-red" src="./www/img/fb.jpg">
+                    <img class="icon-red" src="./www/img/twiter.jpg">
                 </div>
                 
             </section>
@@ -42,11 +42,8 @@
         
         <nav>
             <ul>
-                <li><a href="MaesAltaCursos.html">Alta de Cursos</a></li>
-                <li><a href="MaesAltaAlumno.html">Alta de Alumnos</a></li>
-                <li><a href="MaesAltaAlumnosaCursos.html">Matricular Alumno</a></li>
-                <li><a href="MaesAsistencias.html">Lista de Asistencias</a></li>
-                <li><a href="MaesCalificaciones.html">Calificaciones</a></li>
+                <li><a href="AlumCalificaciones.html">Calificaciones</a></li>
+                <li><a href="AlumAsistencias.html">Asistencias</a></li>
                 <li><a href="index.html">Salir</a></li>
                 <div class="clear"></div>
             </ul>
@@ -59,19 +56,17 @@
             <form id="formulario" method="POST" action="">
                 <div>
                     <label class="labelform" for="curso">Curso</label>
-                    <select class="selectform" id="curso" name="curso">
+                    <select class="selectform" name="curso">
                         <option selected value="0">Elige un curso</option>  
                         <option value="CC300">Sistema Operativos</option>
                         <option value="CC302">Bases de Datos</option>
                         <option value="CC212">Redes</option>
                         <option value="CC400">Sistemas Expertos</option>
                     </select>
-                    <div class="errores" id="errorCurso">Selecciona un curso</div>
                 </div>
                 <div>
                     <label class="labelform" for="semana">Semana</label>   
                     <input class="formatinput" type="week" id="semana" name="semana" />
-                    <div class="errores" id="errorSemana">Selecciona una semana</div>
                 </div>
             </form>
             <table id="lista">
@@ -81,82 +76,69 @@
                         <th>NOMBRE</th>
                         <th id="dias" colspan="5">L   M   M   J   V</th>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td align="center"><input type="checkbox" name="aLunes" value="1"></td>
-                        <td align="center"><input type="checkbox" name="aMartes" value="1"></td>
-                        <td align="center"><input type="checkbox" name="aMiercoles" value="1"></td>
-                        <td align="center"><input type="checkbox" name="aJueves" value="1"></td>
-                        <td align="center"><input type="checkbox" name="aViernes" value="1"></td>
-                    </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>A</td>
                         <td>1</td>
-                        <td><input type="checkbox" name="lunes[]" value="1"></td>
-                        <td><input type="checkbox" name="martes[]" value="1"></td>
-                        <td><input type="checkbox" name="miercoles[]" value="1"></td>
-                        <td><input type="checkbox" name="jueves[]" value="1"></td>
-                        <td><input type="checkbox" name="viernes[]" value="1"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
                     </tr>
                     <tr>
                         <td>B</td>
                         <td>2</td>
-                        <td><input type="checkbox" name="lunes[]" value="1"></td>
-                        <td><input type="checkbox" name="martes[]" value="1"></td>
-                        <td><input type="checkbox" name="miercoles[]" value="1"></td>
-                        <td><input type="checkbox" name="jueves[]" value="1"></td>
-                        <td><input type="checkbox" name="viernes[]" value="1"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
                     </tr>
                     <tr>
                         <td>C</td>
                         <td>3</td>
-                        <td><input type="checkbox" name="lunes[]" value="1"></td>
-                        <td><input type="checkbox" name="martes[]" value="1"></td>
-                        <td><input type="checkbox" name="miercoles[]" value="1"></td>
-                        <td><input type="checkbox" name="jueves[]" value="1"></td>
-                        <td><input type="checkbox" name="viernes[]" value="1"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
                     </tr>
                     <tr>
                         <td>D</td>
                         <td>4</td>
-                        <td><input type="checkbox" name="lunes[]" value="1"></td>
-                        <td><input type="checkbox" name="martes[]" value="1"></td>
-                        <td><input type="checkbox" name="miercoles[]" value="1"></td>
-                        <td><input type="checkbox" name="jueves[]" value="1"></td>
-                        <td><input type="checkbox" name="viernes[]" value="1"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
                     </tr>
                     <tr>
                         <td>E</td>
                         <td>5</td>
-                        <td><input type="checkbox" name="lunes[]" value="1"></td>
-                        <td><input type="checkbox" name="martes[]" value="1"></td>
-                        <td><input type="checkbox" name="miercoles[]" value="1"></td>
-                        <td><input type="checkbox" name="jueves[]" value="1"></td>
-                        <td><input type="checkbox" name="viernes[]" value="1"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia"></td>
                     </tr>
                     <tr>
                         <td>F</td>
                         <td>6</td>
-                        <td><input type="checkbox" name="lunes[]" value="1"></td>
-                        <td><input type="checkbox" name="martes[]" value="1"></td>
-                        <td><input type="checkbox" name="miercoles[]" value="1"></td>
-                        <td><input type="checkbox" name="jueves[]" value="1"></td>
-                        <td><input type="checkbox" name="viernes[]" value="1"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia" value="1"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia" value="1"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia" value="1"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia" value="1"></td>
+                        <td><input type="checkbox" disabled="" name="asistencia" value="1"></td>
                     </tr>
                 </tbody>
             </table>
-            <div>
-                <button class="boton" type="button" id="btnRegistrar">Registrar</button>
-            </div>
-            <div class="errores" id="errorAsistencias">Agrega asistencias</div>
         </section>
 
         <footer>
             <section class="wrapper" id="seccion-footer">
-                <img id="imgfooter" class="footer" src="img/footer.png" alt="Logo">
+                <img id="imgfooter" class="footer" src="./www/img/footer.png" alt="Logo">
                     <pre class="footer" id="infofooter">
                         Esta página fue realizada y desarrollada por Grupo ARO
                         Soporte a Ambientes Virtuales
@@ -167,18 +149,19 @@
         </footer>
         <!-- Your content finishes here-->
 
-        <!-- Jquery ui-->
-        <link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.10.3.custom.css">
-        <script src="js/jquery-1.9.1.js"></script>
-        <script src="js/jquery-ui-1.10.3.custom.js"></script>
-        <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+         <!-- Jquery ui-->
+        <link rel="stylesheet" type="text/css" href="./www/css/ui-lightness/jquery-ui-1.10.3.custom.css">
+        <script src="./www/js/jquery-1.9.1.js"></script>
+        <script src="./www/js/jquery-ui-1.10.3.custom.js"></script>
+        <script src="./www/js/jquery-ui-1.10.3.custom.min.js"></script>
         <!-- END Jquery ui-->
+
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/MaesAsistencias.js"></script>
+        <script src="./www/js/plugins.js"></script>
+        <script src="./www/js/main.js"></script>
+        <script src="./www/js/AlumAsistencias.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

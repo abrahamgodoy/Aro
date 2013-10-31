@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -17,9 +19,9 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/MaesAltaAlumno.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <link rel="stylesheet" href="./www/css/normalize.css">
+        <link rel="stylesheet" href="./www/css/AdmiAltaAlumno.css">
+        <script src="./www/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -27,33 +29,34 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-         <header>            
+        <header>            
             <section class="wrapper" id="seccion-header">
-                <img id="logo" src="img/HarvardCrimson.png">
+                <img id="logo" src="./www/img/HarvardCrimson.png">
                 <h1>Harvard University</h1>
                 <div id="redes">
-                    <img class="icon-red" src="img/fb.jpg">
-                    <img class="icon-red" src="img/twiter.jpg">
+                    <img class="icon-red" src="./www/img/fb.jpg">
+                    <img class="icon-red" src="./www/img/twiter.jpg">
                 </div>
+                
             </section>
         </header>
 
+        
         <nav>
             <ul>
-                <li><a href="MaesAltaCursos.html">Alta de Cursos</a></li>
-                <li><a href="MaesAltaAlumno.html">Alta de Alumnos</a></li>
-                <li><a href="MaesAltaAlumnosaCursos.html">Matricular Alumno</a></li>
-                <li><a href="MaesAsistencias.html">Lista de Asistencias</a></li>
-                <li><a href="MaesCalificaciones.html">Calificaciones</a></li>
+                <li><a href="AdmiAltaCiclo.html">Alta de Ciclo</a></li>
+                <li><a href="AdmiAltaMaestro.html">Alta de Maestro</a></li>
+                <li><a href="AdmiAltaAlumno.html">Alta de Alumnos</a></li>
                 <li><a href="index.html">Salir</a></li>
                 <div class="clear"></div>
             </ul>
         </nav>
 
+
         <section id="contenido">
                 <fieldset class="fieldsetf">
                     <legend class="leg">Alta de Alumno</legend>
-                    <form id="formulario" method="POST" action="registro.php">
+                    <form id="formulario" method="POST" action="index.php?ctl=administrativo&act=altaAlumno">
                         <div>
                             <label class="labelform" for="codigo">Codigo</label>
                             <input class="formatinput" type="text" id="cod" name="codigo" />
@@ -100,7 +103,7 @@
                             <div class="errores" id="errorStatus">Selecciona un Status</div>
                         </div>
                         <div>
-                            <button class="boton" type="button" id="btnRegistrar">Registrar</button>
+                            <button class="boton" type="submit" id="btnRegistrar">Registrar</button>
                         </div>
                     </form>
                 </fieldset>
@@ -114,7 +117,7 @@
                             <div class="errores" id="errorArchivo">Selecciona un archivo</div>
                         </div>
                         <div>
-                            <button id="btnArchivo" class="boton" type="button">Registrar Alumnos</button>
+                            <button class="boton" type="button" id="btnArchivo">Registrar Alumnos</button>
                         </div>
                     </form>
                 </fieldset>
@@ -123,7 +126,7 @@
 
         <footer>
             <section class="wrapper" id="seccion-footer">
-                <img id="imgfooter" class="footer" src="img/footer.png" alt="Logo">
+                <img id="imgfooter" class="footer" src="./www/img/footer.png" alt="Logo">
                     <pre class="footer" id="infofooter">
                         Esta página fue realizada y desarrollada por Grupo ARO
                         Soporte a Ambientes Virtuales
@@ -135,10 +138,11 @@
         <!-- Your content finishes here-->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/MaesAltaAlumno.js"></script>
+        <script>window.jQuery || document.write('<script src="./www/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="./www/js/plugins.js"></script>
+        <script src="./www/js/main.js"></script>
+        <script src="./www/js/AdmiAltaAlumno.js"></script>
+
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
@@ -146,6 +150,8 @@
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-        
+
+
+
     </body>
 </html>

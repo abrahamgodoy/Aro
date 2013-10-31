@@ -5,6 +5,8 @@
 
 $( document ).ready(function() {
 
+    $( ".date" ).datepicker();
+
 	$("#otroDia").click(function(){
 		$("div#dia1").clone().attr("id","dia" + (numID+1)).insertAfter("#motivo" + numID);
 		$("div#motivo1").clone().attr("id","motivo" + (numID+1)).insertAfter("#dia" + (numID+1));
@@ -41,7 +43,4 @@ $( document ).ready(function() {
 		else
 			$("#errorFecha2").fadeOut();
 	});
-
-
-	$( ".date" ).datepicker();
 });	

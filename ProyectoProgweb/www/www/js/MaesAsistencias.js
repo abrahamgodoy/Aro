@@ -1,5 +1,9 @@
 $( document ).ready(function() {
 
+    $( "#semana" ).datepicker({
+        showWeek: true
+    });
+
     $("input[name=aLunes]").change(function(){
         $("input[name='lunes[]']").each( function() {            
             if($("input[name='aLunes']:checked").length == 1){
@@ -69,11 +73,6 @@ $( document ).ready(function() {
     		$("#errorAsistencias").fadeIn("slow")
     	else
     		$("#errorAsistencias").fadeOut();
-    });
-
-
-    $( "#semana" ).datepicker({
-        showWeek: true
     });
 
 });
