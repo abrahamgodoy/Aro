@@ -3,7 +3,7 @@
 class administrativoMdl{
 	public $driver;
 	function __construct(){
-		$this -> driver = new mysqli('localhost', 'root', '486257913', 'user203');
+		$this -> driver = new mysqli('localhost','root','', 'user203');
 		if($this -> driver -> connect_errno)
 			die("<br>Error en la conexión");
 	}
@@ -29,9 +29,22 @@ class administrativoMdl{
 	function altaAlumno($codigo, $nombre, $apellidop, $apellidom, $carrera, $correo, $status){
 		$query =
 			"INSERT INTO
-			alumno(codigo, contraseña, nombre, apellidoP, apellidoM, carrera, correo, status, Github, celular, WebPage)
-			VALUES('$codigo', '1234567890', '$nombre', '$apellidop', '$apellidom', '$carrera', '$correo', '$status', NULL, NULL, NULL)";
+			alumno(codigo, contrasena, nombre, apellidoP, apellidoM, carrera, correo, status, Github, celular, WebPage)
+			VALUES('$codigo', '123445', '$nombre', '$apellidop', '$apellidom', '$carrera', '$correo', '$status', NULL, NULL, NULL)";
 		$r = $this -> driver -> query($query);
+		echo $query;
+	}
+
+	function lista(){
+		//echo "<br>debug: Entro a la alta del alumno en el modelo";
+		$query = 'SELECT * FROM alumno';
+
+		$r = $this -> driver -> query($query);
+
+		while($row = $r -> fetch_assoc())
+			$rows[] = $row;
+
+		return $rows;
 	}
 }
 

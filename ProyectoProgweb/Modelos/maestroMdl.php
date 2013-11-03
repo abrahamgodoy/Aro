@@ -3,7 +3,7 @@
 class maestroMdl{
 	public $driver;
 	function __construct(){
-		$this -> driver = new mysqli('localhost', 'root', '486257913', 'user203');
+		$this -> driver = new mysqli('localhost', 'root', '', 'user203');
 		if($this -> driver -> connect_errno)
 			die("<br>Error en la conexión");
 	}

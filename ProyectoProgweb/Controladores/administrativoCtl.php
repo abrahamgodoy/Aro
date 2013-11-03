@@ -82,9 +82,51 @@ class administrativoCtl{
 					$carrera = $_POST["carrera"];
 					$correo = $_POST["correo"];
 					$status = $_POST["status"];
+					
 					$resultado = $this -> modelo -> altaAlumno($codigo, $nombre, $apellidop, $apellidom, $carrera, $correo, $status);
 					//$this -> enviarCorreo();
+
+
+					if($resultado!==FALSE){
+						//Procesar la vista
+
+						//Obtener la vista
+						$vista = file_get_contents("Vistas/AdmiListaAlumno.html");
+
+						//Obtengo la fila de la tabla
+						$inicio_fila = strrpos($vista,'<tr>');
+						$final_fila = strrpos($vista,'</tr>') + 5;
+
+						$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+
+						//Genero las filas
+						$alumnos = $this -> modelo -> lista();
+
+						$filas='';
+
+						foreach ($alumnos as $row) {
+							$new_fila = $fila;
+							//$new_fila = str_replace('{codigo}', $row['codigo'], $new_fila);
+							//$new_fila = str_replace('{nombre}', $row['nombre'], $new_fila);
+							//$new_fila = str_replace('{carrera}', $row['carrera'], $new_fila);
+							//Reemplazo con un diccionario
+							$diccionario = array('{codigo}' => $row['codigo'], '{nombre}' => $row['nombre'],'{carrera}'=>$row['carrera']);
+							$new_fila = strtr($new_fila,$diccionario);
+							$filas .= $new_fila;
+						}
+						
+						//Reemplazo en mi vista una fila por todas las filas
+						$vista = str_replace($fila, $filas, $vista);
+
+						//Mostrar la vista
+						echo $vista;
+					}
+					else
+						require_once("Vista/Error.html");
+
+
 				}
+
 		}
 	}
 }

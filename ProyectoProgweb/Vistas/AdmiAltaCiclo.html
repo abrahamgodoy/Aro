@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="shorcut icon" href="favicon.ico">
+        <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
+
+        <link rel="stylesheet" href="./www/css/normalize.css">
+        <link rel="stylesheet" href="./www/css/AdmiAltaCiclo.css">
+        <script src="./www/js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <header>            
+            <section class="wrapper" id="seccion-header">
+                <img id="logo" src="./www/img/HarvardCrimson.png">
+                <h1>Harvard University</h1>
+                <div id="redes">
+                    <img class="icon-red" src="./www/img/fb.jpg">
+                    <img class="icon-red" src="./www/img/twiter.jpg">
+                </div>
+                
+            </section>
+        </header>
+
+        
+        <nav>
+            <ul>
+                <li><a href="AdmiAltaCiclo.html">Alta de Ciclo</a></li>
+                <li><a href="AdmiAltaMaestro.html">Alta de Maestro</a></li>
+                <li><a href="#">Maestros</a></li>
+                <li><a href="AdmiAltaAlumno.html">Alta de Alumnos</a></li>
+                <li><a href="AdmiListaAlumno.html">Alumnos</a></li>
+                <li><a href="index.html">Salir</a></li>
+                <div class="clear"></div>
+            </ul>
+        </nav>
+
+
+        <section id="contenido">
+                <fieldset class="fieldsetf">
+                    <legend class="leg">Alta de Ciclo</legend>
+                    <form id="formulario" method="post" action="#">
+                        <div>
+                            <label class="labelform" for="nciclo">Ciclo</label>
+                            <input class="formatinput" type="text" id="nciclo" name="nciclo" />
+                            <div class="errores" id="errorCiclo">Selecciona un ciclo</div>
+                        </div>
+
+                        <div>
+                            <label class="labelform" for="inicio">Fecha de inicio</label>
+                            <input class="formatinput date" type="text" id="inicio" name="inicio" />
+                            <div class="errores" id="errorFecha1">Selecciona una fecha</div>
+                        </div>
+                        <div>
+                            <label class="labelform" for="finalizacion">Fecha de Finalizacion</label>
+                            <input class="formatinput date" type="text" id="finalizacion" name="finalizacion" />
+                            <div class="errores" id="errorFecha2">Selecciona una fecha</div> 
+                        </div>
+                        <div id="dia1">
+                            <label class="labelform" for="festivos">Dias Festivos</label>
+                            <input class="formatinput date" type="text" id="festivos" name="festivos" />
+                            <button id="otroDia" class="boton2" type="button">+</button>
+                        </div>
+                        <div id="motivo1">
+                            <label class="labelform" for="motivo">Motivo</label>
+                            <input class="formatinput" type="text" id="motivo" name="motivo" />
+                            <div class="errores" id="errorMotivo">Escribe un motivo</div> 
+                        </div>
+                        <div>
+                            <button class="boton" id="btnRegistrar" type="submit">Registrar</button>
+                        </div>
+                    </form>
+                </fieldset>
+        </section>
+
+        <footer>
+            <section class="wrapper" id="seccion-footer">
+                <img id="imgfooter" class="footer" src="./www/img/footer.png" alt="Logo">
+                    <pre class="footer" id="infofooter">
+                        Esta página fue realizada y desarrollada por Grupo ARO
+                        Soporte a Ambientes Virtuales
+                        Guadalajara, Jalisco
+                        Telefono: (33) 1527 4067
+                    </pre>
+            </section>
+        </footer>
+        <!-- Your content finishes here-->
+
+        <!-- Jquery ui-->
+        <link rel="stylesheet" type="text/css" href="./www/css/ui-lightness/jquery-ui-1.10.3.custom.css">
+        <script src="./www/js/jquery-ui-1.10.3.custom.js"></script>
+        <script src="./www/js/jquery-ui-1.10.3.custom.min.js"></script>
+        <!-- END Jquery ui-->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="./www/js/plugins.js"></script>
+        <script src="./www/js/main.js"></script>
+        <script src="./www/js/AdmiAltaCiclo.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src='//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>

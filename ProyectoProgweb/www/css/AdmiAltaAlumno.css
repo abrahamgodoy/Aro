@@ -95,9 +95,9 @@ textarea {
     margin: 0 auto;
     overflow: hidden;
     background-color: #CCCCCC;
+    font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
     min-height: 800px;
 }
-
 
 
 body{
@@ -106,6 +106,7 @@ body{
     padding: 0px;
     width: 100%;
     background: #ccc url('../img/fondo.jpg') repeat center left;
+    font-size: 100%;
 }
 
 header{
@@ -161,6 +162,7 @@ h1{
     padding: 5% 2.97%;
 }
 
+
 nav{
     width:100%;
     margin: 0 auto;
@@ -170,7 +172,7 @@ nav{
 nav ul li{
     list-style: none;
     float: left;
-    padding: 0 8%;
+    padding: 0 5%;
 }
 
 nav ul li a{
@@ -194,6 +196,18 @@ nav ul a:hover{
     background: #666;
 }
 
+.labelform{
+    width:20%;
+    float: left;
+}
+
+.selectform{
+    width: 42%;
+    float: left;
+    padding: .4em;
+    margin: 0% 0.5%;
+}
+
 .errores{
     width: 22%;
     font-size: 0.7em;
@@ -210,21 +224,11 @@ nav ul a:hover{
     margin: 0.8% 3%;
 }
 
-.labelform{
-    width:25%;
-    float: left;
-}
-
-.selectform{
-    width: 43%;
-    float: left;
-    padding: .4em;
-}
-
 .formatinput{
     width: 40%;
-    float: left;
     padding: .4em;
+    float: left;
+    margin: 0.5%;
 }
 
 .fieldsetf{
@@ -247,7 +251,7 @@ nav ul a:hover{
 }
 
 section form div{
-    margin: 7px 10%;
+    margin: 2% 5%;
     overflow: hidden;
 }
 
@@ -270,6 +274,10 @@ section p{
     color: #FFF;
 }
 
+.labelarchivo{
+    margin: 20px 18%;
+}
+
 .footer{
     float: left;
 }
@@ -287,6 +295,9 @@ section p{
 }
 
 
+#imgfooter{
+    width: 11%;
+}
 
 
 @media screen and (max-width: 1024px){
@@ -320,7 +331,7 @@ section p{
     }
 
     #contenido{
-        width: 80%
+        width: 85%
     }
 
     .errores{
@@ -370,9 +381,6 @@ section p{
     }
 
 }
-
-
-
 
 
 
