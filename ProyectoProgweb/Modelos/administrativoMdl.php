@@ -46,6 +46,11 @@ class administrativoMdl{
 
 		return $rows;
 	}
+
+	function eliminarAlumno($codigo){
+		$query="DELETE FROM alumno WHERE codigo='$codigo' ";
+		$r = $this -> driver -> query($query);
+	}
 }
 
 ?>

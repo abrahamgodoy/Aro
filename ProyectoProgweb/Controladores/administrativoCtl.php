@@ -68,6 +68,7 @@ class administrativoCtl{
 					$resultado = $this -> modelo -> altaMaestro($codigo, $nombre, $apellidop, $apellidom, $correo);
 				}
 			break;
+			
 			case "altaAlumno":
 				if(empty($_POST)){
 					//Cargo la vista del formulario
@@ -127,6 +128,49 @@ class administrativoCtl{
 
 				}
 
+				break;
+
+			case 'eliminarAlumno':
+				if(empty($_POST)){
+					//Obtener la vista
+					$vista = file_get_contents("Vistas/AdmiListaEliminar.html");
+
+					//Obtengo la fila de la tabla
+					$inicio_fila = strrpos($vista,'<tr>');
+					$final_fila = strrpos($vista,'</tr>') + 5;
+
+					$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+
+					//Genero las filas
+					$alumnos = $this -> modelo -> lista();
+
+					$filas='';
+
+					foreach ($alumnos as $row) {
+						$new_fila = $fila;
+						//$new_fila = str_replace('{codigo}', $row['codigo'], $new_fila);
+						//$new_fila = str_replace('{nombre}', $row['nombre'], $new_fila);
+						//$new_fila = str_replace('{carrera}', $row['carrera'], $new_fila);
+						//Reemplazo con un diccionario
+						$diccionario = array('{codigo}' => $row['codigo'], '{nombre}' => $row['nombre'],'{carrera}'=>$row['carrera']);
+						$new_fila = strtr($new_fila,$diccionario);
+						$filas .= $new_fila;
+					}
+					
+					//Reemplazo en mi vista una fila por todas las filas
+					$vista = str_replace($fila, $filas, $vista);
+
+					//Mostrar la vista
+					echo $vista;
+				}
+
+				else{
+					$seleccionados = $_POST['seleccion'];
+					for($i=0; $i < count($seleccionados); $i++){
+    					$this -> modelo -> eliminarAlumno($seleccionados[$i]);
+					}
+				}	
+				break;
 		}
 	}
 }
