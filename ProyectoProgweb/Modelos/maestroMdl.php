@@ -20,8 +20,25 @@ class maestroMdl{
 	function altaAlumno($codigo, $nombre, $apellidop, $apellidom, $carrera, $correo, $status){
 		$query =
 			"INSERT INTO
-			alumno(codigo, contraseña, nombre, apellidoP, apellidoM, carrera, correo, status, Github, celular, WebPage)
-			VALUES('$codigo', '1234567890', '$nombre', '$apellidop', '$apellidom', '$carrera', '$correo', '$status', NULL, NULL, NULL)";
+			alumno(codigo, contrasena, nombre, apellidoP, apellidoM, carrera, correo, status, Github, celular, WebPage)
+			VALUES('$codigo', '12347890', '$nombre', '$apellidop', '$apellidom', '$carrera', '$correo', '$status', NULL, NULL, NULL)";
+		$r = $this -> driver -> query($query);
+	}
+
+	function lista(){
+		//echo "<br>debug: Entro a la alta del alumno en el modelo";
+		$query = 'SELECT * FROM alumno';
+
+		$r = $this -> driver -> query($query);
+
+		while($row = $r -> fetch_assoc())
+			$rows[] = $row;
+
+		return $rows;
+	}
+
+	function eliminarAlumno($codigo){
+		$query="DELETE FROM alumno WHERE codigo='$codigo' ";
 		$r = $this -> driver -> query($query);
 	}
 }

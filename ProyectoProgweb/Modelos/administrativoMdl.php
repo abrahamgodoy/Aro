@@ -14,16 +14,14 @@ class administrativoMdl{
 			ciclo(idCiclo, ciclo, fechaIni, fechaFin, codigo)
 		  	VALUES(NULL,'$ciclo','$fechai','$fechaf',NULL)";
 		$r = $this -> driver -> query($query);
-		echo $query;
 	}
 
 	function altaMaestro($codigo, $nombre, $apellidop, $apellidom, $correo){
 		$query =
 			"INSERT INTO
-			maestro(codigo, contraseña, nombre, apellidoP, apellidoM, correo)
-			VALUES('$codigo', '1234', '$nombre', '$apellidop', '$apellidom', '$correo')";
+			maestro(codigo, contrasena, nombre, apellidoP, apellidoM, correo)
+			VALUES('$codigo', '126834', '$nombre', '$apellidop', '$apellidom', '$correo')";
 		$r = $this -> driver -> query($query);
-		echo $query;
 	}
 
 	function altaAlumno($codigo, $nombre, $apellidop, $apellidom, $carrera, $correo, $status){
@@ -32,7 +30,6 @@ class administrativoMdl{
 			alumno(codigo, contrasena, nombre, apellidoP, apellidoM, carrera, correo, status, Github, celular, WebPage)
 			VALUES('$codigo', '123445', '$nombre', '$apellidop', '$apellidom', '$carrera', '$correo', '$status', NULL, NULL, NULL)";
 		$r = $this -> driver -> query($query);
-		echo $query;
 	}
 
 	function lista(){
@@ -47,10 +44,28 @@ class administrativoMdl{
 		return $rows;
 	}
 
+	function listaMaestros(){
+		//echo "<br>debug: Entro a la alta del maestro en el modelo";
+		$query = 'SELECT * FROM maestro';
+
+		$r = $this -> driver -> query($query);
+
+		while($row = $r -> fetch_assoc())
+			$rows[] = $row;
+
+		return $rows;
+	}
+
 	function eliminarAlumno($codigo){
 		$query="DELETE FROM alumno WHERE codigo='$codigo' ";
 		$r = $this -> driver -> query($query);
 	}
+
+	function eliminarMaestro($codigo){
+		$query="DELETE FROM maestro WHERE codigo='$codigo' ";
+		$r = $this -> driver -> query($query);
+	}
+
 }
 
 ?>
