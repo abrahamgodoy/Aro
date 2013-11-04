@@ -3,9 +3,8 @@
 class maestroMdl{
 	public $driver;
 	function __construct(){
-		$this -> driver = new mysqli('localhost', 'root', '', 'user203');
-		if($this -> driver -> connect_errno)
-			die("<br>Error en la conexión");
+		require_once('DataBase.php');
+		$this -> driver = DataBase::getInstance();
 	}
 	
 	function altaCurso($nombre, $seccion, $nrc, $ciclo){
@@ -25,7 +24,7 @@ class maestroMdl{
 		$r = $this -> driver -> query($query);
 	}
 
-	function lista(){
+	function listAlumno(){
 		//echo "<br>debug: Entro a la alta del alumno en el modelo";
 		$query = 'SELECT * FROM alumno';
 

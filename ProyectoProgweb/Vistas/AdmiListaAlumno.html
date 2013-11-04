@@ -18,7 +18,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
 
         <link rel="stylesheet" href="./www/css/normalize.css">
-        <link rel="stylesheet" href="./www/css/AdmiListaAlumno.css">
+        <link rel="stylesheet" href="./www/css/AdmiLista.css">
         <script src="./www/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -42,20 +42,20 @@
         
         <nav>
             <ul>
-                <li><a href="AdmiAltaCiclo.html">Alta de Ciclo</a></li>
-                <li><a href="AdmiAltaMaestro.html">Alta de Maestro</a></li>
-                <li><a href="#">Maestros</a></li>
-                <li><a href="AdmiAltaAlumno.html">Alta de Alumnos</a></li>
-                <li><a href="AdmiListaAlumno.html">Alumnos</a></li>
+                <li><a href="index.php?ctl=administrativo&act=altaCiclo">Alta de Ciclo</a></li>
+                <li><a href="index.php?ctl=administrativo&act=listaMaestro">Maestros</a></li>
+                <li><a href="index.php?ctl=administrativo&act=listaAlumno">Alumnos</a></li>
                 <li><a href="index.html">Salir</a></li>
                 <div class="clear"></div>
             </ul>
         </nav>
 
+
         <aside id="menu-izq">
             <ul>
                 <li id="titulo-izq">MENU ALUMNO</li>
-                <li><a href="#">Lista Alumnos</a></li>
+                <li><a href="index.php?ctl=administrativo&act=listaAlumno">Lista Alumnos</a></li>             
+                <li><a href="index.php?ctl=administrativo&act=altaAlumno">Alta de Alumnos</a></li>
                 <li><a href="#">Modificar Alumno</a></li>
                 <li><a href="index.php?ctl=administrativo&act=eliminarAlumno">Eliminar Alumnos</a></li>
             </ul>
@@ -103,7 +103,6 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="./js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/plugins.js"></script>
-        <script src="./www/js/main.js"></script>
         <script src="./www/js/AlumAsistencias.js"></script>
 
         <!-- Jquery ui-->
