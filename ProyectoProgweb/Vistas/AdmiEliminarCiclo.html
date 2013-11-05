@@ -18,7 +18,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
 
         <link rel="stylesheet" href="./www/css/normalize.css">
-        <link rel="stylesheet" href="./www/css/AdmiLista.css">
+        <link rel="stylesheet" href="./www/css/AdmiEliminar.css">
         <script src="./www/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -52,36 +52,42 @@
 
         <aside id="menu-izq">
             <ul>
-                <li id="titulo-izq">MENU MAESTROS</li>
-                <li><a href="index.php?ctl=administrativo&act=listaMaestro">Lista Maestros</a></li>
-                <li><a href="index.php?ctl=administrativo&act=altaMaestro">Alta de Maestro</a></li>
-                <li><a href="#">Modificar Maestro</a></li>
-                <li><a href="index.php?ctl=administrativo&act=eliminarMaestro">Eliminar Maestro</a></li>
+                <li id="titulo-izq">MENU CICLO</li>
+                <li><a href="index.php?ctl=administrativo&act=listaCiclo">Lista Ciclo</a></li>             
+                <li><a href="index.php?ctl=administrativo&act=altaCiclo">Alta de Ciclo</a></li>
+                <li><a href="#">Modificar Ciclo</a></li>
+                <li><a href="index.php?ctl=administrativo&act=eliminarCiclo">Eliminar Ciclos</a></li>
             </ul>
         </aside>
 
 
         <section id="contenido">
             <div>
-                <p>LISTA DE MAESTROS</p>
+                <p>ELIMINAR CICLOS</p>
             </div>
-
-
-
-            <table id="lista">
-                <thead>
-                    <tr>
-                        <th>CODIGO</th>
-                        <th>NOMBRE</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{codigo}</td>
-                        <td>{nombre}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <form id="formulario" method="post" action="index.php?ctl=administrativo&act=eliminarCiclo">
+                <table id="lista">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>CICLO</th>
+                            <th>FECHA INICIO</th>
+                            <th>FECHA FIN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" name="seleccion[]" value="{idCiclo}"></td>
+                            <td>{ciclo}</td>
+                            <td>{fechaini}</td>
+                            <td>{fechafin}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="btnEliminar">
+                    <button type="submit" class="boton">Eliminar</button>
+                </div>
+            </form>
         </section>
 
         <footer>
@@ -98,16 +104,8 @@
         <!-- Your content finishes here-->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="./js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="./www/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/plugins.js"></script>
-        <script src="./www/js/main.js"></script>
-        <script src="./www/js/AlumAsistencias.js"></script>
-
-        <!-- Jquery ui-->
-        <link rel="stylesheet" type="text/css" href="./www/css/ui-lightness/jquery-ui-1.10.3.custom.css">
-        <script src="./www/js/jquery-ui-1.10.3.custom.js"></script>
-        <script src="./www/js/jquery-ui-1.10.3.custom.min.js"></script>
-        <!-- END Jquery ui-->
 
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

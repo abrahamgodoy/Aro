@@ -50,20 +50,21 @@
             </ul>
         </nav>
 
+
         <aside id="menu-izq">
             <ul>
-                <li id="titulo-izq">MENU MAESTROS</li>
-                <li><a href="index.php?ctl=administrativo&act=listaMaestro">Lista Maestros</a></li>
-                <li><a href="index.php?ctl=administrativo&act=altaMaestro">Alta de Maestro</a></li>
-                <li><a href="#">Modificar Maestro</a></li>
-                <li><a href="index.php?ctl=administrativo&act=eliminarMaestro">Eliminar Maestro</a></li>
+                <li id="titulo-izq">MENU CICLO</li>
+                <li><a href="index.php?ctl=administrativo&act=listaCiclo">Lista Ciclo</a></li>             
+                <li><a href="index.php?ctl=administrativo&act=altaCiclo">Alta de Ciclo</a></li>
+                <li><a href="#">Modificar Ciclo</a></li>
+                <li><a href="index.php?ctl=administrativo&act=eliminarCiclo">Eliminar Ciclos</a></li>
             </ul>
         </aside>
 
 
         <section id="contenido">
             <div>
-                <p>LISTA DE MAESTROS</p>
+                <p>LISTA DE ALUMNOS</p>
             </div>
 
 
@@ -71,14 +72,16 @@
             <table id="lista">
                 <thead>
                     <tr>
-                        <th>CODIGO</th>
-                        <th>NOMBRE</th>
+                        <th>CICLO</th>
+                        <th>FECHA INICIO</th>
+                        <th>FECHA FIN</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{codigo}</td>
-                        <td>{nombre}</td>
+                        <td>{ciclo}</td>
+                        <td>{fechaini}</td>
+                        <td>{fechafin}</td>
                     </tr>
                 </tbody>
             </table>
@@ -100,7 +103,6 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="./js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/plugins.js"></script>
-        <script src="./www/js/main.js"></script>
         <script src="./www/js/AlumAsistencias.js"></script>
 
         <!-- Jquery ui-->

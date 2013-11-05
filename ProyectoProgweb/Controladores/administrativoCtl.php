@@ -70,8 +70,80 @@ class administrativoCtl{
 					$fechai = $_POST["inicio"];
 					$fechaf = $_POST["finalizacion"];
 					$resultado = $this -> modelo -> altaCiclo($ciclo, $fechai, $fechaf);
+
+					if($resultado!==FALSE){
+						header('Location: index.php?ctl=administrativo&act=listaCiclo');
+					}
+					else
+						require_once("Vistas/Error.html");
 				}
 			break;
+
+			case 'listaCiclo':
+				$vista = file_get_contents("Vistas/AdmiListaCiclo.html");
+
+				//Obtengo la fila de la tabla
+				$inicio_fila = strrpos($vista,'<tr>');
+				$final_fila = strrpos($vista,'</tr>') + 5;
+
+				$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+
+				//Genero las filas
+				$ciclos = $this -> modelo -> listaCiclos();
+
+				$filas='';
+
+				foreach ($ciclos as $row) {
+					$new_fila = $fila;
+					$diccionario = array('{ciclo}' => $row['ciclo'], '{fechaini}' => $row['fechaIni'],'{fechafin}'=>$row['fechaFin']);
+					$new_fila = strtr($new_fila,$diccionario);
+					$filas .= $new_fila;
+				}
+				
+				//Reemplazo en mi vista una fila por todas las filas
+				$vista = str_replace($fila, $filas, $vista);
+
+				//Mostrar la vista
+				echo $vista;
+				break;
+
+			case 'eliminarCiclo':
+				if(empty($_POST)){
+					$vista = file_get_contents("Vistas/AdmiEliminarCiclo.html");
+
+					//Obtengo la fila de la tabla
+					$inicio_fila = strrpos($vista,'<tr>');
+					$final_fila = strrpos($vista,'</tr>') + 5;
+
+					$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+
+					//Genero las filas
+					$ciclos = $this -> modelo -> listaCiclos();
+
+					$filas='';
+
+					foreach ($ciclos as $row) {
+						$new_fila = $fila;
+						$diccionario = array('{idCiclo}'=> $row['idCiclo'],'{ciclo}' => $row['ciclo'], '{fechaini}' => $row['fechaIni'],'{fechafin}'=>$row['fechaFin']);
+						$new_fila = strtr($new_fila,$diccionario);
+						$filas .= $new_fila;
+					}
+					
+					//Reemplazo en mi vista una fila por todas las filas
+					$vista = str_replace($fila, $filas, $vista);
+
+					//Mostrar la vista
+					echo $vista;
+				}
+
+				else{
+					$seleccionados = $_POST['seleccion'];
+					for($i=0 ; $i < count($seleccionados); $i++){
+    					$this -> modelo -> eliminarCiclo($seleccionados[$i]);
+					}
+					header('Location: index.php?ctl=administrativo&act=listaCiclo');
+				}
+				break;
 			
 			case "altaMaestro":
 				if(empty($_POST)){

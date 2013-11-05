@@ -14,6 +14,7 @@ class administrativoMdl{
 			ciclo(idCiclo,ciclo, fechaIni, fechaFin)
 			VALUES('0', '$ciclo', '$fechai', '$fechaf')";
 		return $r = $this -> driver -> query($query);
+	}
 
 	function altaMaestro($codigo, $contrasena, $nombre, $apellidop, $apellidom, $correo){
 		$query =
@@ -55,6 +56,18 @@ class administrativoMdl{
 		return $rows;
 	}
 
+	function listaCiclos(){
+		//echo "<br>debug: Entro a la alta del maestro en el modelo";
+		$query = 'SELECT * FROM ciclo';
+
+		$r = $this -> driver -> query($query);
+
+		while($row = $r -> fetch_assoc())
+			$rows[] = $row;
+
+		return $rows;
+	}
+
 	function eliminarAlumno($codigo){
 		$query="DELETE FROM alumno WHERE codigo='$codigo' ";
 		return $r = $this -> driver -> query($query);
@@ -62,6 +75,11 @@ class administrativoMdl{
 
 	function eliminarMaestro($codigo){
 		$query="DELETE FROM maestro WHERE codigo='$codigo' ";
+		return $r = $this -> driver -> query($query);
+	}
+
+	function eliminarCiclo($idCiclo){
+		$query="DELETE FROM ciclo WHERE idCiclo='$idCiclo' ";
 		return $r = $this -> driver -> query($query);
 	}
 }

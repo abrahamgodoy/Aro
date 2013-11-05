@@ -5,7 +5,9 @@
 
 $( document ).ready(function() {
 
-    $( ".date" ).datepicker();
+    $( ".date" ).datepicker({
+    	dateFormat: 'yy-mm-dd'
+    });
 
 	$("#otroDia").click(function(){
 		$("div#dia1").clone().attr("id","dia" + (numID+1)).insertAfter("#motivo" + numID);
