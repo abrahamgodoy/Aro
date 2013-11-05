@@ -93,7 +93,7 @@ class administrativoCtl{
 						header('Location: index.php?ctl=administrativo&act=listaMaestro');
 					}
 					else
-						require_once("Vista/Error.html");
+						require_once("Vistas/Error.html");
 				}
 
 				break;
@@ -188,7 +188,7 @@ class administrativoCtl{
 					if($resultado!=false)
 						header('Location: index.php?ctl=administrativo&act=listaAlumno');
 					else
-						require_once("Vista/Error.html");
+						require_once("Vistas/Error.html");
 				}
 
 				break;

@@ -1,6 +1,7 @@
 	var exprNombre = /^[a-zA-Z]+$/;
-	var exprCorreo = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-]+\.?[a-zA-Z0-9\-]*$/;
+	var exprCorreo = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 	var exprNum = /^[0-9]+$/;
+
 
 $("#btnArchivo").click(function(){
 
@@ -13,6 +14,7 @@ $("#btnArchivo").click(function(){
 
 });
 
+
 $("#btnRegistrar").click(function (){
 
 	var $codigo = $("#cod").val();
@@ -22,6 +24,7 @@ $("#btnRegistrar").click(function (){
 	var $correo = $("#correo").val();
 	var $carrera = $("#carrera").val();
 	var $status = $("#status").val();
+
 
 	if($codigo == "")
 	{
@@ -108,3 +111,35 @@ $("#btnRegistrar").click(function (){
 		$("#errorStatus").fadeOut();
 
 });
+
+function estaActivado( checkbox ) {
+        if( checkbox.checked ) {
+                if( checkbox.id == "tiene_celular" ) {
+                        var campo = document.getElementById( 'campo_celular' );
+                        campo.setAttribute( 'style', 'display: block' );
+                }
+                else if( checkbox.id == "tiene_github" ) {
+                        var campo = document.getElementById( 'campo_github' );
+                        campo.setAttribute( 'style', 'display: block' );
+                }
+                else { //tiene_pagina
+                        var campo = document.getElementById( 'campo_pagina' );
+                        campo.setAttribute( 'style', 'display: block' );
+                }
+
+        }
+        else {
+                if( checkbox.id == "tiene_celular" ) {
+                        var campo = document.getElementById( 'campo_celular' );
+                        campo.setAttribute( 'style', 'display: none' );
+                }
+                else if( checkbox.id == "tiene_github" ) {
+                        var campo = document.getElementById( 'campo_github' );
+                        campo.setAttribute( 'style', 'display: none' );
+                }
+                else { //tiene_pagina
+                        var campo = document.getElementById( 'campo_pagina' );
+                        campo.setAttribute( 'style', 'display: none' );
+                }
+        }
+}

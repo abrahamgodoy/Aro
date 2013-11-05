@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -113,6 +111,33 @@
                             </select>
                             <div class="errores" id="errorStatus">Selecciona un Status</div>
                         </div>
+                        <div id="checkbox_campo_opcional"  class="checkbox">
+                            <label for="tiene_celular">
+                                    <input type="checkbox" id="tiene_celular" name="tiene_celular" onclick="estaActivado( this )">Agregar celular
+                            </label>
+                        </div>
+                        <div id="campo_celular" style="display: none;">
+                            <label class="labelform" for="celular">Celular</label>
+                            <input class="formatinput" type="text" id="celular" name="celular"/>
+                        </div>
+                        <div id="checkbox_campo_opcional"  class="checkbox">
+                            <label for="tiene_github">
+                                    <input type="checkbox" id="tiene_github" name="tiene_github" onclick="estaActivado( this )">Agregar cuenta de github
+                            </label>
+                        </div>
+                        <div id="campo_github" style="display: none;">
+                            <label class="labelform" for="github">Cuenta de Github</label>
+                            <input class="formatinput" type="text" id="github" name="github"/>
+                        </div>
+                        <div id="checkbox_campo_opcional"  class="checkbox">
+                            <label for="tiene_pagina">
+                                    <input type="checkbox" id="tiene_pagina" name="tiene_pagina" onclick="estaActivado( this )">Agregar página web
+                            </label>
+                        </div>
+                        <div id="campo_pagina" style="display: none;">
+                            <label class="labelform" for="webpage">Pagina Web</label>
+                            <input class="formatinput" type="text" id="webpage" name="webpage"/>
+                        </div>
                         <div>
                             <button class="boton" type="submit" id="btnRegistrar">Registrar</button>
                         </div>
@@ -151,7 +176,6 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="./www/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/plugins.js"></script>
-        <script src="./www/js/main.js"></script>
         <script src="./www/js/AdmiAltaAlumno.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

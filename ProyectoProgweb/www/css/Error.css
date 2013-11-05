@@ -61,11 +61,11 @@ img {
  * Remove default fieldset styles.
  */
 
-fieldset {
+/*fieldset {
     border: 0;
     margin: 0;
     padding: 0;
-}
+}*/
 
 /*
  * Allow only vertical resizing of textareas.
@@ -90,58 +90,25 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-#menu-izq{
+.imgerror{
     width: 25%;
-    margin-right: 7%;
-    margin-top: 60px;
-    float: left;
-    color: #FFF;
-    background-color: #C1A4A4;
-    border: 4px solid #611212; 
-    border-left: none;
-
-    border-radius: 0 15px 15px 0;
-    -webkit-border-radius: 0 15px 15px 0;
-    -o-border-radius: 0 15px 15px 0;
-    -moz-border-radius: 0 15px 15px 0;
+    margin: 30px 37%
 }
 
-#menu-izq li{
-    margin: 20px auto;
-    list-style: none;
+h2{
+    width: 25%;
+    margin: 15px 37%;
+    font-size: 4em;
 }
 
-#titulo-izq{
-    color: #611212;
-    font-size: 1.4em;
-    font-weight: bold;
-}
-
-
-#menu-izq li a{
-    text-decoration: none;
-    color: #FFF;
-    font-weight: bold;   
-}
-
-#menu-izq li a:hover{
-    font-size: 1.3em;
-    color: #D2DEE9;
-}
-
-
-div.ui-datepicker{
- font-size:90%;
-}
 
 #contenido{
-    width: 60%;
+    width:65%;
     margin: 0 auto;
     overflow: hidden;
     background-color: #CCCCCC;
-    min-height: 800px;
+    font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
 }
-
 
 
 body{
@@ -150,6 +117,7 @@ body{
     padding: 0px;
     width: 100%;
     background: #ccc url('../img/fondo.jpg') repeat center left;
+    font-size: 100%;
 }
 
 header{
@@ -160,6 +128,7 @@ header{
     overflow: hidden;
 
 }
+
 
 footer{
     width: 100%;
@@ -205,122 +174,6 @@ h1{
     padding: 5% 2.97%;
 }
 
-nav{
-    width:100%;
-    margin: 0 auto;
-    padding: .4% 0%;
-    background-color: #edeff4;
-}
-nav ul li{
-    list-style: none;
-    float: left;
-    padding: 0 9.9%;}
-
-nav ul li a{
-    text-decoration: none;
-    color: #C2161C;
-    font-weight: bold;
-
-}
-
-nav ul a:hover{
-    color: #999;
-    transition: all .5s ease;
-}
-
-.clear{
-    clear: both;
-}
-
-#registo{
-    padding: .5%;
-    background: #666;
-}
-
-.errores{
-    width: 22%;
-    font-size: 0.7em;
-    padding: 1%;
-    text-align: center;
-    display: none;
-    color: #fff;
-    background: #C58A13;
-    -webkit-boxshadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    float: left;
-    margin: 0.8% 3%;
-}
-
-.labelform{
-    width:25%;
-    float: left;
-}
-
-.selectform{
-    width: 43%;
-    float: left;
-    padding: .4em;
-}
-
-.formatinput{
-    width: 40%;
-    float: left;
-    padding: .4em;
-}
-
-.fieldsetf{
-    margin: 15px;
-    border-radius: 20px;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -o-border-radius: 20px;
-    border: #833333 solid 1px;
-    padding: 0;
-
-    font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
-}
-
-.leg{
-    color: #833333;
-    font-size: 1.5em;
-    font-weight: bold;
-    padding: 0 10px;
-}
-
-section form div{
-    margin: 7px 10%;
-    overflow: hidden;
-}
-
-section p{
-    color: #611212;
-    font-size: 2em;
-    text-align: center;
-}
-
-.boton{
-    background-color: #611212;
-    color: #FFF;
-    padding: .4em;
-    margin: 10px auto;
-    border-color: transparent;
-}
-
-.boton2{
-    background-color: #611212;
-    color: #FFF;
-    padding: .4em;
-    margin: 0.5%;
-    border-color: transparent;
-}
-
-.boton:hover,.boton2:hover{
-    background-color: #833333;
-    color: #FFF;
-}
-
 .footer{
     float: left;
 }
@@ -337,9 +190,33 @@ section p{
     width: 11%;
 }
 
+@media screen and (max-width: 1050px){
 
+   body{
+        font-size: 80%;
+    }
+
+    header{
+        font-size: 60%;
+    }
+
+
+    #login{
+        width: 100%;
+
+    }
+
+    #info{
+        width: 100%;
+    }
+
+    div#info div.cuadros{
+        margin: 6% 5%
+    }
+}
 
 @media screen and (max-width: 1024px){
+
     body{
         font-size: 90%;
     }
@@ -348,20 +225,14 @@ section p{
         font-size: 60%
     }
 
-    #contenido{
-        width: 80%
+    div#info div.cuadros{
+        margin: 6% 1%
     }
-
-    nav li{
-        margin: 3%;
-    }
-
-    
 }
 
 @media screen and (max-width: 800px){
 
-    body{
+   body{
         font-size: 80%;
     }
 
@@ -369,63 +240,49 @@ section p{
         font-size: 60%
     }
 
-    #contenido{
-        width: 80%
+
+    #login{
+        width: 100%;
+
     }
 
-    .errores{
-        width: 60%;
-        margin: 0.8% 20%;
+    #info{
+        width: 100%
     }
 
-    .selectform{
-        width: 66%;
+    div#info div.cuadros{
+        margin: 6% 5%
     }
-
-    .formatinput{
-        width: 61%
-    }
-    
 }
 
 @media screen and (max-width: 480px){
 
-    body{
-        font-size: 75%;
+     body{
+        font-size: 60%;
     }
 
     header{
-        font-size: 40%
+        font-size: 50%
+    }
+
+
+    #login{
+        width: 100%;
+
+    }
+
+    #info{
+        width: 100%
     }
 
     .wrapper{
         width: 100%;
     }
 
-    #contenido{
-        width: 100%
+    div#info div.cuadros{
+        margin: 6% 20%
     }
-
-    .errores{
-        width: 60%;
-        margin: 0.8% 20%;
-    }
-
-    .selectform{
-        width: 66%;
-    }
-
-    .formatinput{
-        width: 61%
-    }
-
 }
-
-
-
-
-
-
 
 
 

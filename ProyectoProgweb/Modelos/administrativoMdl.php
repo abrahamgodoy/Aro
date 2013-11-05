@@ -9,14 +9,18 @@ class administrativoMdl{
 	}
 	
 	function altaCiclo($ciclo, $fechai, $fechaf){
-	}
+		$query =
+			"INSERT INTO
+			ciclo(idCiclo,ciclo, fechaIni, fechaFin)
+			VALUES('0', '$ciclo', '$fechai', '$fechaf')";
+		return $r = $this -> driver -> query($query);
 
 	function altaMaestro($codigo, $contrasena, $nombre, $apellidop, $apellidom, $correo){
 		$query =
 			"INSERT INTO
 			maestro(codigo, contrasena, nombre, apellidoP, apellidoM, correo)
 			VALUES('$codigo', '$contrasena', '$nombre', '$apellidop', '$apellidom', '$correo')";
-		$r = $this -> driver -> query($query);
+		return $r = $this -> driver -> query($query);
 	}
 
 	function altaAlumno($codigo, $contrasena, $nombre, $apellidop, $apellidom, $carrera, $correo, $status){
@@ -53,12 +57,12 @@ class administrativoMdl{
 
 	function eliminarAlumno($codigo){
 		$query="DELETE FROM alumno WHERE codigo='$codigo' ";
-		$r = $this -> driver -> query($query);
+		return $r = $this -> driver -> query($query);
 	}
 
 	function eliminarMaestro($codigo){
 		$query="DELETE FROM maestro WHERE codigo='$codigo' ";
-		$r = $this -> driver -> query($query);
+		return $r = $this -> driver -> query($query);
 	}
 }
 

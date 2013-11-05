@@ -111,3 +111,35 @@ $("#btnRegistrar").click(function (){
 		$("#errorStatus").fadeOut();
 
 });
+
+function estaActivado( checkbox ) {
+        if( checkbox.checked ) {
+                if( checkbox.id == "tiene_celular" ) {
+                        var campo = document.getElementById( 'campo_celular' );
+                        campo.setAttribute( 'style', 'display: block' );
+                }
+                else if( checkbox.id == "tiene_github" ) {
+                        var campo = document.getElementById( 'campo_github' );
+                        campo.setAttribute( 'style', 'display: block' );
+                }
+                else { //tiene_pagina
+                        var campo = document.getElementById( 'campo_pagina' );
+                        campo.setAttribute( 'style', 'display: block' );
+                }
+
+        }
+        else {
+                if( checkbox.id == "tiene_celular" ) {
+                        var campo = document.getElementById( 'campo_celular' );
+                        campo.setAttribute( 'style', 'display: none' );
+                }
+                else if( checkbox.id == "tiene_github" ) {
+                        var campo = document.getElementById( 'campo_github' );
+                        campo.setAttribute( 'style', 'display: none' );
+                }
+                else { //tiene_pagina
+                        var campo = document.getElementById( 'campo_pagina' );
+                        campo.setAttribute( 'style', 'display: none' );
+                }
+        }
+}

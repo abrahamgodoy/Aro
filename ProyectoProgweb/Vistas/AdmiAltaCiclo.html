@@ -42,7 +42,7 @@
         
         <nav>
             <ul>
-                <li><a href="index.php?ctl=administrativo&act=altaCiclo">Alta de Ciclo</a></li>
+                <li><a href="index.php?ctl=administrativo&act=altaCiclo">Ciclos</a></li>
                 <li><a href="index.php?ctl=administrativo&act=listaMaestro">Maestros</a></li>
                 <li><a href="index.php?ctl=administrativo&act=listaAlumno">Alumnos</a></li>
                 <li><a href="index.html">Salir</a></li>
@@ -50,11 +50,21 @@
             </ul>
         </nav>
 
+        <aside id="menu-izq">
+            <ul>
+                <li id="titulo-izq">MENU CICLO</li>
+                <li><a href="index.php?ctl=administrativo&act=listaAlumno">Lista Ciclo</a></li>             
+                <li><a href="index.php?ctl=administrativo&act=altaAlumno">Alta de Ciclo</a></li>
+                <li><a href="#">Modificar Ciclo</a></li>
+                <li><a href="index.php?ctl=administrativo&act=eliminarAlumno">Eliminar Ciclos</a></li>
+            </ul>
+        </aside>
+
 
         <section id="contenido">
                 <fieldset class="fieldsetf">
                     <legend class="leg">Alta de Ciclo</legend>
-                    <form id="formulario" method="post" action="#">
+                    <form id="formulario" method="post" action="index.php?ctl=administrativo&act=altaCiclo">
                         <div>
                             <label class="labelform" for="nciclo">Ciclo</label>
                             <input class="formatinput" type="text" id="nciclo" name="nciclo" />
