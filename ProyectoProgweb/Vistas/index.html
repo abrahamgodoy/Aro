@@ -71,7 +71,7 @@
             <div id="login">
                 <section id="imagen-login"></section>
 
-                <form method="POST" action="#">
+                <form method="POST" action="index.php?ctl=login">
                     <fieldset>
                         <legend>Entrar</legend>
                         <div>
@@ -85,7 +85,7 @@
                             <div class="errores" id="errorPass">Debes escribir tu contraseña</div>
                         </div>
                         <div>
-                            <button id="buttonlogin" type="button" onclick="cifrar()">Iniciar Sesion</button>
+                            <button id="buttonlogin" type="submit" onclick="cifrar()">Iniciar Sesion</button>
                             <a id="olvidaste" href="#">¿Olvidaste tu Contraseña?</a>
                         </div>
                     </fieldset>
