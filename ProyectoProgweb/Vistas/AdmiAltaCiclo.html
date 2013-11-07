@@ -85,7 +85,7 @@
                         <div id="dia1">
                             <label class="labelform" for="festivos">Dias Festivos</label>
                             <input class="formatinput date" type="text" id="festivos" name="festivos" />
-                            <button id="otroDia" class="boton2" type="button">+</button>
+                            <div class="errores" id="errorFestivo">Selecciona una fecha</div> 
                         </div>
                         <div id="motivo1">
                             <label class="labelform" for="motivo">Motivo</label>
@@ -93,7 +93,10 @@
                             <div class="errores" id="errorMotivo">Escribe un motivo</div> 
                         </div>
                         <div>
-                            <button class="boton" id="btnRegistrar" type="submit">Registrar</button>
+                            <button id="otroDia" class="boton2" type="button">Agregar día festivo</button>
+                        </div>
+                        <div>
+                            <button class="boton" id="btnRegistrar" type="button">Registrar</button>
                         </div>
                     </form>
                 </fieldset>

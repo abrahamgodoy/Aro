@@ -9,11 +9,13 @@ $("#btnRegistrar").click(function (){
 	var $ApePat = $("#apellidop").val();
 	var $ApeMat = $("#apellidom").val();
 	var $correo = $("#correo").val();
+	var error = false;
 
 	if($codigo == "")
 	{
 		$("#errorCodigo").replaceWith("<div class=\"errores\" id=\"errorCodigo\">Escribe tu codigo</div>");
 		$("#errorCodigo").fadeIn("slow");
+		error = true;
 	}
 	else
 	{
@@ -22,6 +24,7 @@ $("#btnRegistrar").click(function (){
 		{
 			$("#errorCodigo").replaceWith("<div class=\"errores\" id=\"errorCodigo\">Codigo inválido</div>");
 			$("#errorCodigo").fadeIn("slow");
+			error = true;
 		}
 	}
 
@@ -29,6 +32,7 @@ $("#btnRegistrar").click(function (){
 	{
 		$("#errorNombre").replaceWith("<div class=\"errores\" id=\"errorNombre\">Escribe tu nombre</div>");
 		$("#errorNombre").fadeIn("slow");
+		error = true;
 	}
 	else
 	{
@@ -37,6 +41,7 @@ $("#btnRegistrar").click(function (){
 		{
 			$("#errorNombre").replaceWith("<div class=\"errores\" id=\"errorNombre\">Nombre inválido</div>");
 			$("#errorNombre").fadeIn("slow");
+			error = true;
 		}
 	}
 
@@ -44,6 +49,7 @@ $("#btnRegistrar").click(function (){
 	{
 		$("#errorApellidoP").replaceWith("<div class=\"errores\" id=\"errorApellidoP\">Escribre tu apellido</div>");
 		$("#errorApellidoP").fadeIn("slow");
+		error = true;
 	}
 	else
 	{
@@ -52,6 +58,7 @@ $("#btnRegistrar").click(function (){
 		{
 			$("#errorApellidoP").replaceWith("<div class=\"errores\" id=\"errorApellidoP\">Apellido inválido</div>");
 			$("#errorApellidoP").fadeIn("slow");
+			error = true;
 		}
 	}
 
@@ -59,6 +66,7 @@ $("#btnRegistrar").click(function (){
 	{
 		$("#errorApellidoM").replaceWith("<div class=\"errores\" id=\"errorApellidoM\">Escribre tu apellido</div>");
 		$("#errorApellidoM").fadeIn("slow");
+		error = true;
 	}
 	else
 	{
@@ -67,6 +75,7 @@ $("#btnRegistrar").click(function (){
 		{
 			$("#errorApellidoM").replaceWith("<div class=\"errores\" id=\"errorApellidoM\">Apellido inválido</div>");
 			$("#errorApellidoM").fadeIn("slow");
+			error = true;
 		}
 	}
 
@@ -74,6 +83,7 @@ $("#btnRegistrar").click(function (){
 	{
 		$("#errorCorreo").replaceWith("<div class=\"errores\" id=\"errorCorreo\">Escribre tu correo</div>");
 		$("#errorCorreo").fadeIn("slow");
+		error = true;
 	}
 	else
 	{
@@ -82,6 +92,10 @@ $("#btnRegistrar").click(function (){
 		{
 			$("#errorCorreo").replaceWith("<div class=\"errores\" id=\"errorCorreo\">Correo inválido</div>");
 			$("#errorCorreo").fadeIn("slow");
+			error = true;
 		}
 	}
+
+	if(!error)
+		$( "#formulario" ).submit();
 });

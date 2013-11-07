@@ -243,7 +243,6 @@ class administrativoCtl{
 				if(empty($_POST)){
 					//Cargo la vista del formulario
 					require_once("Vistas/AdmiAltaAlumno.html");
-					echo "empty";
 				}
 				else{
 					$codigo = $_POST["codigo"];

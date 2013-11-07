@@ -19,7 +19,10 @@ switch($_GET["ctl"]){
 	case "maestro":
 		require_once("Controladores/maestroCtl.php");
 		$ctl = new maestroCtl();
+	break;
+	
 	default:
+		header('Location: index.php?ctl=login');
 }
 
 $ctl -> ejecutar();

@@ -90,6 +90,46 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+#menu-izq{
+    width: 25%;
+    margin-right: 7%;
+    margin-top: 60px;
+    float: left;
+    color: #FFF;
+    background-color: #C1A4A4;
+    border: 4px solid #611212; 
+    border-left: none;
+
+    border-radius: 0 15px 15px 0;
+    -webkit-border-radius: 0 15px 15px 0;
+    -o-border-radius: 0 15px 15px 0;
+    -moz-border-radius: 0 15px 15px 0;
+}
+
+#menu-izq li{
+    margin: 20px auto;
+    list-style: none;
+}
+
+#titulo-izq{
+    color: #611212;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+
+#menu-izq li a{
+    text-decoration: none;
+    color: #FFF;
+    font-weight: bold;   
+}
+
+#menu-izq li a:hover{
+    font-size: 1.3em;
+    color: #D2DEE9;
+}
+
+
 #contenido{
     width: 60%;
     margin: 0 auto;

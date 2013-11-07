@@ -18,7 +18,8 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
 
         <link rel="stylesheet" href="./www/css/normalize.css">
-        <link rel="stylesheet" href="./www/css/AdmiListaAlumno.css">
+        <link rel="stylesheet" href="./www/css/AdmiLista.css">
+        <link rel="stylesheet" href="./www/css/MaesMenu.css">
         <script src="./www/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -38,29 +39,24 @@
                 
             </section>
         </header>
-
         
         <nav>
             <ul>
-                <nav>
-            <ul>
-                <li><a href="MaesAltaCursos.html">Alta de Cursos</a></li>
-                <li><a href="MaesAltaAlumno.html">Alta de Alumnos</a></li>
-                <li><a href="">Alumnos</a></li>
-                <li><a href="MaesAltaAlumnosaCursos.html">Matricular Alumno</a></li>
+                <li><a href="index.php?ctl=maestro&act=listaCursos">Cursos</a></li>
+                <li><a href="index.php?ctl=maestro&act=listaAlumno">Alumnos</a></li>
+                <li><a href="index.php?ctl=maestro&act=matricular">Matricular Alumno a Curso</a></li>
                 <li><a href="MaesAsistencias.html">Lista de Asistencias</a></li>
                 <li><a href="MaesCalificaciones.html">Calificaciones</a></li>
                 <li><a href="index.html">Salir</a></li>
                 <div class="clear"></div>
             </ul>
         </nav>
-            </ul>
-        </nav>
 
         <aside id="menu-izq">
             <ul>
                 <li id="titulo-izq">MENU ALUMNO</li>
-                <li><a href="#">Lista Alumnos</a></li>
+                <li><a href="index.php?ctl=maestro&act=listaAlumno">Lista Alumnos</a></li>             
+                <li><a href="index.php?ctl=maestro&act=altaAlumno">Alta de Alumnos</a></li>
                 <li><a href="#">Modificar Alumno</a></li>
                 <li><a href="index.php?ctl=maestro&act=eliminarAlumno">Eliminar Alumnos</a></li>
             </ul>
@@ -69,7 +65,7 @@
 
         <section id="contenido">
             <div>
-                <p>LISTA DE Alumnos</p>
+                <p>LISTA DE ALUMNOS</p>
             </div>
 
 
@@ -108,15 +104,6 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="./js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/plugins.js"></script>
-        <script src="./www/js/main.js"></script>
-        <script src="./www/js/AlumAsistencias.js"></script>
-
-        <!-- Jquery ui-->
-        <link rel="stylesheet" type="text/css" href="./www/css/ui-lightness/jquery-ui-1.10.3.custom.css">
-        <script src="./www/js/jquery-ui-1.10.3.custom.js"></script>
-        <script src="./www/js/jquery-ui-1.10.3.custom.min.js"></script>
-        <!-- END Jquery ui-->
-
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

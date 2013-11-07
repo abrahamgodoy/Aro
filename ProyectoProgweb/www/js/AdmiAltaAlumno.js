@@ -1,15 +1,20 @@
 	var exprNombre = /^[a-zA-Z]+$/;
 	var exprCorreo = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 	var exprNum = /^[0-9]+$/;
-
+	
 
 $("#btnArchivo").click(function(){
-
+	var errora = false
 	var $archivo = $("#lista").val();
 
 	if($archivo == "")
 	{
 		$("#errorArchivo").fadeIn("slow");
+		errora = true;
+	}
+	else
+	{
+		$("#errorArchivo").fadeOut();
 	}
 
 });
@@ -24,12 +29,13 @@ $("#btnRegistrar").click(function (){
 	var $correo = $("#correo").val();
 	var $carrera = $("#carrera").val();
 	var $status = $("#status").val();
-
+	var error = false;
 
 	if($codigo == "")
 	{
 		$("#errorCod").replaceWith("<div class=\"errores\" id=\"errorCod\">Escribe tu codigo</div>");
 		$("#errorCod").fadeIn("slow");
+		error = true;
 	}
 	else
 	{
@@ -38,6 +44,7 @@ $("#btnRegistrar").click(function (){
 		{
 			$("#errorCod").replaceWith("<div class=\"errores\" id=\"errorCod\">Codigo inválido</div>");
 			$("#errorCod").fadeIn("slow");
+			error = true;
 		}
 	}
 
@@ -45,6 +52,7 @@ $("#btnRegistrar").click(function (){
 	{
 		$("#errorNom").replaceWith("<div class=\"errores\" id=\"errorNom\">Escribe tu nombre</div>");
 		$("#errorNom").fadeIn("slow");
+		error = true;
 	}
 	else
 	{
@@ -53,6 +61,7 @@ $("#btnRegistrar").click(function (){
 		{
 			$("#errorNom").replaceWith("<div class=\"errores\" id=\"errorNom\">Nombre inválido</div>");
 			$("#errorNom").fadeIn("slow");
+			error = true;
 		}
 	}
 
@@ -60,6 +69,7 @@ $("#btnRegistrar").click(function (){
 	{
 		$("#errorApp").replaceWith("<div class=\"errores\" id=\"errorApp\">Escribre tu apellido paterno</div>");
 		$("#errorApp").fadeIn("slow");
+		error = true;
 	}
 	else
 	{
@@ -68,6 +78,7 @@ $("#btnRegistrar").click(function (){
 		{
 			$("#errorApp").replaceWith("<div class=\"errores\" id=\"errorApp\">Apellido inválido</div>");
 			$("#errorApp").fadeIn("slow");
+			error = true;
 		}
 	}
 
@@ -75,6 +86,7 @@ $("#btnRegistrar").click(function (){
 	{
 		$("#errorApm").replaceWith("<div class=\"errores\" id=\"errorApm\">Escribre tu apellido materno</div>");
 		$("#errorApm").fadeIn("slow");
+		error = true;
 	}
 	else
 	{
@@ -83,18 +95,25 @@ $("#btnRegistrar").click(function (){
 		{
 			$("#errorApm").replaceWith("<div class=\"errores\" id=\"errorApm\">Apellido inválido</div>");
 			$("#errorApm").fadeIn("slow");
+			error = true;
 		}
 	}
 
 	if($carrera == 0)
+	{
 		$("#errorCarr").fadeIn("slow");
+		error = true;
+	}
 	else
+	{
 		$("#errorCarr").fadeOut();
+	}
 
 	if($correo == "")
 	{
 		$("#errorCorr").replaceWith("<div class=\"errores\" id=\"errorCorr\">Escribre correo</div>");
 		$("#errorCorr").fadeIn("slow");
+		error = true;
 	}
 	else
 	{
@@ -103,12 +122,21 @@ $("#btnRegistrar").click(function (){
 		{
 			$("#errorCorr").replaceWith("<div class=\"errores\" id=\"errorCorr\">Correo inválido</div>");
 			$("#errorCorr").fadeIn("slow");
+			error = true;
 		}
 	}
 	if($status == 0)
+	{
 		$("#errorStatus").fadeIn("slow");
+		error = true;
+	}
 	else
+	{
 		$("#errorStatus").fadeOut();
+	}
+		
+	if(!error)
+		$( "#formulario" ).submit();
 
 });
 

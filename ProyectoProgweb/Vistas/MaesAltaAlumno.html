@@ -40,9 +40,9 @@
 
         <nav>
             <ul>
-                <li><a href="MaesAltaCursos.html">Alta de Cursos</a></li>
-                <li><a href="MaesAltaAlumno.html">Alta de Alumnos</a></li>
-                <li><a href="MaesAltaAlumnosaCursos.html">Matricular Alumno</a></li>
+                <li><a href="index.php?ctl=maestro&act=listaCursos">Cursos</a></li>
+                <li><a href="index.php?ctl=maestro&act=listaAlumno">Alumnos</a></li>
+                <li><a href="index.php?ctl=maestro&act=matricular">Matricular Alumno a Curso</a></li>
                 <li><a href="MaesAsistencias.html">Lista de Asistencias</a></li>
                 <li><a href="MaesCalificaciones.html">Calificaciones</a></li>
                 <li><a href="index.html">Salir</a></li>
@@ -50,10 +50,21 @@
             </ul>
         </nav>
 
+        <aside id="menu-izq">
+            <ul>
+                <li id="titulo-izq">MENU ALUMNO</li>
+                <li><a href="index.php?ctl=maestro&act=listaAlumno">Lista Alumnos</a></li>             
+                <li><a href="index.php?ctl=maestro&act=altaAlumno">Alta de Alumnos</a></li>
+                <li><a href="#">Modificar Alumno</a></li>
+                <li><a href="index.php?ctl=maestro&act=eliminarAlumno">Eliminar Alumnos</a></li>
+            </ul>
+        </aside>
+
+
         <section id="contenido">
                 <fieldset class="fieldsetf">
                     <legend class="leg">Alta de Alumno</legend>
-                    <form id="formulario" method="POST" action="index.php?ctl=administrativo&act=altaAlumno">
+                    <form id="formulario" method="POST" action="index.php?ctl=maestro&act=altaAlumno">
                         <div>
                             <label class="labelform" for="codigo">Codigo</label>
                             <input class="formatinput" type="text" id="cod" name="codigo" />
@@ -127,7 +138,7 @@
                             <input class="formatinput" type="text" id="webpage" name="webpage"/>
                         </div>
                         <div>
-                            <button class="boton" type="submit" id="btnRegistrar">Registrar</button>
+                            <button class="boton" type="button" id="btnRegistrar">Registrar</button>
                         </div>
                     </form>
                 </fieldset>
@@ -164,8 +175,9 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="./www/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/plugins.js"></script>
-        <script src="./www/js/main.js"></script>
         <script src="./www/js/MaesAltaAlumno.js"></script>
+        <script src="./www/js/Error.js"></script>
+
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
@@ -173,6 +185,8 @@
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-        
+
+
+
     </body>
 </html>

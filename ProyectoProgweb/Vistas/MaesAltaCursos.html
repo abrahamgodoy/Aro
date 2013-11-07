@@ -37,13 +37,12 @@
                 </div>
             </section>
         </header>
-
         
         <nav>
             <ul>
-                <li><a href="MaesAltaCursos.html">Alta de Cursos</a></li>
-                <li><a href="MaesAltaAlumno.html">Alta de Alumnos</a></li>
-                <li><a href="MaesAltaAlumnosaCursos.html">Matricular Alumno</a></li>
+                <li><a href="index.php?ctl=maestro&act=listaCursos">Cursos</a></li>
+                <li><a href="index.php?ctl=maestro&act=listaAlumno">Alumnos</a></li>
+                <li><a href="index.php?ctl=maestro&act=matricular">Matricular Alumno a Curso</a></li>
                 <li><a href="MaesAsistencias.html">Lista de Asistencias</a></li>
                 <li><a href="MaesCalificaciones.html">Calificaciones</a></li>
                 <li><a href="index.html">Salir</a></li>
@@ -51,11 +50,21 @@
             </ul>
         </nav>
 
+        <aside id="menu-izq">
+            <ul>
+                <li id="titulo-izq">MENU CURSO</li>
+                <li><a href="index.php?ctl=maestro&act=listaCurso">Lista Cursos</a></li>             
+                <li><a href="index.php?ctl=maestro&act=altaCurso">Alta de Curso</a></li>
+                <li><a href="#">Modificar Curso</a></li>
+                <li><a href="index.php?ctl=maestro&act=eliminarCurso">Eliminar Cursos</a></li>
+            </ul>
+        </aside>
+
 
         <section id="contenido">
                 <fieldset class="fieldsetf">
                     <legend class="leg">Alta de Curso</legend>
-                    <form id="formulario" method="post" action="#">
+                    <form id="formulario" method="POST" action="index.php?ctl=maestro&act=altaCurso">
                         <div>
                             <label class="labelform" for="ciclo">Ciclo</label>
                             <select class="selectform" id="ciclo" name="ciclo">
@@ -87,9 +96,7 @@
                             <label class="labelform" for="hora">Hora</label>
                             <input class="inputchico hora" type="time" id="hora" name="hora" />
                             <input class="inputchico hora2" type="time" id="hora2" name="hora2" />
-                            <button id="otrohorario" class="boton2" type="button">+</button>
                             <div class="errores" id="errorHora">Escribe una hora</div>
-                             
                         </div>
                         <div class="horario dias">                                              
                             <div class="checkformat"><input type="checkbox" name="dias[]" value="L" />L</div>
@@ -101,20 +108,27 @@
                             <div class="errores" id="errorDias">Selecciona un dia</div>
                         </div>
 
+                        <div id="divOtroHorario">
+                            <button id="otrohorario" class="boton2" type="button">Agregar Horario</button>
+                        </div>
+
                         <div id="criterio1" class="duplicarcri">
                             <label class="labelform" for="criterio">Crietio de Evaluación</label>
                             <input type="text" class="inputchico criterio" id="criterio" name="criterio" value="Criterio"
                             onclick="if(this.value=='Criterio') this.value=''" onblur="if(this.value=='') this.value='Criterio'"/>
                             <input type="text" id="pts" class="inputchico pts" name="pts" value="--%" 
                             onclick="if(this.value=='--%') this.value=''" onblur="if(this.value=='') this.value='--%'"/>
-                            <button id="otrocriterio" class="boton2" type="button">+</button>
                             <div class="errores" id="errorCriterio">Escribe un Criterio</div>
                         </div>
                         <div class="duplicarcri">
                             <div id="h_evaluacion"><input type="checkbox" name="hoja_evaluacion"/>Hoja extra de Evaluación</div>
                         </div>
+
+                        <div id="divOtroCriterio">
+                            <button id="otrocriterio" class="boton2" type="button">Agregar Criterio</button>
+                        </div>
                         <div id="botonregistrar">
-                            <button class="boton" id="btnRegistrar" type="submit">Registrar</button>
+                            <button class="boton" id="btnRegistrar" type="button">Registrar</button>
                         </div>
                 </form>
             </fieldset>
@@ -170,7 +184,6 @@
         <script>window.jQuery || document.write('<script src="./www/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/MaesAltaCursos.js"></script>
         <script src="./www/js/plugins.js"></script>
-        <script src="./www/js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
