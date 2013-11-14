@@ -265,7 +265,7 @@ div.cuadros:hover p.texto{
     font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
 }
 
-#login form fieldset div{
+#login form fieldset div#divLogin{
     width: 100%;
     display: block;
 

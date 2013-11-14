@@ -69,17 +69,25 @@
                             <label class="labelform" for="ciclo">Ciclo</label>
                             <select class="selectform" id="ciclo" name="ciclo">
                                 <option selected value="0">Elige un ciclo</option>  
-                                <option value="2013A">2013A</option>
-                                <option value="2013B">2013B</option>
-                                <option value="2014A">2014A</option>
-                                <option value="2014B">2014B</option>
+                                <option value="{idCiclo}">{ciclo}</option>
                             </select>
                             <div class="errores" id="errorCiclo">Elige un Ciclo</div>
                         </div>
                         <div>
-                            <label class="labelform" for="nombre">Nombre</label>
-                            <input class="formatinput" type="text" id="nom" name="nombre" />
-                            <div class="errores" id="errorNombre">Escribre un nombre</div>
+                            <label class="labelform" for="academia">Academia</label>
+                            <select class="selectform" type="text" id="academia" name="academia">
+                                <option selected value="0">Elige una academia</option>
+                                <option value"NULL">Sin academia</option>
+                                <option value="{idAcademia}">{nombre}</option>>
+                            </select>
+                            <div class="errores" id="errorNombre">Elige una Academia</div>
+                        </div>
+                        <div>
+                            <label class="labelform" for="materia">Materia</label>
+                            <select class="selectform" type="text" id="materia" name="materia">
+                                <option selected value="0">Elige una materia</option>
+                            </select>
+                            <div class="errores" id="errorNombre">Elige una Materia</div>
                         </div>
                         <div>
                             <label class="labelform" for="seccion">Seccion</label>
@@ -94,17 +102,17 @@
 
                         <div id="horario1" class="horario">
                             <label class="labelform" for="hora">Hora</label>
-                            <input class="inputchico hora" type="time" id="hora" name="hora" />
-                            <input class="inputchico hora2" type="time" id="hora2" name="hora2" />
+                            <input class="inputchico hora" type="text" id="hora" name="hora1[]" />
+                            <input class="inputchico hora2" type="text" id="hora2" name="hora2[]" />
                             <div class="errores" id="errorHora">Escribe una hora</div>
                         </div>
                         <div class="horario dias">                                              
-                            <div class="checkformat"><input type="checkbox" name="dias[]" value="L" />L</div>
-                            <div class="checkformat"><input type="checkbox" name="dias[]" value="M" />M</div>
-                            <div class="checkformat"><input type="checkbox" name="dias[]" value="I" />I</div>
-                            <div class="checkformat"><input type="checkbox" name="dias[]" value="J" />J</div>
-                            <div class="checkformat"><input type="checkbox" name="dias[]" value="V" />V</div>
-                            <div class="checkformat"><input type="checkbox" name="dias[]" value="S" />S</div>
+                            <div class="checkformat"><input type="radio" name="dias[]" value="L" />L</div>
+                            <div class="checkformat"><input type="radio" name="dias[]" value="M" />M</div>
+                            <div class="checkformat"><input type="radio" name="dias[]" value="I" />I</div>
+                            <div class="checkformat"><input type="radio" name="dias[]" value="J" />J</div>
+                            <div class="checkformat"><input type="radio" name="dias[]" value="V" />V</div>
+                            <div class="checkformat"><input type="radio" name="dias[]" value="S" />S</div>
                             <div class="errores" id="errorDias">Selecciona un dia</div>
                         </div>
 
@@ -114,14 +122,14 @@
 
                         <div id="criterio1" class="duplicarcri">
                             <label class="labelform" for="criterio">Crietio de Evaluación</label>
-                            <input type="text" class="inputchico criterio" id="criterio" name="criterio" value="Criterio"
+                            <input type="text" class="inputchico criterio" id="criterio" name="criterio[]" value="Criterio"
                             onclick="if(this.value=='Criterio') this.value=''" onblur="if(this.value=='') this.value='Criterio'"/>
-                            <input type="text" id="pts" class="inputchico pts" name="pts" value="--%" 
+                            <input type="text" id="pts" class="inputchico pts" name="pts[]" value="--%" 
                             onclick="if(this.value=='--%') this.value=''" onblur="if(this.value=='') this.value='--%'"/>
                             <div class="errores" id="errorCriterio">Escribe un Criterio</div>
                         </div>
                         <div class="duplicarcri">
-                            <div id="h_evaluacion"><input type="checkbox" name="hoja_evaluacion"/>Hoja extra de Evaluación</div>
+                            <div id="h_evaluacion"><input type="checkbox" name="hoja_evaluacion[]"/>Hoja extra de Evaluación</div>
                         </div>
 
                         <div id="divOtroCriterio">

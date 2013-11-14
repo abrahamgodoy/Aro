@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title></title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="viewport" content="width=device-width">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shorcut icon" href="favicon.ico">
@@ -17,9 +17,9 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
 
-
         <link rel="stylesheet" href="./www/css/normalize.css">
-        <link rel="stylesheet" href="./www/css/main.css">
+        <link rel="stylesheet" href="./www/css/AdmiEliminar.css">
+        <link rel="stylesheet" href="./www/css/MaesMenu.css">
         <script src="./www/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -40,62 +40,58 @@
             </section>
         </header>
 
+        
+         <nav>
+            <ul>
+                <li><a href="index.php?ctl=maestro&act=listaCursos">Cursos</a></li>
+                <li><a href="index.php?ctl=maestro&act=listaAlumno">Alumnos</a></li>
+                <li><a href="index.php?ctl=maestro&act=matricular">Matricular Alumno a Curso</a></li>
+                <li><a href="MaesAsistencias.html">Lista de Asistencias</a></li>
+                <li><a href="MaesCalificaciones.html">Calificaciones</a></li>
+                <li><a href="index.html">Salir</a></li>
+                <div class="clear"></div>
+            </ul>
+        </nav>
+
+        <aside id="menu-izq">
+            <ul>
+                <li id="titulo-izq">MENU CURSO</li>
+                <li><a href="index.php?ctl=maestro&act=listaCurso">Lista Cursos</a></li>             
+                <li><a href="index.php?ctl=maestro&act=altaCurso">Alta de Curso</a></li>
+                <li><a href="#">Modificar Curso</a></li>
+                <li><a href="index.php?ctl=maestro&act=eliminarCurso">Eliminar Cursos</a></li>
+            </ul>
+        </aside>
+
 
         <section id="contenido">
-            
-
-            <div id="info">
-                <a href="AdmiAltaCiclo.html"><div class="cuadros" id="administrativo">        
-                    <div class="color" style=" background-color: #953F3F;">
-                        <p class="texto">Administrativos</p>
-                    </div>
-                </div></a>
-
-
-                <a href="MaesAltaCursos.html"><div class="cuadros" id="maestro">
-                    <div class="color" style=" background-color: #1660A5;">
-                        <p class="texto">Maestros</p>
-                    </div>
-                </div></a>
-
-                <a href="AlumCalificaciones.html"><div class="cuadros" id="alumno">
-                    <div class="color" style=" background-color: #F5BF43;">
-                        <p class="texto">Alumnos</p>
-                    </div>
-                </div></a>
-
+            <div>
+                <p>ELIMINAR CURSO</p>
             </div>
-
-            
-
-            <div id="login">
-                <section id="imagen-login"></section>
-
-                <form method="POST" id="formulario" action="index.php?ctl=login">
-                    <fieldset>
-                        <legend>Entrar</legend>
-                        <div id="divLogin">
-                            <label for="codigo">Codigo</label>
-                            <input type="text" id="codigo" name="codigo">
-                            <div class="errores" id="errorCodigo">Debes escribir tu codigo</div>
-                        </div>
-                        <div id="divLogin">
-                            <label for="contraseña">Contraseña</label>
-                            <input type="password" id="contra" name="contra">
-                            <div class="errores" id="errorPass">Debes escribir tu contraseña</div>
-                        </div>
-                        <div id="divLogin">
-                            <button id="buttonlogin" type="button" onclick="cifrar()">Iniciar Sesion</button>
-                            <a id="olvidaste" href="#">¿Olvidaste tu Contraseña?</a>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-        
+            <form id="formulario" method="post" action="index.php?ctl=administrativo&act=eliminarCiclo">
+                <table id="lista">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>CURSO</th>
+                            <th>SECCION</th>
+                            <th>NRC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" name="seleccion[]" value="{idCurso}"></td>
+                            <td><a name="idModificar" value="{idCurso}" href="">{curso}</a></td>
+                            <td>{seccion}</td>
+                            <td>{nrc}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="btnEliminar">
+                    <button type="submit" class="boton">Eliminar</button>
+                </div>
+            </form>
         </section>
-    
-
-
 
         <footer>
             <section class="wrapper" id="seccion-footer">
@@ -113,23 +109,14 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="./www/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/plugins.js"></script>
-        <script src="./www/js/main.js"></script>
-        <script src="./www/js/index.js"></script>
-        <script src="./www/js/sha1.js"></script>
-        <script>
-            function cifrar(){
-                var login = document.getElementById("codigo");
-                var pass = document.getElementById("contra");
-                if(!pass.value == "" && !codigo.value == "")
-                    pass.value = sha1(pass.value);
-            }
-        </script>
 
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src='//ww w.google-analytics.com/ga.js';
+            g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
+    </body>
+</html>

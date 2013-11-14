@@ -7,16 +7,52 @@ class maestroMdl{
 		$this -> driver = DataBase::getInstance();
 	}
 	
-	function altaCurso($nombre, $seccion, $nrc, $ciclo){
+	function altaCurso($ciclo, $materia, $seccion, $nrc, $codigo){
 		$query =
 			"INSERT INTO 
-			curso(idCurso, nombre, seccion, NRC, idCiclo, codigo)
-		  	VALUES('1','$nombre','$seccion','$nrc','1239','9')";
+			curso(idCurso, idMateria, seccion, NRC, idCiclo, codigo)
+		  	VALUES('0','$materia','$seccion','$nrc','$ciclo','$codigo')";
 		$r = $this -> driver -> query($query);
 
-		echo $this -> driver-> insert_id;
-		
+		var_dump($r);
 		echo $query;
+
+		$query= "SELECT MAX(idCurso) from curso";
+		$r = $this -> driver -> query($query);		
+		while($row = $r -> fetch_assoc())
+			$rows[] = $row;
+		var_dump($rows);
+
+
+		$query= "SELECT * from curso";
+		$r = $this -> driver -> query($query);
+
+		while($row = $r -> fetch_assoc())
+			$rows[] = $row;
+		var_dump($rows);
+
+		echo $query;
+	}
+
+	function horarioCurso($hora1, $hora2, $dia){
+		$query = "INSERT INTO
+			horariocurso(idHorario, dia, horaIni, horaFin, idCurso)
+			VALUES('0','$dia','$hora1','$hora2',)";
+	}
+
+	function listaCurso(){
+		$query = 'SELECT * FROM curso';
+		$r = $this -> driver -> query($query);
+		
+		while($row = $r -> fetch_assoc())
+			$rows[] = $row;
+
+		return $rows;
+	}
+
+	function eliminarCurso($idCurso){
+		$query =" DELETE FROM curso WHERE idCurso='$idCurso' ";
+		return $r= $this -> driver -> query($query);
 	}
 
 	function altaAlumno($codigo, $contrasena, $nombre, $apellidop, $apellidom, $carrera, $correo, $status){

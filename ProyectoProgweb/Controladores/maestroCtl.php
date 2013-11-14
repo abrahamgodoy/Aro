@@ -10,17 +10,103 @@ class maestroCtl{
 			case "altaCurso":
 				if(empty($_POST)){
 					//Cargo la vista del formulario
-					require_once("Vistas/MaesAltaCursos.html");
+					$vista = file_get_contents("Vistas/MaesAltaCursos.html");
+
+					//ciclos
+
+					
+					echo $vista;
 				}
 				else{
-					$nombre = $_POST["nombre"];
+					$ciclo = 45682;//$_POST["ciclo"];
+					$academia = //$_POST["academia"];
+					$materia = 5;//$_POST["materia"];
 					$seccion = $_POST["seccion"];
 					$nrc = $_POST["nrc"];
-					$ciclo = $_POST["ciclo"];
-					
-					$resultado = $this -> modelo -> altaCurso($nombre, $seccion, $nrc, $ciclo);
+					$hora1 = $_POST["hora1"];
+					$hora2 = $_POST["hora2"];
+					$dias = $_POST["dias"];
+					$criterio = $_POST["criterio"];
+					$pts = $_POST["pts"];
+
+					$resultado = $this -> modelo -> altaCurso($ciclo, $materia, $seccion, $nrc,200000004);
+
+					for($i=0; $i < count($hora1); $i++){
+    					//$this -> modelo -> horarioCurso($hora1[$i], $hora2[$i], $dias[$i]);
+					}
+
+					for ($i=0; $i < count($criterio); $i++) {
+						//$this -> modelo -> criterioCurso($criterio[$i], $pts[$i]);
+					}
 				}
 			break;
+
+			case 'listaCurso':
+				$vista = file_get_contents("Vistas/MaesListaCurso.html");
+
+				//Obtengo la fila de la tabla
+				$inicio_fila = strrpos($vista,'<tr>');
+				$final_fila = strrpos($vista,'</tr>') + 5;
+
+				$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+
+				//Genero las filas
+				$ciclos = $this -> modelo -> listaCurso();
+
+				$filas='';
+
+				foreach ($ciclos as $row) {
+					$new_fila = $fila;
+					$diccionario = array('{idCurso}' => $row['idCurso'], '{curso}' => $row['nombre'],'{seccion}'=>$row['seccion'], '{nrc}' => $row['NRC']);
+					$new_fila = strtr($new_fila,$diccionario);
+					$filas .= $new_fila;
+				}
+				
+				//Reemplazo en mi vista una fila por todas las filas
+				$vista = str_replace($fila, $filas, $vista);
+
+				//Mostrar la vista
+				echo $vista;
+				
+				break;
+
+			case 'eliminarCurso':
+				if(empty($_POST)){
+					$vista = file_get_contents("Vistas/MaesEliminarCurso.html");
+
+					//Obtengo la fila de la tabla
+					$inicio_fila = strrpos($vista,'<tr>');
+					$final_fila = strrpos($vista,'</tr>') + 5;
+
+					$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+
+					//Genero las filas
+					$ciclos = $this -> modelo -> listaCurso();
+
+					$filas='';
+
+					foreach ($ciclos as $row) {
+						$new_fila = $fila;
+						$diccionario = array('{idCurso}' => $row['idCurso'], '{curso}' => $row['nombre'],'{seccion}'=>$row['seccion'], '{nrc}' => $row['NRC']);
+						$new_fila = strtr($new_fila,$diccionario);
+						$filas .= $new_fila;
+					}
+					
+					//Reemplazo en mi vista una fila por todas las filas
+					$vista = str_replace($fila, $filas, $vista);
+
+					//Mostrar la vista
+					echo $vista;
+				}
+
+				else{
+					$seleccionados = $_POST['seleccion'];
+					for($i=0; $i < count($seleccionados); $i++){
+    					$this -> modelo -> eliminarCurso($seleccionados[$i]);
+					}
+					header('Location: index.php?ctl=maestro&act=listaCurso');
+				}	
+				break;
 			
 
 			case "altaAlumno":
@@ -49,31 +135,31 @@ class maestroCtl{
 
 			case 'listaAlumno':
 				
-						$vista = file_get_contents("Vistas/MaesListaAlumno.html");
+					$vista = file_get_contents("Vistas/MaesListaAlumno.html");
 
-						//Obtengo la fila de la tabla
-						$inicio_fila = strrpos($vista,'<tr>');
-						$final_fila = strrpos($vista,'</tr>') + 5;
+					//Obtengo la fila de la tabla
+					$inicio_fila = strrpos($vista,'<tr>');
+					$final_fila = strrpos($vista,'</tr>') + 5;
 
-						$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+					$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
 
-						//Genero las filas
-						$alumnos = $this -> modelo -> listaAlumno();
+					//Genero las filas
+					$alumnos = $this -> modelo -> listaAlumno();
 
-						$filas='';
+					$filas='';
 
-						foreach ($alumnos as $row) {
-							$new_fila = $fila;
-							$diccionario = array('{codigo}' => $row['codigo'], '{nombre}' => $row['nombre']." ".$row['apellidoP']." ".$row['apellidoM'],'{carrera}'=>$row['carrera']);
-							$new_fila = strtr($new_fila,$diccionario);
-							$filas .= $new_fila;
-						}
-						
-						//Reemplazo en mi vista una fila por todas las filas
-						$vista = str_replace($fila, $filas, $vista);
+					foreach ($alumnos as $row) {
+						$new_fila = $fila;
+						$diccionario = array('{codigo}' => $row['codigo'], '{nombre}' => $row['nombre']." ".$row['apellidoP']." ".$row['apellidoM'],'{carrera}'=>$row['carrera']);
+						$new_fila = strtr($new_fila,$diccionario);
+						$filas .= $new_fila;
+					}
+					
+					//Reemplazo en mi vista una fila por todas las filas
+					$vista = str_replace($fila, $filas, $vista);
 
-						//Mostrar la vista
-						echo $vista;
+					//Mostrar la vista
+					echo $vista;
 				break;
 
 			case 'eliminarAlumno':

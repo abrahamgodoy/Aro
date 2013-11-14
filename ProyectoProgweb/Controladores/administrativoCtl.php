@@ -1,64 +1,15 @@
 <?php
-class administrativoCtl{
+
+require_once("Estandar.php");
+
+class administrativoCtl extends CtlEstandar{
 	private $modelo;
-	private $mail;
-
-	function enviarCorreo(){
-		require_once("Controladores/class.phpmailer.php");
-		$mail = new phpmailer();	
-		$mail->Mailer = "smtp";
-		$mail->Host = "smtp.gmail.com";
-		$mail->SMTPAuth = true;
-		$mail->Port = 587;		
-		$mail->CharSet= "UTF-8";
-		$mail->SMTPSecure = "tls";
-		$mail->Username = "rober.msz@gmail.com";
-		$mail->Password = "3661981285740.ro27";
-		$mail->SMTPDebug = 2;
-		$mail->Debugoutput = "html";
-
-		$mail->From = "rober.msz@gmail.com";
-		$mail->FromName = "Roberto Mendoza Sanchez";
-		$mail->AddAddress("rober.msz@gmail.com","RMS");
-		$mail->Subject = "Ejemplo de PHPMailer";
-		$mail->Body = "<p>Esto es un <strong>ejemplo</strong> de correo.</p>";
-		$mail->AltBody = "Esto es un ejemplo de correo.";
-		$mail->IsHTML = (true);
-
-		if($mail->Send())
-		{
-	   		echo "Mensaje enviado correctamente.";
-		}
-		else
-		{
-			echo "Ocurrió un error al enviar el correo electrónico.";
-			echo "<br/><strong>Información:</strong><br/>".$mail->ErrorInfo;
-		}
-	}
-
-	function generaPass(){
-		$cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
-		$longitudCadena=strlen($cadena);
-		$pass = "";
-		$longitudPass=16;
-
-		for($i=1 ; $i<=$longitudPass ; $i++){
-			$pos=rand(0,$longitudCadena-1);
-			$pass .= substr($cadena,$pos,1);
-		}
-		return $pass;
-	}
-
-
 
 	function ejecutar(){
 		require_once("Modelos/administrativoMdl.php");
 		$this -> modelo = new administrativoMdl();
 
-
-		switch($_GET['act']){
-			
-
+		switch($_GET['act']){			
 
 			case "altaCiclo":
 				if(empty($_POST)){
@@ -158,8 +109,11 @@ class administrativoCtl{
 					$apellidop = $_POST["apellidop"];
 					$apellidom = $_POST["apellidom"];
 					$correo = $_POST["correo"];
-					
-					$resultado = $this -> modelo -> altaMaestro($codigo,$this->generaPass(), $nombre, $apellidop, $apellidom, $correo);
+					$contra = $this->generaPass();
+					$resultado = $this -> modelo -> altaMaestro($codigo, sha1($contra), $nombre, $apellidop, $apellidom, $correo);
+					$subject = "Alta de maestro";
+					$body = "<h1>¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo}<br />Contraseña: {$contra}</p>";
+					$this->enviarCorreo($subject, $body);
 
 					if($resultado!==FALSE){
 						header('Location: index.php?ctl=administrativo&act=listaMaestro');
@@ -237,8 +191,6 @@ class administrativoCtl{
 				}	
 			break;
 
-
-			
 			case "altaAlumno":
 				if(empty($_POST)){
 					//Cargo la vista del formulario
@@ -252,9 +204,11 @@ class administrativoCtl{
 					$carrera = $_POST["carrera"];
 					$correo = $_POST["correo"];
 					$status = $_POST["status"];
-					
-					$resultado = $this -> modelo -> altaAlumno($codigo, $this->generaPass(), $nombre, $apellidop, $apellidom, $carrera, $correo, $status);
-					//$this -> enviarCorreo();
+					$contra = $this->generaPass();
+					$resultado = $this -> modelo -> altaAlumno($codigo, sha1($contra), $nombre, $apellidop, $apellidom, $carrera, $correo, $status);
+					$subject = "Alta de alumno";
+					$body = "<h1>¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$carrera}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo}<br />Contraseña: {$contra}</p>";
+					$this->enviarCorreo($subject, $body);
 					
 					if($resultado!=false)
 						header('Location: index.php?ctl=administrativo&act=listaAlumno');
@@ -292,6 +246,54 @@ class administrativoCtl{
 						//Mostrar la vista
 						echo $vista;
 				break;
+
+			case 'modificarAlumno':
+				if(empty($_POST)){
+					//Obtener la vista
+					$vista = file_get_contents("Vistas/AdmiModificarAlumno.html");
+
+					//Obtengo la fila de la tabla
+					$inicio_fila = strrpos($vista,'<tr>');
+					$final_fila = strrpos($vista,'</tr>') + 5;
+
+					$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+
+					//Genero las filas
+					$alumnos = $this -> modelo -> listaAlumno();
+
+					$filas='';
+
+					foreach ($alumnos as $row) {
+						$new_fila = $fila;
+						$diccionario = array('{codigo}' => $row['codigo'], '{nombre}' => $row['nombre']." ".$row['apellidoP']." ".$row['apellidoM'],'{carrera}'=>$row['carrera']);
+						$new_fila = strtr($new_fila,$diccionario);
+						$filas .= $new_fila;
+					}
+					
+					//Reemplazo en mi vista una fila por todas las filas
+					$vista = str_replace($fila, $filas, $vista);
+
+					//Mostrar la vista
+					echo $vista;
+				}
+
+				else{
+					$seleccionados = $_POST['seleccion'];
+					//for($i=0; $i < count($seleccionados); $i++){
+    				//	$this -> modelo -> modificarAlumno($seleccionados[$i]);
+
+					$vista = file_get_contents("Vistas/AdmiAltaAlumno.html");
+
+					//Obtengo la fila de la tabla
+					$inicio_input = strrpos($vista,'<input>');
+					$final_input = strrpos($vista,'</input>') + 8;
+
+					$input = substr($vista,$inicio_input,$final_input-$inicio_input);
+
+					}
+					header('Location: index.php?ctl=administrativo&act=listaAlumno');
+					
+			break;
 
 			case 'eliminarAlumno':
 				if(empty($_POST)){

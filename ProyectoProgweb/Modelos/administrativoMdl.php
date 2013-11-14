@@ -20,7 +20,7 @@ class administrativoMdl{
 		$query =
 			"INSERT INTO
 			maestro(codigo, contrasena, nombre, apellidoP, apellidoM, correo)
-			VALUES('$codigo', '$contrasena', '$nombre', '$apellidop', '$apellidom', '$correo')";
+			VALUES('0', '$contrasena', '$nombre', '$apellidop', '$apellidom', '$correo')";
 		return $r = $this -> driver -> query($query);
 	}
 
@@ -80,6 +80,11 @@ class administrativoMdl{
 
 	function eliminarCiclo($idCiclo){
 		$query="DELETE FROM ciclo WHERE idCiclo='$idCiclo' ";
+		return $r = $this -> driver -> query($query);
+	}
+
+	function modificarAlumno($codigo){
+		$query="SELECT FROM alumno WHERE codigo='$codigo' ";
 		return $r = $this -> driver -> query($query);
 	}
 }
