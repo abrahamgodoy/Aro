@@ -55,8 +55,7 @@
                 <li id="titulo-izq">MENU ALUMNO</li>
                 <li><a href="index.php?ctl=administrativo&act=listaAlumno">Lista Alumnos</a></li>             
                 <li><a href="index.php?ctl=administrativo&act=altaAlumno">Alta de Alumnos</a></li>
-                <li><a href="#">Modificar Alumno</a></li>
-                <li><a href="index.php?ctl=administrativo&act=eliminarAlumno">Eliminar Alumnos</a></li>
+                <li><a href="index.php?ctl=administrativo&act=eliminarAlumno">Modificar/Eliminar Alumnos</a></li>
             </ul>
         </aside>
 
@@ -73,6 +72,7 @@
                             <th>CODIGO</th>
                             <th>NOMBRE</th>
                             <th>CARRERA</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,6 +81,7 @@
                             <td>{codigo}</td>
                             <td>{nombre}</td>
                             <td>{carrera}</td>
+                            <td><a href="index.php?ctl=administrativo&act=obtenerAlumno&codigo={codigo}">Modificar</a></td> 
                         </tr>
                     </tbody>
                 </table>

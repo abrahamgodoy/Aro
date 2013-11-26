@@ -56,8 +56,7 @@
                 <li id="titulo-izq">MENU MAESTROS</li>
                 <li><a href="index.php?ctl=administrativo&act=listaMaestro">Lista Maestros</a></li>
                 <li><a href="index.php?ctl=administrativo&act=altaMaestro">Alta de Maestro</a></li>
-                <li><a href="#">Modificar Maestro</a></li>
-                <li><a href="index.php?ctl=administrativo&act=eliminarMaestro">Eliminar Maestro</a></li>
+                <li><a href="index.php?ctl=administrativo&act=eliminarMaestro">Modificar/Eliminar Maestro</a></li>
             </ul>
         </aside>
 
@@ -73,6 +72,7 @@
                             <th></th>
                             <th>CODIGO</th>
                             <th>NOMBRE</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,6 +80,7 @@
                             <td><input type="checkbox" name="seleccion[]" value="{codigo}"></td>
                             <td>{codigo}</td>
                             <td>{nombre}</td>
+                            <td><a href="index.php?ctl=administrativo&act=obtenerMaestro&codigo={codigo}">Modificar</a></td>
                         </tr>
                     </tbody>
                 </table>

@@ -1,4 +1,4 @@
-	var exprNombre = /^[a-zA-Z]+$/;
+	var exprNombre = /^([a-zA-Z ñáéíóú]{2,60})$/;
 	var exprCorreo = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 	var exprNum = /^[0-9]+$/;
 	
@@ -22,7 +22,6 @@ $("#btnArchivo").click(function(){
 
 $("#btnRegistrar").click(function (){
 
-	var $codigo = $("#cod").val();
 	var $nombre = $("#nom").val();
 	var $ApePat = $("#app").val();
 	var $ApeMat = $("#apm").val();
@@ -30,23 +29,6 @@ $("#btnRegistrar").click(function (){
 	var $carrera = $("#carrera").val();
 	var $status = $("#status").val();
 	var error = false;
-
-	if($codigo == "")
-	{
-		$("#errorCod").replaceWith("<div class=\"errores\" id=\"errorCod\">Escribe tu codigo</div>");
-		$("#errorCod").fadeIn("slow");
-		error = true;
-	}
-	else
-	{
-		$("#errorCod").fadeOut();
-		if(!exprNum.test($codigo))
-		{
-			$("#errorCod").replaceWith("<div class=\"errores\" id=\"errorCod\">Codigo inválido</div>");
-			$("#errorCod").fadeIn("slow");
-			error = true;
-		}
-	}
 
 	if($nombre == "")
 	{
@@ -99,14 +81,21 @@ $("#btnRegistrar").click(function (){
 		}
 	}
 
-	if($carrera == 0)
+	if($carrera == "")
 	{
+		$("#errorCarr").replaceWith("<div class=\"errores\" id=\"errorCarr\">Escribre tu carrera</div>");
 		$("#errorCarr").fadeIn("slow");
 		error = true;
 	}
 	else
 	{
 		$("#errorCarr").fadeOut();
+		if(!exprNombre.test($carrera))
+		{
+			$("#errorCarr").replaceWith("<div class=\"errores\" id=\"errorCarr\">Carrera inválida</div>");
+			$("#errorCarr").fadeIn("slow");
+			error = true;
+		}
 	}
 
 	if($correo == "")

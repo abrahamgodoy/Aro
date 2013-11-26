@@ -24,16 +24,15 @@ class administrativoMdl{
 		return $r = $this -> driver -> query($query);
 	}
 
-	function altaAlumno($codigo, $contrasena, $nombre, $apellidop, $apellidom, $carrera, $correo, $status){
+	function altaAlumno($contrasena, $nombre, $apellidop, $apellidom, $carrera, $correo, $status, $celular, $github, $webpage){
 		$query =
 			"INSERT INTO
 			alumno(codigo, contrasena, nombre, apellidoP, apellidoM, carrera, correo, status, Github, celular, WebPage)
-			VALUES('$codigo', '$contrasena', '$nombre', '$apellidop', '$apellidom', '$carrera', '$correo', '$status', NULL, NULL, NULL)";
+			VALUES('0', '$contrasena', '$nombre', '$apellidop', '$apellidom', '$carrera', '$correo', '$status', '$celular', '$github', '$webpage')";
 		return $r = $this -> driver -> query($query);
 	}
 
 	function listaAlumno(){
-		//echo "<br>debug: Entro a la alta del alumno en el modelo";
 		$query = 'SELECT * FROM alumno';
 
 		$r = $this -> driver -> query($query);
@@ -45,7 +44,6 @@ class administrativoMdl{
 	}
 
 	function listaMaestros(){
-		//echo "<br>debug: Entro a la alta del maestro en el modelo";
 		$query = 'SELECT * FROM maestro';
 
 		$r = $this -> driver -> query($query);
@@ -83,10 +81,57 @@ class administrativoMdl{
 		return $r = $this -> driver -> query($query);
 	}
 
-	function modificarAlumno($codigo){
-		$query="SELECT FROM alumno WHERE codigo='$codigo' ";
+	function obtenerAlumno($codigo){
+		$query="SELECT * FROM alumno WHERE codigo = $codigo";
+		$r = $this -> driver -> query($query);
+		$arr = $r -> fetch_assoc();
+		return $arr;
+	}
+
+	function obtenerMaestro($codigo){
+		$query="SELECT * FROM maestro WHERE codigo = $codigo";
+		$r = $this -> driver -> query($query);
+		$arr = $r -> fetch_assoc();
+		return $arr;
+	}
+
+	function obtenerCiclo($ciclo){
+		$query="SELECT * FROM ciclo WHERE ciclo = '$ciclo'";
+		$r = $this -> driver -> query($query);
+		$arr = $r -> fetch_assoc();
+		return $arr;
+	}
+
+	function modificarAlumno($codigo, $nombre, $apellidop, $apellidom, $carrera, $correo, $status){
+		
+		$query =
+			"UPDATE alumno 
+			SET	nombre = '$nombre', apellidoP = '$apellidop', apellidoM = '$apellidom', carrera = '$carrera', correo = '$correo', status = '$status', celular = NULL, github = NULL, webpage = NULL
+			WHERE codigo = '$codigo'";
+
 		return $r = $this -> driver -> query($query);
 	}
-}
+
+	function modificarMaestro($codigo, $nombre, $apellidop, $apellidom, $correo){
+		
+		$query =
+			"UPDATE maestro 
+			SET	nombre = '$nombre', apellidoP = '$apellidop', apellidoM = '$apellidom', correo = '$correo'
+			WHERE codigo = '$codigo'";
+
+		return $r = $this -> driver -> query($query);
+	}
+
+	function modificarCiclo($ciclo, $fechai, $fechaf){
+		
+		$query =
+			"UPDATE ciclo 
+			SET	ciclo = '$ciclo', fechaIni = '$fechai', fechaFin = '$fechaf'
+			WHERE ciclo = '$ciclo'";
+
+		return $r = $this -> driver -> query($query);
+
+		}
+	}
 
 ?>

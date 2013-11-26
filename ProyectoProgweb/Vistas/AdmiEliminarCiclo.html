@@ -55,8 +55,7 @@
                 <li id="titulo-izq">MENU CICLO</li>
                 <li><a href="index.php?ctl=administrativo&act=listaCiclo">Lista Ciclo</a></li>             
                 <li><a href="index.php?ctl=administrativo&act=altaCiclo">Alta de Ciclo</a></li>
-                <li><a href="#">Modificar Ciclo</a></li>
-                <li><a href="index.php?ctl=administrativo&act=eliminarCiclo">Eliminar Ciclos</a></li>
+                <li><a href="index.php?ctl=administrativo&act=eliminarCiclo">Modificar/Eliminar Ciclos</a></li>
             </ul>
         </aside>
 
@@ -73,6 +72,7 @@
                             <th>CICLO</th>
                             <th>FECHA INICIO</th>
                             <th>FECHA FIN</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,6 +81,7 @@
                             <td>{ciclo}</td>
                             <td>{fechaini}</td>
                             <td>{fechafin}</td>
+                            <td><a href="index.php?ctl=administrativo&act=obtenerCiclo&ciclo={ciclo}">Modificar</a></td>
                         </tr>
                     </tbody>
                 </table>

@@ -2,9 +2,18 @@
 
 class maestroMdl{
 	public $driver;
+	
 	function __construct(){
 		require_once('DataBase.php');
 		$this -> driver = DataBase::getInstance();
+	}
+
+	function procesarResultado($r){
+
+		while($row = $r -> fetch_assoc())
+			$rows[] = $row;
+
+		return $rows;
 	}
 	
 	function altaCurso($ciclo, $materia, $seccion, $nrc, $codigo){
@@ -12,32 +21,30 @@ class maestroMdl{
 			"INSERT INTO 
 			curso(idCurso, idMateria, seccion, NRC, idCiclo, codigo)
 		  	VALUES('0','$materia','$seccion','$nrc','$ciclo','$codigo')";
-		$r = $this -> driver -> query($query);
-
-		var_dump($r);
-		echo $query;
-
-		$query= "SELECT MAX(idCurso) from curso";
-		$r = $this -> driver -> query($query);		
-		while($row = $r -> fetch_assoc())
-			$rows[] = $row;
-		var_dump($rows);
-
-
-		$query= "SELECT * from curso";
-		$r = $this -> driver -> query($query);
-
-		while($row = $r -> fetch_assoc())
-			$rows[] = $row;
-		var_dump($rows);
-
-		echo $query;
+		return $r = $this -> driver -> query($query);
 	}
 
-	function horarioCurso($hora1, $hora2, $dia){
+	function getIdCurso(){
+		$query= "SELECT MAX(idCurso) as idCurso from curso";
+		$r = $this -> driver -> query($query);
+
+		$rows = $this -> procesarResultado($r);
+		$rows=$rows[0];
+		return $rows['idCurso'];
+	}
+
+	function horarioCurso($idCurso, $hora1, $hora2, $dia){
 		$query = "INSERT INTO
 			horariocurso(idHorario, dia, horaIni, horaFin, idCurso)
-			VALUES('0','$dia','$hora1','$hora2',)";
+			VALUES('0','$dia','$hora1','$hora2','$idCurso')";
+			$this -> driver -> query($query);
+	}
+
+	function criterioCurso($idCurso, $criterio, $pts){
+		$query = "INSERT INTO
+			criterio(idCriterio, idCurso, nombre, porcentaje)
+			VALUES('0','$idCurso','$criterio','$pts')";
+			$this -> driver -> query($query);
 	}
 
 	function listaCurso(){

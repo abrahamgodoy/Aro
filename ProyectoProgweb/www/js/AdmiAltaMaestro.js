@@ -1,32 +1,14 @@
-	var exprNombre = /^[a-zA-Z]+$/;
+	var exprNombre = /^([a-zA-Z ñáéíóú]{2,60})$/;
 	var exprCorreo = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 	var exprNum = /^[0-9]+$/;
 
 $("#btnRegistrar").click(function (){
 
-	var $codigo = $("#codigo").val();
 	var $nombre = $("#nombre").val();
 	var $ApePat = $("#apellidop").val();
 	var $ApeMat = $("#apellidom").val();
 	var $correo = $("#correo").val();
 	var error = false;
-
-	if($codigo == "")
-	{
-		$("#errorCodigo").replaceWith("<div class=\"errores\" id=\"errorCodigo\">Escribe tu codigo</div>");
-		$("#errorCodigo").fadeIn("slow");
-		error = true;
-	}
-	else
-	{
-		$("#errorCodigo").fadeOut();
-		if(!exprNum.test($codigo))
-		{
-			$("#errorCodigo").replaceWith("<div class=\"errores\" id=\"errorCodigo\">Codigo inválido</div>");
-			$("#errorCodigo").fadeIn("slow");
-			error = true;
-		}
-	}
 
 	if($nombre == "")
 	{

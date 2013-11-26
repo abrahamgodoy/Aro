@@ -63,37 +63,41 @@
 
         <section id="contenido">
                 <fieldset class="fieldsetf">
-                    <legend class="leg">Alta de Alumno</legend>
-                    <form id="formulario" method="POST" action="index.php?ctl=administrativo&act=altaAlumno">
+                    <legend class="leg">Modificar Alumno</legend>
+                    <form id="formulario" method="POST" action="index.php?ctl=administrativo&act=modificarAlumno">
+                        <div>
+                            <label class="labelform" for="codigo">Codigo</label>
+                            <input id="cod" class="formatinput" type="text" name="codigo" value="{codigo}" />
+                        </div>
                         <div>
                             <label class="labelform" for="nombre">Nombre</label>
-                            <input class="formatinput" type="text" id="nom" name="nombre" />
+                            <input id="nom" class="formatinput" type="text" id="nom" name="nombre" value="{nombre}" />
                             <div class="errores" id="errorNom">Escribe tu nombre</div>
                         </div>
                         <div>
                             <label class="labelform" for="apellidop">Apellido Paterno</label>
-                            <input class="formatinput" type="text" id="app" name="apellidop" />
+                            <input id="app" class="formatinput" type="text" name="apellidop" value="{apellidop}" />
                             <div class="errores" id="errorApp">Escribe tu apellido paterno</div>
                         </div>
                         <div>
                             <label class="labelform" for="apellidom">Apellido Materno</label>
-                            <input class="formatinput" type="text" id="apm" name="apellidom" />
+                            <input id="apm" class="formatinput" type="text" name="apellidom" value="{apellidom}" />
                             <div class="errores" id="errorApm">Escribe tu apellido Materno</div>
                         </div>
                         <div>
                             <label class="labelform" for="carrera">Carrera</label>
-                            <input class="formatinput" type="text" name="carrera" id="carrera" />
+                            <input class="formatinput" type="text" name="carrera" id="carrera" value="{carrera}" />
                             <div class="errores" id="errorCarr">Escribe tu carrera</div>
                         </div>
                         <div>
                             <label class="labelform" for="correo">Correo</label>
-                            <input class="formatinput" type="email" id="correo" name="correo" />
+                            <input id="correo" class="formatinput" type="email" name="correo" value="{correo}"/>
                             <div class="errores" id="errorCorr">Escribe tu correo</div>
                         </div>
                         <div>
                             <label class="labelform" for="status">Status</label>
                             <select class="selectform" name="status" id="status">
-                                <option selected value="0">Elige un status</option>  
+                                <option selected value="{status}">{status}</option>
                                 <option value="Activo">Activo</option>
                                 <option value="Inactivo">Inactivo</option>
                             </select>
@@ -124,28 +128,13 @@
                         </div>
                         <div id="campo_pagina" style="display: none;">
                             <label class="labelform" for="webpage">Pagina Web</label>
-                            <input class="formatinput" type="text" id="webpage" name="webpage"/>
+                            <input class="formatinput" type="text" id="webpage" name="webpage" value=""/>
                         </div>
                         <div>
-                            <button class="boton" type="button" id="btnRegistrar">Registrar</button>
+                            <button class="boton" type="button" id="btnRegistrar">Actualizar</button>
                         </div>
                     </form>
                 </fieldset>
-
-                <fieldset class="fieldsetf">
-                    <legend class="leg">Registro por archivo</legend>
-                    <form id="examinar" method="post" action="#">
-                        <div>
-                            <label class="labelarchivo" for="lista">Elija el archivo con la lista de alumnos...</label>
-                            <input class="labelarchivo" id="lista" name="lista" type="file" />
-                            <div class="errores" id="errorArchivo">Selecciona un archivo</div>
-                        </div>
-                        <div>
-                            <button class="boton" type="button" id="btnArchivo">Registrar Alumnos</button>
-                        </div>
-                    </form>
-                </fieldset>
-
         </section>
 
         <footer>
@@ -165,6 +154,7 @@
         <script>window.jQuery || document.write('<script src="./www/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/plugins.js"></script>
         <script src="./www/js/AdmiAltaAlumno.js"></script>
+        <script src="./www/js/Error.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

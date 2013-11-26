@@ -18,7 +18,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
 
         <link rel="stylesheet" href="./www/css/normalize.css">
-        <link rel="stylesheet" href="./www/css/AdmiLista.css">
+        <link rel="stylesheet" href="./www/css/AdmiAltaMaestro.css">
         <script src="./www/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -50,40 +50,50 @@
             </ul>
         </nav>
 
-
+        
         <aside id="menu-izq">
             <ul>
-                <li id="titulo-izq">MENU ALUMNO</li>
-                <li><a href="index.php?ctl=administrativo&act=listaAlumno">Lista Alumnos</a></li>             
-                <li><a href="index.php?ctl=administrativo&act=altaAlumno">Alta de Alumnos</a></li>
-                <li><a href="index.php?ctl=administrativo&act=eliminarAlumno">Modificar/Eliminar Alumno</a></li>
+                <li id="titulo-izq">MENU MAESTROS</li>
+                <li><a href="index.php?ctl=administrativo&act=listaMaestro">Lista Maestros</a></li>
+                <li><a href="index.php?ctl=administrativo&act=altaMaestro">Alta de Maestro</a></li>
+                <li><a href="index.php?ctl=administrativo&act=eliminarMaestro">Modificar/Eliminar Maestro</a></li>
             </ul>
         </aside>
 
 
         <section id="contenido">
-            <div>
-                <p>LISTA DE ALUMNOS</p>
-            </div>
-
-
-
-            <table id="lista">
-                <thead>
-                    <tr>
-                        <th>CODIGO</th>
-                        <th>NOMBRE</th>
-                        <th>CARRERA</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{codigo}    </td>
-                        <td>{nombre}</td>
-                        <td>{carrera}</td>
-                    </tr>
-                </tbody>
-            </table>
+                <fieldset class="fieldsetf">
+                    <legend class="leg">Modificar Maestro</legend>
+                    <form id="formulario" method="POST" action="index.php?ctl=administrativo&act=modificarMaestro">
+                        <div>
+                            <label class="labelform" for="codigo">Codigo</label>
+                            <input id="codigo" class="formatinput" type="text" name="codigo" value="{codigo}" />
+                        </div>
+                        <div>
+                            <label class="labelform" for="nombre">Nombre</label>
+                            <input class="formatinput" type="text" id="nombre" name="nombre" value="{nombre}"/>
+                            <div class="errores" id="errorNombre"></div>
+                        </div>
+                        <div>
+                            <label class="labelform" for="apellidop">Apellido Paterno</label>
+                            <input class="formatinput" type="text" id="apellidop" name="apellidop" value="{apellidop}"/>
+                            <div class="errores" id="errorApellidoP"></div>
+                        </div>
+                        <div>
+                            <label class="labelform" for="apellidom">Apellido Materno</label>
+                            <input class="formatinput" type="text" id="apellidom" name="apellidom" value="{apellidom}"/>
+                            <div class="errores" id="errorApellidoM"></div>
+                        </div>
+                        <div>
+                            <label class="labelform" for="correo">Correo Electronico</label>
+                            <input class="formatinput" type="email" id="correo" name="correo" value="{correo}"/>
+                            <div class="errores" id="errorCorreo"></div>
+                        </div>
+                        <div>
+                            <button class="boton" type="button" id="btnRegistrar">Actualizar</button>
+                        </div>
+                    </form>
+                </fieldset>
         </section>
 
         <footer>
@@ -100,8 +110,10 @@
         <!-- Your content finishes here-->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="./js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="./www/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/plugins.js"></script>
+        <script src="./www/js/main.js"></script>
+        <script src="./www/js/AdmiAltaMaestro.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

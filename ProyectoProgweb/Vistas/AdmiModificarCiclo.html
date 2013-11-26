@@ -18,7 +18,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
 
         <link rel="stylesheet" href="./www/css/normalize.css">
-        <link rel="stylesheet" href="./www/css/AdmiLista.css">
+        <link rel="stylesheet" href="./www/css/AdmiAltaCiclo.css">
         <script src="./www/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -53,37 +53,52 @@
 
         <aside id="menu-izq">
             <ul>
-                <li id="titulo-izq">MENU ALUMNO</li>
-                <li><a href="index.php?ctl=administrativo&act=listaAlumno">Lista Alumnos</a></li>             
-                <li><a href="index.php?ctl=administrativo&act=altaAlumno">Alta de Alumnos</a></li>
-                <li><a href="index.php?ctl=administrativo&act=eliminarAlumno">Modificar/Eliminar Alumno</a></li>
+                <li id="titulo-izq">MENU CICLO</li>
+                <li><a href="index.php?ctl=administrativo&act=listaCiclo">Lista Ciclo</a></li>             
+                <li><a href="index.php?ctl=administrativo&act=altaCiclo">Alta de Ciclo</a></li>
+                <li><a href="index.php?ctl=administrativo&act=eliminarCiclo">Modificar/Eliminar Ciclos</a></li>
             </ul>
         </aside>
 
 
         <section id="contenido">
-            <div>
-                <p>LISTA DE ALUMNOS</p>
-            </div>
+                <fieldset class="fieldsetf">
+                    <legend class="leg">Modificar de Ciclo</legend>
+                    <form id="formulario" method="post" action="index.php?ctl=administrativo&act=modificarCiclo">
+                        <div>
+                            <label class="labelform" for="nciclo">Ciclo</label>
+                            <input class="formatinput" type="text" id="nciclo" name="nciclo" value="{ciclo}"/>
+                            <div class="errores" id="errorCiclo">Selecciona un ciclo</div>
+                        </div>
 
-
-
-            <table id="lista">
-                <thead>
-                    <tr>
-                        <th>CODIGO</th>
-                        <th>NOMBRE</th>
-                        <th>CARRERA</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{codigo}    </td>
-                        <td>{nombre}</td>
-                        <td>{carrera}</td>
-                    </tr>
-                </tbody>
-            </table>
+                        <div>
+                            <label class="labelform" for="inicio">Fecha de inicio</label>
+                            <input class="formatinput date" type="text" id="inicio" name="inicio" value="{fechaInicio}"/>
+                            <div class="errores" id="errorFecha1">Selecciona una fecha</div>
+                        </div>
+                        <div>
+                            <label class="labelform" for="finalizacion">Fecha de Finalizacion</label>
+                            <input class="formatinput date" type="text" id="finalizacion" name="finalizacion" value="{fechaFin}"/>
+                            <div class="errores" id="errorFecha2">Selecciona una fecha</div> 
+                        </div>
+                        <div id="dia1">
+                            <label class="labelform" for="festivos">Dias Festivos</label>
+                            <input class="formatinput date" type="text" id="festivos" name="festivos" />
+                            <div class="errores" id="errorFestivo">Selecciona una fecha</div> 
+                        </div>
+                        <div id="motivo1">
+                            <label class="labelform" for="motivo">Motivo</label>
+                            <input class="formatinput" type="text" id="motivo" name="motivo" />
+                            <div class="errores" id="errorMotivo">Escribe un motivo</div> 
+                        </div>
+                        <div>
+                            <button id="otroDia" class="boton2" type="button">Agregar día festivo</button>
+                        </div>
+                        <div>
+                            <button class="boton" id="btnRegistrar" type="button">Actualizar</button>
+                        </div>
+                    </form>
+                </fieldset>
         </section>
 
         <footer>
@@ -99,9 +114,17 @@
         </footer>
         <!-- Your content finishes here-->
 
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="./js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/plugins.js"></script>
+        <script src="./www/js/AdmiAltaCiclo.js"></script>
+
+        <!-- Jquery ui-->
+        <link rel="stylesheet" type="text/css" href="./www/css/ui-lightness/jquery-ui-1.10.3.custom.css">
+        <script src="./www/js/jquery-ui-1.10.3.custom.js"></script>
+        <script src="./www/js/jquery-ui-1.10.3.custom.min.js"></script>
+        <!-- END Jquery ui-->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

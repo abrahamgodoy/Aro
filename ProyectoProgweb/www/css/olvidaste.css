@@ -90,8 +90,6 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-
-
 body{
     position: absolute;
     margin: 0px;
@@ -154,9 +152,12 @@ h1{
 }
 
 #contenido{
-    width: 90%;
-    margin:0 auto;
+     width: 70%;
+    margin: 0 auto;
     overflow: hidden;
+    background-color: #CCCCCC;
+    font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
+    min-height: 500px;
 }
 
 section#contenido div{
@@ -171,101 +172,20 @@ section#contenido div{
     clear: both;
 }
 
-div#info div.cuadros{
-    width: 189px;
-    height: 350px;
-    margin: 8% 1%;
-    float: left;
-
-    border-radius: 70px 5px 5px 5px;
-    -moz-border-radius: 70px 5px 5px 5px;
-    -webkit-border-radius: 70px 5px 5px 5px;
-    -o-border-radius: 70px 5px 5px 5px;
-
-}
-
-
-div#info div#administrativo{
-    background: url('../img/admi.jpg') no-repeat center left;
-    background-size: cover !important;
-    overflow: hidden;
-}
-
-div#info div#maestro{
-    background: url('../img/maes.jpg') no-repeat center left;
-    background-size: cover !important;
-    overflow: hidden;
-}
-
-div#info div#alumno{
-    background: url('../img/alum.jpg') no-repeat center left;
-    background-size: cover !important;
-    overflow: hidden;
-}
-
-div.color{
-    width: 100%;
-    height: 350px;
-    opacity: 0;
-    transition: opacity .5s;
-    -webkit-transition: opacity .5s;
-    -moz-transition: opacity .5s;
-    -o-transition: opacity .5s;
-
-    border-radius: 70px 5px 5px 5px;
-    -moz-border-radius: 70px 5px 5px 5px;
-    -webkit-border-radius: 70px 5px 5px 5px;
-    -o-border-radius: 70px 5px 5px 5px;
-}
-
-div.cuadros:hover div.color{
-    opacity: .8;
-}
-
-p.texto{
-    width:180px;
-    text-align: center;
-    margin :auto;
-    margin-top: 356px;
-    color: black;
-    font-size: 1.2em;
-    font-family: "Arial Black",Gadget,sans-serif;
-    font-weight: bold;
-    transition: margin .6s;
-    -webkit-transition: margin .6s;
-    -o-transition: margin .6s;
-    -moz-transition: margin .6s;
-
-}
-div.cuadros:hover p.texto{
-    margin-top: 250px;
-    color: black;
-    font-size: 1.2em;
-    color: white;
-    opacity: 1;
-}
 
 /*Formulario*/
-#login{
-    width: 32%;
-    background-color: white;
-    margin: 50px auto;
-    border-radius: 40px;
-    -moz-border-radius: 40px;
-    -webkit-border-radius: 40px;
-    -o-border-radius: 40px;
-
-    font-family: "Segoe UI Web Semibold", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
+form{
+    margin: 0 4%;
 }
 
-#login form fieldset div#divLogin{
+form fieldset div{
     width: 100%;
     display: block;
 
 }
 
-#login form fieldset div input{
-    width: 90%;
+form fieldset div input{
+    width: 95%;
     display: block;
     margin-bottom: 7px;
     padding: .3em;
@@ -276,9 +196,15 @@ section#imagen-login{
     width: 200px;
     height: 80px;
     margin: 30px auto;
+
+    border-radius: 20px;
+    border: white solid 1px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
-#login button{
+button{
     background-color: #611212;
     color: white;
     padding: .4em;
@@ -286,13 +212,14 @@ section#imagen-login{
 
 }
 
-#login button:hover{
+button:hover{
     background-color: #833333;
     color: white;
     
 }
 
-#login form fieldset{
+form fieldset{
+    padding: 0 3%;
     margin: 15px;
     border-radius: 20px;
     border: #833333 solid 1px;
@@ -302,7 +229,7 @@ section#imagen-login{
 
 }
 
-#login form fieldset legend{
+form fieldset legend{
     color: #833333;
     font-size: 1.5em;
     font-weight: bold;
@@ -315,17 +242,6 @@ section#imagen-login{
     color: #C58A13;
     font-size: .8em;
     display: none;
-}
-
-#olvidaste{
-    float:right;
-    text-decoration: none;
-    color: #706A6A;
-    font-size: .8em;
-}
-
-#olvidaste:hover{
-    color: #D4C840;
 }
 
 .footer{

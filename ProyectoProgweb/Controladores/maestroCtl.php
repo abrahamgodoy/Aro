@@ -19,7 +19,7 @@ class maestroCtl{
 				}
 				else{
 					$ciclo = 45682;//$_POST["ciclo"];
-					$academia = //$_POST["academia"];
+					$academia = $_POST["academia"];
 					$materia = 5;//$_POST["materia"];
 					$seccion = $_POST["seccion"];
 					$nrc = $_POST["nrc"];
@@ -29,15 +29,22 @@ class maestroCtl{
 					$criterio = $_POST["criterio"];
 					$pts = $_POST["pts"];
 
-					$resultado = $this -> modelo -> altaCurso($ciclo, $materia, $seccion, $nrc,200000004);
+					$r = $this -> modelo -> altaCurso($ciclo, $materia, $seccion, $nrc,200000004);
 
-					for($i=0; $i < count($hora1); $i++){
-    					//$this -> modelo -> horarioCurso($hora1[$i], $hora2[$i], $dias[$i]);
-					}
+					if($r == true){
+						$idCurso = $this ->modelo -> getIdCurso();
 
-					for ($i=0; $i < count($criterio); $i++) {
-						//$this -> modelo -> criterioCurso($criterio[$i], $pts[$i]);
+						for($i=0; $i < count($hora1); $i++){
+	    					$this -> modelo -> horarioCurso($idCurso, $hora1[$i], $hora2[$i], $dias[$i]);
+						}
+
+						for ($i=0; $i < count($criterio); $i++) {
+							$this -> modelo -> criterioCurso($idCurso, $criterio[$i], $pts[$i]);
+						}
+						header('Location: index.php?ctl=maestro&act=listaCurso');
 					}
+					else
+						require_once("Vistas/Error.html");
 				}
 			break;
 

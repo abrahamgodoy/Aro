@@ -18,7 +18,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
 
         <link rel="stylesheet" href="./www/css/normalize.css">
-        <link rel="stylesheet" href="./www/css/AdmiLista.css">
+        <link rel="stylesheet" href="./www/css/olvidaste.css">
         <script src="./www/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -39,51 +39,25 @@
             </section>
         </header>
 
-        
-        <nav>
-            <ul>
-                <li><a href="index.php?ctl=administrativo&act=listaCiclo">Ciclos</a></li>
-                <li><a href="index.php?ctl=administrativo&act=listaMaestro">Maestros</a></li>
-                <li><a href="index.php?ctl=administrativo&act=listaAlumno">Alumnos</a></li>
-                <li><a href="index.html">Salir</a></li>
-                <div class="clear"></div>
-            </ul>
-        </nav>
-
-
-        <aside id="menu-izq">
-            <ul>
-                <li id="titulo-izq">MENU ALUMNO</li>
-                <li><a href="index.php?ctl=administrativo&act=listaAlumno">Lista Alumnos</a></li>             
-                <li><a href="index.php?ctl=administrativo&act=altaAlumno">Alta de Alumnos</a></li>
-                <li><a href="index.php?ctl=administrativo&act=eliminarAlumno">Modificar/Eliminar Alumno</a></li>
-            </ul>
-        </aside>
-
 
         <section id="contenido">
-            <div>
-                <p>LISTA DE ALUMNOS</p>
-            </div>
 
-
-
-            <table id="lista">
-                <thead>
-                    <tr>
-                        <th>CODIGO</th>
-                        <th>NOMBRE</th>
-                        <th>CARRERA</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{codigo}    </td>
-                        <td>{nombre}</td>
-                        <td>{carrera}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <section id="imagen-login"></section>
+            <form method="POST" id="formulario" action="index.php?ctl=olvidaste">
+                <fieldset>
+                    <legend>Restablecer la contraseña</legend>
+                    <p>Tu Contraseña y tu Codigo seran enviados a la direccion registrada. <br><br>Si tu contraseña no es la correcta, verifica que tu cuenta de correo sea la que fue dada de alta e intentalo de nuevo.</p>
+                    <div id="divLogin">
+                        <label for="correo">Correo</label>
+                        <input type="text" id="correo" name="correo">
+                        <div class="errores" id="errorCorreo">Debes escribir tu correo</div>
+                    </div>
+                    <div>
+                        <button type="submit">Restablecer contraseña</button>
+                    </div>
+                    
+                </fieldset>
+            </form>
         </section>
 
         <footer>

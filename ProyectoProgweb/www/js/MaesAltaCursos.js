@@ -10,13 +10,13 @@
 
 $("#otrohorario").click(function (){
 	var idHorario = "horario" + numHorario;
-	$("div.horario").clone().removeClass("horario").attr("id",idHorario).insertBefore("#divOtroHorario");
+	$("div.clonarhorario").clone().removeClass("horario").attr("id",idHorario).insertBefore("#divOtroHorario");
 	numHorario++;
 });
 
 $("#otrocriterio").click(function (){
 	var idCriterio = "criterio" + numCriterio;
-	$("div.duplicarcri").clone().removeClass("duplicarcri").attr("id",idCriterio).insertBefore("#divOtroCriterio");
+	$("div.clonarcri").clone().removeClass("duplicarcri").attr("id",idCriterio).insertBefore("#divOtroCriterio");
 	numCriterio++;
 });
 
