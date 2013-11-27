@@ -4,10 +4,14 @@ require_once("Estandar.php");
 
 class administrativoCtl extends CtlEstandar{
 	private $modelo;
+	private $mailer;
 
 	function ejecutar(){
 		require_once("Modelos/administrativoMdl.php");
 		$this -> modelo = new administrativoMdl();
+
+		require_once("Mailer.php");
+		$this-> mailer = new Mailer();
 
 		switch($_GET['act']){			
 
@@ -152,7 +156,7 @@ class administrativoCtl extends CtlEstandar{
 					$resultado = $this -> modelo -> altaMaestro($codigo, sha1($contra), $nombre, $apellidop, $apellidom, $correo);
 					$subject = "Alta de maestro";
 					$body = "<h1>¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo}<br />Contraseña: {$contra}</p>";
-					$this->enviarCorreo($subject, $body);
+					$this->mailer->enviarCorreo($subject, $body);
 
 					if($resultado!==FALSE){
 						header('Location: index.php?ctl=administrativo&act=listaMaestro');
@@ -290,7 +294,7 @@ class administrativoCtl extends CtlEstandar{
 					$resultado = $this -> modelo -> altaAlumno(sha1($contra), $nombre, $apellidop, $apellidom, $carrera, $correo, $status, $celular, $github, $webpage);
 					$subject = "Alta de alumno";
 					$body = "<h1>¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$carrera}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: <br />Contraseña: {$contra}</p>";
-					$this->enviarCorreo($subject, $body);
+					$this->mailer->enviarCorreo($subject, $body);
 					
 					if($resultado!=false)
 						header('Location: index.php?ctl=administrativo&act=listaAlumno');
