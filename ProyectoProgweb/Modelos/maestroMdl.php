@@ -66,8 +66,17 @@ class maestroMdl{
 		$query =
 			"INSERT INTO
 			alumno(codigo, contrasena, nombre, apellidoP, apellidoM, carrera, correo, status, Github, celular, WebPage)
-			VALUES('$codigo', '$contrasena', '$nombre', '$apellidop', '$apellidom', '$carrera', '$correo', '$status', NULL, NULL, NULL)";
-		return $r = $this -> driver -> query($query);
+			VALUES('0', '$contrasena', '$nombre', '$apellidop', '$apellidom', '$carrera', '$correo', '$status', '$github', '$celular', '$webpage')";
+		
+		$r=$this -> driver -> query($query);
+		if ($r==false)
+			return false;
+
+		$r = $this -> driver -> query("SELECT MAX(codigo) as codigo from alumno");
+
+		$rows = $this -> procesarResultado($r);
+		$rows=$rows[0];
+		return $rows['codigo'];
 	}
 
 	function listaAlumno(){

@@ -7,6 +7,14 @@ class administrativoMdl{
 		require_once('DataBase.php');
 		$this -> driver = DataBase::getInstance();
 	}
+
+	function procesarResultado($r){
+
+		while($row = $r -> fetch_assoc())
+			$rows[] = $row;
+
+		return $rows;
+	}
 	
 	function altaCiclo($ciclo, $fechai, $fechaf){
 		$query =
@@ -21,15 +29,33 @@ class administrativoMdl{
 			"INSERT INTO
 			maestro(codigo, contrasena, nombre, apellidoP, apellidoM, correo)
 			VALUES('0', '$contrasena', '$nombre', '$apellidop', '$apellidom', '$correo')";
-		return $r = $this -> driver -> query($query);
+		
+		$r=$this -> driver -> query($query);
+		if ($r==false)
+			return false;
+
+		$r = $this -> driver -> query("SELECT MAX(codigo) as codigo from maestro");
+
+		$rows = $this -> procesarResultado($r);
+		$rows=$rows[0];
+		return $rows['codigo'];
 	}
 
 	function altaAlumno($contrasena, $nombre, $apellidop, $apellidom, $carrera, $correo, $status, $celular, $github, $webpage){
 		$query =
 			"INSERT INTO
 			alumno(codigo, contrasena, nombre, apellidoP, apellidoM, carrera, correo, status, Github, celular, WebPage)
-			VALUES('0', '$contrasena', '$nombre', '$apellidop', '$apellidom', '$carrera', '$correo', '$status', '$celular', '$github', '$webpage')";
-		return $r = $this -> driver -> query($query);
+			VALUES('0', '$contrasena', '$nombre', '$apellidop', '$apellidom', '$carrera', '$correo', '$status', '$github', '$celular', '$webpage')";
+		
+		$r=$this -> driver -> query($query);
+		if ($r==false)
+			return false;
+
+		$r = $this -> driver -> query("SELECT MAX(codigo) as codigo from alumno");
+
+		$rows = $this -> procesarResultado($r);
+		$rows=$rows[0];
+		return $rows['codigo'];
 	}
 
 	function listaAlumno(){

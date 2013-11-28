@@ -1,5 +1,7 @@
 <?php
-class maestroCtl{
+require_once("Estandar.php");
+
+class maestroCtl extends CtlEstandar{
 	private $modelo;
 	private $mail;
 
@@ -118,26 +120,40 @@ class maestroCtl{
 
 			case "altaAlumno":
 				if(empty($_POST)){
-					require_once("Vistas/MaesAltaAlumno.html");
+					require_once("Vistas/AdmiAltaAlumno.html");
 				}
 				else{
-					$codigo = $_POST["codigo"];
 					$nombre = $_POST["nombre"];
 					$apellidop = $_POST["apellidop"];
 					$apellidom = $_POST["apellidom"];
 					$carrera = $_POST["carrera"];
 					$correo = $_POST["correo"];
 					$status = $_POST["status"];
+					$celular = $_POST["celular"];
+					$github = $_POST["github"];
+					$webpage = $_POST["webpage"];
+					$contra = $this->generaPass();
+
+					if(!isset($_POST["tiene_celular"]))
+						$celular=null;
+					if(!isset($_POST["tiene_github"]))
+						$github=null;
+					if(!isset($_POST["tiene_pagina"]))
+						$pagina=null;
+
+					$codigo = $this -> modelo -> altaAlumno(sha1($contra), $nombre, $apellidop, $apellidom, $carrera, $correo, $status, $celular, $github, $webpage);
+
+					if($codigo!=false){
+						$subject = "Alta de alumno";
+						$body = "<h1>¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$carrera}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo} <br />Contraseña: {$contra}</p>";
+						$this->mailer->enviarCorreo($subject, $body, $correo);
+						
 					
-					$resultado = $this -> modelo -> altaAlumno($codigo, $this->generaPass(), $nombre, $apellidop, $apellidom, $carrera, $correo, $status);
-					//$this -> enviarCorreo();
-					
-					if($resultado!=false)
 						header('Location: index.php?ctl=maestro&act=listaAlumno');
+					}
 					else
 						require_once("Vistas/Error.html");
 				}
-
 				break;
 
 			case 'listaAlumno':

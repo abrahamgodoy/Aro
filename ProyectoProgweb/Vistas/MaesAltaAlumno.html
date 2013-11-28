@@ -55,8 +55,7 @@
                 <li id="titulo-izq">MENU ALUMNO</li>
                 <li><a href="index.php?ctl=maestro&act=listaAlumno">Lista Alumnos</a></li>             
                 <li><a href="index.php?ctl=maestro&act=altaAlumno">Alta de Alumnos</a></li>
-                <li><a href="#">Modificar Alumno</a></li>
-                <li><a href="index.php?ctl=maestro&act=eliminarAlumno">Eliminar Alumnos</a></li>
+                <li><a href="index.php?ctl=maestro&act=eliminarAlumno">Modificar/Eliminar Alumnos</a></li>
             </ul>
         </aside>
 
@@ -65,11 +64,6 @@
                 <fieldset class="fieldsetf">
                     <legend class="leg">Alta de Alumno</legend>
                     <form id="formulario" method="POST" action="index.php?ctl=maestro&act=altaAlumno">
-                        <div>
-                            <label class="labelform" for="codigo">Codigo</label>
-                            <input class="formatinput" type="text" id="cod" name="codigo" />
-                            <div class="errores" id="errorCod">Escribe tu codigo</div>
-                        </div>
                         <div>
                             <label class="labelform" for="nombre">Nombre</label>
                             <input class="formatinput" type="text" id="nom" name="nombre" />
@@ -87,14 +81,8 @@
                         </div>
                         <div>
                             <label class="labelform" for="carrera">Carrera</label>
-                            <select class="selectform" name="carrera" id="carrera">
-                                <option selected value="0">Elige una carrera</option>  
-                                <option value="COM">Ing. en Computación</option>
-                                <option value="INF">Lic. en Informatica</option>
-                                <option value="BIM">Ing. Biomédica</option>
-                                <option value="CEL">Ing. en Electrónica</option>
-                            </select>
-                            <div class="errores" id="errorCarr">Selecciona una carrera</div>
+                            <input class="formatinput" type="text" name="carrera" id="carrera" />
+                            <div class="errores" id="errorCarr">Escribe tu carrera</div>
                         </div>
                         <div>
                             <label class="labelform" for="correo">Correo</label>
@@ -142,6 +130,7 @@
                         </div>
                     </form>
                 </fieldset>
+
 
                 <fieldset class="fieldsetf">
                     <legend class="leg">Registro por archivo</legend>
