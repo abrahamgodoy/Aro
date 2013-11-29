@@ -24,7 +24,7 @@ class administrativoMdl{
 		return $r = $this -> driver -> query($query);
 	}
 
-	function altaMaestro($codigo, $contrasena, $nombre, $apellidop, $apellidom, $correo){
+	function altaMaestro($contrasena, $nombre, $apellidop, $apellidom, $correo){
 		$query =
 			"INSERT INTO
 			maestro(codigo, contrasena, nombre, apellidoP, apellidoM, correo)

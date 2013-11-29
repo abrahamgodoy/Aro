@@ -1,5 +1,4 @@
-<?php
-
+﻿<?php
 require_once("Estandar.php");
 
 class administrativoCtl extends CtlEstandar{
@@ -147,20 +146,20 @@ class administrativoCtl extends CtlEstandar{
 				}
 
 				else{
-					$codigo = $_POST["codigo"];
 					$nombre =  $_POST["nombre"];
 					$apellidop = $_POST["apellidop"];
 					$apellidom = $_POST["apellidom"];
 					$correo = $_POST["correo"];
 					$contra = $this->generaPass();
-					$codigo = $this -> modelo -> altaMaestro($codigo, sha1($contra), $nombre, $apellidop, $apellidom, $correo);
+
+					$codigo = $this -> modelo -> altaMaestro(sha1($contra), $nombre, $apellidop, $apellidom, $correo);
 
 					if($codigo!=false){
 						$subject = "Alta de maestro";
 						$body = "<h1>¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo}<br />Contraseña: {$contra}</p>";
-						$this->mailer->enviarCorreo($subject, $body);
+						$this->mailer->enviarCorreo($subject, $body, $correo);
 
-						header('Location: index.php?ctl=administrativo&act=listaMaestro');
+						header("Location: index.php?ctl=administrativo&act=listaMaestro");
 					}
 					else
 						require_once("Vistas/Error.html");
@@ -307,7 +306,7 @@ class administrativoCtl extends CtlEstandar{
 						$this->mailer->enviarCorreo($subject, $body, $correo);
 						
 					
-						header('Location: index.php?ctl=administrativo&act=listaAlumno');
+						header("Location: index.php?ctl=administrativo&act=listaAlumno");
 					}
 					else
 						require_once("Vistas/Error.html");
@@ -427,5 +426,4 @@ class administrativoCtl extends CtlEstandar{
 		}
 	}
 }
-
 ?>

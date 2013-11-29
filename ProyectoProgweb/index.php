@@ -1,5 +1,10 @@
 <?php
+
+if(!isset($_GET["ctl"]))
+	$_GET["ctl"]='login';
+
 switch($_GET["ctl"]){
+
 	case 'login':
 		require_once("Controladores/loginCtl.php");
 		$ctl = new loginCtl();
@@ -28,6 +33,8 @@ switch($_GET["ctl"]){
 	
 	default:
 		header('Location: index.php?ctl=login');
+		break;
+
 }
 
 $ctl -> ejecutar();
