@@ -45,7 +45,7 @@
                 <li><a href="index.php?ctl=maestro&act=matricular">Matricular Alumno a Curso</a></li>
                 <li><a href="MaesAsistencias.html">Lista de Asistencias</a></li>
                 <li><a href="MaesCalificaciones.html">Calificaciones</a></li>
-                <li><a href="index.html">Salir</a></li>
+                <li><a href="index.php?ctl=logout">Salir</a></li>
                 <div class="clear"></div>
             </ul>
         </nav>
@@ -75,17 +75,17 @@
                         </div>
                         <div>
                             <label class="labelform" for="academia">Academia</label>
-                            <select class="selectform" type="text" id="academia" name="academia">
+                            <select class="selectform" type="text" id="academia" name="academia" onChange="mostrarMaterias()">
                                 <option selected value="0">Elige una academia</option>
-                                <option value"NULL">Sin academia</option>
-                                <option value="{idAcademia}">{nombre}</option>>
+                                <option value="20">Sin importar academia</option>
+                                <option value="{idAcademia}">{nombre}</option>
                             </select>
                             <div class="errores" id="errorNombre">Elige una Academia</div>
                         </div>
                         <div>
                             <label class="labelform" for="materia">Materia</label>
                             <select class="selectform" type="text" id="materia" name="materia">
-                                <option selected value="0">Elige una materia</option>
+                                
                             </select>
                             <div class="errores" id="errorNombre">Elige una Materia</div>
                         </div>
@@ -191,6 +191,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="./www/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/MaesAltaCursos.js"></script>
+        <script src="./www/js/ajax.js"></script>
         <script src="./www/js/plugins.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -200,5 +201,34 @@
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
+
+
+        <script>
+
+        function mostrarMaterias(){
+            var id = document.getElementById('academia').value;
+
+                    console.log(id);
+            $.ajax({
+                type: 'POST',
+                data: {'idAcademia':id},
+                url: 'datosAcademia.php',
+                dataType: 'json',
+                success: function(json){
+                    var select = document.getElementById("materia");
+                    while(select.hasChildNodes())
+                        select.removeChild(select.firstChild);
+                    for(i in json){
+                    var texto=document.createTextNode(json[i].nombre);
+                    var option=document.createElement('option');
+                    option.setAttribute('value', json[i].idMateria)
+                    option.appendChild(texto);
+                    select.appendChild(option);
+                    }
+                }
+            });
+        }
+        </script>
+
     </body>
 </html>

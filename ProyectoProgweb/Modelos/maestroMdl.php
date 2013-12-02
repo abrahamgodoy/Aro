@@ -95,6 +95,20 @@ class maestroMdl{
 		$query="DELETE FROM alumno WHERE codigo='$codigo' ";
 		return $r = $this -> driver -> query($query);
 	}
+
+	function listaCiclos(){
+		$query = 'SELECT * FROM ciclo';
+
+		$r = $this -> driver -> query($query);
+		return $rows=$this->procesarResultado($r);
+	}
+
+	function listaAcademia(){
+		$query = 'SELECT * FROM academia';
+
+		$r = $this -> driver -> query($query);
+		return $rows=$this->procesarResultado($r);
+	}
 }
 
 ?>

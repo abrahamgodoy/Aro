@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if(!isset($_GET["ctl"]))
 	$_GET["ctl"]='login';
@@ -8,6 +9,11 @@ switch($_GET["ctl"]){
 	case 'login':
 		require_once("Controladores/loginCtl.php");
 		$ctl = new loginCtl();
+		break;
+
+	case 'logout':
+		require_once("Controladores/logoutCtl.php");
+		$ctl = new loginCtl();		
 		break;
 
 	case "alumnos":
@@ -30,11 +36,9 @@ switch($_GET["ctl"]){
 		require_once("Controladores/olvidasteCtl.php");
 		$ctl = new olvidasteoCtl();
 		break;
-	
-	default:
-		header('Location: index.php?ctl=login');
-		break;
 
+	case 'subirArchivo':
+		require_once("Controladores/subirArchivoCtl.php");
 }
 
 $ctl -> ejecutar();

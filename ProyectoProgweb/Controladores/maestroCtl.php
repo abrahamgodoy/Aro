@@ -6,17 +6,42 @@ class maestroCtl extends CtlEstandar{
 	private $mail;
 
 	function ejecutar(){
-		require_once("/Modelos/maestroMdl.php");
+		require_once("Modelos/maestroMdl.php");
 		$this -> modelo = new maestroMdl();
 		switch($_GET['act']){
 			case "altaCurso":
 				if(empty($_POST)){
-					//Cargo la vista del formulario
 					$vista = file_get_contents("Vistas/MaesAltaCursos.html");
 
-					//ciclos
+					//manipular ciclos
+					$inicio_fila = stripos($vista,'<option value="{idCiclo}">');
+					$final_fila = strrpos($vista,'{ciclo}</option>') + 16;
+					$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+					$ciclos = $this -> modelo -> listaCiclos();
+					$filas='';
+					foreach ($ciclos as $row) {
+						$new_fila = $fila;
+						$diccionario = array('{ciclo}' => $row['ciclo'], '{idCiclo}' => $row['idCiclo']);
+						$new_fila = strtr($new_fila,$diccionario);
+						$filas .= $new_fila;
+					}
+					$vista = str_replace($fila, $filas, $vista);
 
-					
+					//manipular academias
+					$inicio_fila = stripos($vista,'<option value="{idAcademia}">');
+					$final_fila = strrpos($vista,'{nombre}</option>') + 17;
+					$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+					$academia = $this -> modelo -> listaAcademia();
+					$filas='';
+					foreach ($academia as $row) {
+						$new_fila = $fila;
+						$diccionario = array('{idAcademia}' => $row['idAcademia'], '{nombre}' => $row['nombre']);
+						$new_fila = strtr($new_fila,$diccionario);
+						$filas .= $new_fila;
+					}
+					$vista = str_replace($fila, $filas, $vista);
+
+					//Mostrar la vista
 					echo $vista;
 				}
 				else{
@@ -222,6 +247,36 @@ class maestroCtl extends CtlEstandar{
 					}
 					header('Location: index.php?ctl=maestro&act=listaAlumno');
 				}	
+			break;
+
+			case 'matricular':
+				$vista = file_get_contents('Vistas/MaesAltaAlumnosaCursos.html');
+				$inicio_fila = strrpos($vista,'<option id="A">');
+				$final_fila = strrpos($vista,'</option id="A">') + 16;
+				$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+				$alumnos = $this -> modelo -> listaAlumno();
+				$filas='';
+				foreach ($alumnos as $row) {
+					$new_fila = $fila;
+					$diccionario = array('{alumno}' => $row['nombre']." ".$row['apellidoP']." ".$row['apellidoM']);
+					$new_fila = strtr($new_fila,$diccionario);
+					$filas .= $new_fila;;
+				}
+				$vista = str_replace($fila, $filas, $vista);
+				//Obtener Materias para el select
+				$inicio_lista = strrpos($vista,'<option id="M">');
+				$final_lista = strrpos($vista,'</option id="M">') + 16;
+				$lista = substr($vista,$inicio_lista,$final_lista-$inicio_lista);
+				$cursos = $this -> modelo -> listaCurso();
+				$listas='';
+				foreach ($cursos as $row) {
+					$new_lista = $lista;
+					$diccionario = array('{materia}' => $row['idMateria']);
+					$new_lista = strtr($new_lista,$diccionario);
+					$listas .= $new_lista;
+				}
+				$vista = str_replace($lista, $listas, $vista);				
+				echo $vista;
 			break;
 		}
 	}

@@ -6,6 +6,18 @@ class LoginCtl extends CtlEstandar{
         public function ejecutar() {
 
                 if( empty( $_POST ) ) {
+                        if($this -> isLogged()){
+                                if($this->isAdmi())
+                                        header("Location:index.php?ctl=administrativo&act=listaCiclo");
+
+                                if($this->isTeacher())
+                                        header("Location:index.php?ctl=maestro&act=listaAlumno");
+
+                                if($this->isStudent())
+                                        header("Location:index.php");
+
+                        }
+                        else
                         require_once( "Vistas/index.html" );
                 } 
                 else {
@@ -25,7 +37,6 @@ class LoginCtl extends CtlEstandar{
 
                         if($this->isStudent())
                                 header("Location:index.php");
-                        
                 }
         }
 }

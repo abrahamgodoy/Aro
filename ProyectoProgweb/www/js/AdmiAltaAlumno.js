@@ -17,6 +17,9 @@ $("#btnArchivo").click(function(){
 		$("#errorArchivo").fadeOut();
 	}
 
+	if(!errora)
+		$(" #examinar ").submit();
+
 });
 
 
@@ -126,7 +129,6 @@ $("#btnRegistrar").click(function (){
 		
 	if(!error)
 		$( "#formulario" ).submit();
-
 });
 
 function estaActivado( checkbox ) {

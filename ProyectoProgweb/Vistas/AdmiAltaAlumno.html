@@ -45,7 +45,7 @@
                 <li><a href="index.php?ctl=administrativo&act=listaCiclo">Ciclos</a></li>
                 <li><a href="index.php?ctl=administrativo&act=listaMaestro">Maestros</a></li>
                 <li><a href="index.php?ctl=administrativo&act=listaAlumno">Alumnos</a></li>
-                <li><a href="index.html">Salir</a></li>
+                <li><a href="index.php?ctl=logout">Salir</a></li>
                 <div class="clear"></div>
             </ul>
         </nav>
@@ -134,7 +134,7 @@
 
                 <fieldset class="fieldsetf">
                     <legend class="leg">Registro por archivo</legend>
-                    <form id="examinar" method="post" action="#">
+                    <form id="examinar" action="index.php?ctl=subirArchivo" method="POST" enctype="multipart/form-data">
                         <div>
                             <label class="labelarchivo" for="lista">Elija el archivo con la lista de alumnos...</label>
                             <input class="labelarchivo" id="lista" name="lista" type="file" />

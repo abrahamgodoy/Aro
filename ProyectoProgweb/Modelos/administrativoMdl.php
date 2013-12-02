@@ -81,7 +81,6 @@ class administrativoMdl{
 	}
 
 	function listaCiclos(){
-		//echo "<br>debug: Entro a la alta del maestro en el modelo";
 		$query = 'SELECT * FROM ciclo';
 
 		$r = $this -> driver -> query($query);

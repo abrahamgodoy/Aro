@@ -6,6 +6,14 @@ class administrativoCtl extends CtlEstandar{
 	private $mailer;
 
 	function ejecutar(){
+		
+	if($this->isLogged()==false)
+			header('Location: index.php?ctl=login');
+
+	else if($this->isAdmi()==false)
+		require_once("Vistas/Error.html");
+	else{
+
 		require_once("Modelos/administrativoMdl.php");
 		$this -> modelo = new administrativoMdl();
 
@@ -424,6 +432,7 @@ class administrativoCtl extends CtlEstandar{
 				}	
 			break;
 		}
+	}
 	}
 }
 ?>

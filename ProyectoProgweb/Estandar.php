@@ -5,13 +5,14 @@
 		private $modelo;
 
 		function isLogged(){
-            if( isset($_SESSION['user']) )
+            if(isset($_SESSION['user']) ){
                     return true;
+                }
             return false;
     	}
 
     	function isAdmi(){
-            if( isset($_SESSION['type']) && $_SESSION['type'] == 'administrativo' )
+            if(isset($_SESSION['type']) && $_SESSION['type'] == 'administrativo' )
                     return true;
             return false;
     	}
@@ -43,8 +44,6 @@
             if($r==false)
             	return false;
 
-            var_dump($r);
-
             $_SESSION['user'] = $codigo;
             $_SESSION['type'] = $r;
 
@@ -64,6 +63,11 @@
 			}
 			return $pass;
 		}
+
+        function pintar(){
+            var_dump($_SESSION['user']);
+            var_dump($_SESSION['type']);
+        }
 	}
 
 ?>
