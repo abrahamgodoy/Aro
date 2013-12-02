@@ -8,6 +8,14 @@ class olvidasteMdl{
 		$this -> driver = DataBase::getInstance();
 	}
 
+	function procesarResultado($r){
+
+		while($row = $r -> fetch_assoc())
+			$rows[] = $row;
+
+		return $rows;
+	}
+
 	function userValidator($codigo,$contrasena){
 		$r=$this->administrativo($codigo,$contrasena);
 		if ($r==true)
@@ -55,6 +63,33 @@ class olvidasteMdl{
 
 		return true;
 
+	}
+
+	function getAdmi($codigo){
+		$query="SELECT * from administrativo where codigo='$codigo'";
+
+		$r=$this -> driver -> query($query);
+
+		$rows=$this->procesarResultado($r);
+		return $rows[0];
+
+	}
+	function getTeacher($codigo){
+		$query="SELECT * from maestro where codigo='$codigo'";
+
+		$r=$this -> driver -> query($query);
+
+		$rows=$this->procesarResultado($r);
+		return $rows[0];
+		
+	}
+	function getStudent($codigo){
+		$query="SELECT * from alumno where codigo='$codigo'";
+
+		$r=$this -> driver -> query($query);
+
+		$rows=$this->procesarResultado($r);
+		return $rows[0];
 	}
 
 

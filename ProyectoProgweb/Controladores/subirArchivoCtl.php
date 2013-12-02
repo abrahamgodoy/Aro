@@ -11,7 +11,7 @@
 		private $Estandar;
 		private $mailer;
 		
-		function subirArch(){
+		function ejecutar(){
 		
 		$this -> mdlAdmin = new administrativoMdl();
 		$this -> Estandar = new CtlEstandar();
@@ -47,6 +47,4 @@
 				}
 			}
 	}
-	$c = new subirArchivo();
-	$c -> subirArch();
 ?>

@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 require_once("Estandar.php");
 
 class administrativoCtl extends CtlEstandar{
@@ -24,8 +24,8 @@ class administrativoCtl extends CtlEstandar{
 
 			case "altaCiclo":
 				if(empty($_POST)){
-					//Cargo la vista del formulario
-					require_once("Vistas/AdmiAltaCiclo.html");
+					$vista=$this->datosUsuarioVista(file_get_contents("Vistas/AdmiAltaCiclo.html"));
+					echo $vista;
 				}
 				else{
 					$ciclo = $_POST["nciclo"];
@@ -65,8 +65,7 @@ class administrativoCtl extends CtlEstandar{
 				//Reemplazo en mi vista una fila por todas las filas
 				$vista = str_replace($fila, $filas, $vista);
 
-				//Mostrar la vista
-				echo $vista;
+				echo $this->datosUsuarioVista($vista);
 				break;
 
 			case 'eliminarCiclo':
@@ -94,8 +93,7 @@ class administrativoCtl extends CtlEstandar{
 					//Reemplazo en mi vista una fila por todas las filas
 					$vista = str_replace($fila, $filas, $vista);
 
-					//Mostrar la vista
-					echo $vista;
+					echo $this->datosUsuarioVista($vista);
 				}
 
 				else{
@@ -124,7 +122,8 @@ class administrativoCtl extends CtlEstandar{
 					$diccionario = array('{ciclo}' => $ciclo['ciclo'], '{fechaInicio}' => $ciclo['fechaIni'], '{fechaFin}' => $ciclo['fechaFin']);
 					$new_form = strtr($new_form,$diccionario);
 					$vista = str_replace($form, $new_form, $vista);
-					echo $vista;			
+					
+					echo $this->datosUsuarioVista($vista);			
 				}
 			break;
 
@@ -149,8 +148,8 @@ class administrativoCtl extends CtlEstandar{
 			case "altaMaestro":
 				if(empty($_POST)){
 					//Cargo la vista del formulario
-					require_once("Vistas/AdmiAltaMaestro.html");
-					echo "empty";
+					$vista=$this->datosUsuarioVista(file_get_contents("Vistas/AdmiAltaMaestro.html"));
+					echo $vista;
 				}
 
 				else{
@@ -164,7 +163,7 @@ class administrativoCtl extends CtlEstandar{
 
 					if($codigo!=false){
 						$subject = "Alta de maestro";
-						$body = "<h1>Â¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo}<br />ContraseÃ±a: {$contra}</p>";
+						$body = "<h1>¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo}<br />Contraseña: {$contra}</p>";
 						$this->mailer->enviarCorreo($subject, $body, $correo);
 
 						header("Location: index.php?ctl=administrativo&act=listaMaestro");
@@ -200,7 +199,7 @@ class administrativoCtl extends CtlEstandar{
 				$vista = str_replace($fila, $filas, $vista);
 
 				//Mostrar la vista
-				echo $vista;
+				echo $this->datosUsuarioVista($vista);
 				break;
 
 			case 'eliminarMaestro':
@@ -230,7 +229,7 @@ class administrativoCtl extends CtlEstandar{
 					$vista = str_replace($fila, $filas, $vista);
 
 					//Mostrar la vista
-					echo $vista;
+					echo $this->datosUsuarioVista($vista);
 				}
 
 				else{
@@ -259,7 +258,8 @@ class administrativoCtl extends CtlEstandar{
 					$diccionario = array('{codigo}' => $maestro['codigo'], '{nombre}' => $maestro['nombre'], '{apellidop}' => $maestro['apellidoP'], '{apellidom}' => $maestro['apellidoM'], '{correo}' => $maestro['correo']);
 					$new_form = strtr($new_form,$diccionario);
 					$vista = str_replace($form, $new_form, $vista);
-					echo $vista;			
+
+					echo $this->datosUsuarioVista($vista);
 				}
 			break;
 
@@ -274,7 +274,7 @@ class administrativoCtl extends CtlEstandar{
 					$apellidom = $_POST["apellidom"];
 					$correo = $_POST["correo"];
 					$resultado = $this -> modelo -> modificarMaestro($codigo, $nombre, $apellidop, $apellidom, $correo);
-					$subject = "ModificaciÃ³n de maestro";
+					$subject = "Modificación de maestro";
 					if($resultado!=false)
 						header('Location: index.php?ctl=administrativo&act=listaMaestro');
 					else
@@ -285,7 +285,8 @@ class administrativoCtl extends CtlEstandar{
 
 			case "altaAlumno":
 				if(empty($_POST)){
-					require_once("Vistas/AdmiAltaAlumno.html");
+					$vista=$this->datosUsuarioVista(file_get_contents("Vistas/AdmiAltaAlumno.html"));
+					echo $vista;
 				}
 				else{
 					$nombre = $_POST["nombre"];
@@ -310,7 +311,7 @@ class administrativoCtl extends CtlEstandar{
 
 					if($codigo!=false){
 						$subject = "Alta de alumno";
-						$body = "<h1>Â¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$carrera}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo} <br />ContraseÃ±a: {$contra}</p>";
+						$body = "<h1>¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$carrera}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo} <br />Contraseña: {$contra}</p>";
 						$this->mailer->enviarCorreo($subject, $body, $correo);
 						
 					
@@ -347,8 +348,7 @@ class administrativoCtl extends CtlEstandar{
 						//Reemplazo en mi vista una fila por todas las filas
 						$vista = str_replace($fila, $filas, $vista);
 
-						//Mostrar la vista
-						echo $vista;
+						echo $this->datosUsuarioVista($vista);
 				break;
 
 			case 'obtenerAlumno':
@@ -368,7 +368,8 @@ class administrativoCtl extends CtlEstandar{
 					$diccionario = array('{codigo}' => $alumno['codigo'], '{nombre}' => $alumno['nombre'], '{apellidop}' => $alumno['apellidoP'], '{apellidom}' => $alumno['apellidoM'], '{carrera}' => $alumno['carrera'], '{correo}' => $alumno['correo'], '{status}' => $alumno['status']);
 					$new_form = strtr($new_form,$diccionario);
 					$vista = str_replace($form, $new_form, $vista);
-					echo $vista;			
+					
+					echo $this->datosUsuarioVista($vista);			
 				}
 			break;
 
@@ -419,8 +420,7 @@ class administrativoCtl extends CtlEstandar{
 					//Reemplazo en mi vista una fila por todas las filas
 					$vista = str_replace($fila, $filas, $vista);
 
-					//Mostrar la vista
-					echo $vista;
+					echo $this->datosUsuarioVista($vista);
 				}
 
 				else{

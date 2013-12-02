@@ -6,6 +6,13 @@ class maestroCtl extends CtlEstandar{
 	private $mail;
 
 	function ejecutar(){
+	if($this->isLogged()==false)
+			header('Location: index.php?ctl=login');
+
+	else if($this->isTeacher()==false)
+		require_once("Vistas/Error.html");
+	else{
+
 		require_once("Modelos/maestroMdl.php");
 		$this -> modelo = new maestroMdl();
 		switch($_GET['act']){
@@ -42,7 +49,7 @@ class maestroCtl extends CtlEstandar{
 					$vista = str_replace($fila, $filas, $vista);
 
 					//Mostrar la vista
-					echo $vista;
+					echo $this->datosUsuarioVista($vista);
 				}
 				else{
 					$ciclo = 45682;//$_POST["ciclo"];
@@ -100,7 +107,7 @@ class maestroCtl extends CtlEstandar{
 				$vista = str_replace($fila, $filas, $vista);
 
 				//Mostrar la vista
-				echo $vista;
+				echo $this->datosUsuarioVista($vista);
 				
 				break;
 
@@ -130,7 +137,7 @@ class maestroCtl extends CtlEstandar{
 					$vista = str_replace($fila, $filas, $vista);
 
 					//Mostrar la vista
-					echo $vista;
+					echo $this->datosUsuarioVista($vista);
 				}
 
 				else{
@@ -145,7 +152,8 @@ class maestroCtl extends CtlEstandar{
 
 			case "altaAlumno":
 				if(empty($_POST)){
-					require_once("Vistas/AdmiAltaAlumno.html");
+					$vista=$this->datosUsuarioVista(file_get_contents("Vistas/AdmiAltaAlumno.html"));
+					echo $vista;
 				}
 				else{
 					$nombre = $_POST["nombre"];
@@ -170,7 +178,7 @@ class maestroCtl extends CtlEstandar{
 
 					if($codigo!=false){
 						$subject = "Alta de alumno";
-						$body = "<h1>Â¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$carrera}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo} <br />ContraseÃ±a: {$contra}</p>";
+						$body = "<h1>¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$carrera}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo} <br />Contraseña: {$contra}</p>";
 						$this->mailer->enviarCorreo($subject, $body, $correo);
 						
 					
@@ -207,7 +215,7 @@ class maestroCtl extends CtlEstandar{
 					$vista = str_replace($fila, $filas, $vista);
 
 					//Mostrar la vista
-					echo $vista;
+					echo $this->datosUsuarioVista($vista);
 				break;
 
 			case 'eliminarAlumno':
@@ -237,7 +245,7 @@ class maestroCtl extends CtlEstandar{
 					$vista = str_replace($fila, $filas, $vista);
 
 					//Mostrar la vista
-					echo $vista;
+					echo $this->datosUsuarioVista($vista);
 				}
 
 				else{
@@ -276,9 +284,11 @@ class maestroCtl extends CtlEstandar{
 					$listas .= $new_lista;
 				}
 				$vista = str_replace($lista, $listas, $vista);				
-				echo $vista;
+				echo $this->datosUsuarioVista($vista);
 			break;
 		}
+	}
+
 	}
 }
 

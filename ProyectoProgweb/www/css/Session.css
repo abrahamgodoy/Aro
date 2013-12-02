@@ -1,0 +1,28 @@
+#seccionUsuario{
+	float: left;
+	width: 100%;
+	margin: 0 0;
+	padding: 0 0 0 0;
+}
+
+
+#nombreUsuario{
+	float: right;
+	margin: 0 4% 0px 0;
+	font-size: 1.1em;
+	color: #611212;
+	font-weight: bold;
+}
+
+#cambioContra{
+	float: right;
+	margin: 0 2% 0 0;
+	font-size: 1em;
+	text-decoration: none;
+	color: #CCCCCC;
+
+}
+
+#cambioContra:hover{
+	color: #C42;
+}

@@ -20,17 +20,17 @@ switch($_GET["ctl"]){
 		//incluyo el controlador
 		require_once("Controladores/alumnoCtl.php");
 		$ctl = new alumnoCtl();
-	break;
+		break;
 
 	case "administrativo":
 		require_once("Controladores/administrativoCtl.php");
 		$ctl = new administrativoCtl();
-	break;
+		break;
 
 	case "maestro":
 		require_once("Controladores/maestroCtl.php");
 		$ctl = new maestroCtl();
-	break;
+		break;
 
 	case 'olvidaste':
 		require_once("Controladores/olvidasteCtl.php");
@@ -39,6 +39,17 @@ switch($_GET["ctl"]){
 
 	case 'subirArchivo':
 		require_once("Controladores/subirArchivoCtl.php");
+		$ctl = new subirArchivo();
+		break;
+
+	case 'cambiarContra':
+		require_once("Controladores/cambiarContraCtl.php");
+		$ctl = new cambiarContraCtl();
+		break;
+
+	default:
+		header('index.php');
+		break;
 }
 
 $ctl -> ejecutar();

@@ -45,6 +45,7 @@
             	return false;
 
             $_SESSION['user'] = $codigo;
+            $_SESSION['password'] = $contrasena;
             $_SESSION['type'] = $r;
 
             return true;
@@ -67,6 +68,35 @@
         function pintar(){
             var_dump($_SESSION['user']);
             var_dump($_SESSION['type']);
+        }
+
+        function getUser(){
+            require_once("Modelos/standarMdl.php");
+            $this -> modelo = new olvidasteMdl();
+
+            if($this->isAdmi())
+                return $user = $this -> modelo -> getAdmi($_SESSION['user']);
+            if($this->isTeacher())
+                return $user = $this -> modelo -> getTeacher($_SESSION['user']);
+            if($this->isStudent())
+                return $user = $this -> modelo -> getStudent($_SESSION['user']);
+        }
+
+
+        function datosUsuarioVista($vista){
+            require_once("Modelos/standarMdl.php");
+            $this -> modelo = new olvidasteMdl();
+
+            $inicio_fila = strrpos($vista,'>{nombreUsuario}<')+1;
+            $final_fila = $inicio_fila + 15;
+
+            $fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
+
+            $user=$this -> getUser();
+
+            $filas=$user['nombre']." ".$user['apellidoP']." ".$user['apellidoM'];
+            return $vista = str_replace($fila, $filas, $vista);
+
         }
 	}
 

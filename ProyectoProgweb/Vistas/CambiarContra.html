@@ -18,7 +18,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
 
         <link rel="stylesheet" href="./www/css/normalize.css">
-        <link rel="stylesheet" href="./www/css/AdmiLista.css">
+        <link rel="stylesheet" href="./www/css/olvidaste.css">
         <link rel="stylesheet" href="./www/css/Session.css">
         <script src="./www/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
@@ -36,7 +36,6 @@
                     <img class="icon-red" src="./www/img/fb.jpg">
                     <img class="icon-red" src="./www/img/twiter.jpg">
                 </div>
-                
             </section>
             <div id="seccionUsuario">
                 <a id="cambioContra" href="index.php?ctl=cambiarContra">Cambiar contraseña</a>
@@ -44,51 +43,29 @@
             </div>
         </header>
 
-        
-        <nav>
-            <ul>
-                <li><a href="index.php?ctl=administrativo&act=listaCiclo">Ciclos</a></li>
-                <li><a href="index.php?ctl=administrativo&act=listaMaestro">Maestros</a></li>
-                <li><a href="index.php?ctl=administrativo&act=listaAlumno">Alumnos</a></li>
-                <li><a href="index.php?ctl=logout">Salir</a></li>
-                <div class="clear"></div>
-            </ul>
-        </nav>
-
-
-        <aside id="menu-izq">
-            <ul>
-                <li id="titulo-izq">MENU CICLO</li>
-                <li><a href="index.php?ctl=administrativo&act=listaCiclo">Lista Ciclo</a></li>             
-                <li><a href="index.php?ctl=administrativo&act=altaCiclo">Alta de Ciclo</a></li>
-                <li><a href="index.php?ctl=administrativo&act=eliminarCiclo">Modificar/Eliminar Ciclos</a></li>
-            </ul>
-        </aside>
-
 
         <section id="contenido">
-            <div>
-                <p>LISTA DE ALUMNOS</p>
-            </div>
 
+            <section id="imagen-login"></section>
+            <form method="POST" id="formulario" action="index.php?ctl=cambiarContra">
+                <fieldset>
+                    <legend>Cambiar Contraseña</legend>
+                    <p>Tu Contraseña sera cambiada apartir de que pulses el boton registrar. Si tu contraseña actual no coincide te arrojara un error.</p>
+                    <div id="divLogin">
+                        <label for="contraA">Contraseña Actual</label>
+                        <input type="password" id="contraA" name="contraA">
+                        <div class="errores" id="errorA">Debes llenar este campo</div>
 
-
-            <table id="lista">
-                <thead>
-                    <tr>
-                        <th>CICLO</th>
-                        <th>FECHA INICIO</th>
-                        <th>FECHA FIN</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{ciclo}</td>
-                        <td>{fechaini}</td>
-                        <td>{fechafin}</td>
-                    </tr>
-                </tbody>
-            </table>
+                        <label for="contraN">Nueva Contraseña</label>
+                        <input type="password" id="contraN" name="contraN">
+                        <div class="errores" id="errorN">Debes llenar este campo</div>
+                    </div>
+                    <div>
+                        <button id="cambiar" type="button" onclick="cifrar()">Cambiar contraseña</button>
+                    </div>
+                    
+                </fieldset>
+            </form>
         </section>
 
         <footer>
@@ -107,14 +84,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="./js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/plugins.js"></script>
-        <script src="./www/js/AlumAsistencias.js"></script>
-
-        <!-- Jquery ui-->
-        <link rel="stylesheet" type="text/css" href="./www/css/ui-lightness/jquery-ui-1.10.3.custom.css">
-        <script src="./www/js/jquery-ui-1.10.3.custom.js"></script>
-        <script src="./www/js/jquery-ui-1.10.3.custom.min.js"></script>
-        <!-- END Jquery ui-->
-
+        <script src="./www/js/sha1.js"></script>
+        <script src="./www/js/cambiarContra.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
