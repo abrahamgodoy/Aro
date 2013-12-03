@@ -12,7 +12,7 @@ $("#cambiar").click(function(){
 		$("#errorA").fadeOut();
 
 	if($contraN == ""){
-		$("errorN").fadeIn("slow");
+		$("#errorN").fadeIn("slow");
 		error = true;
 	}
 	else

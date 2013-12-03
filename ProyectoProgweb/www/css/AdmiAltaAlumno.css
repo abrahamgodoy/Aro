@@ -342,6 +342,11 @@ section p{
 
 
 @media screen and (max-width: 1024px){
+    #menu-izq{
+        width: 16%;
+        margin-right: 2%;
+    }
+
     body{
         font-size: 90%;
     }
@@ -375,6 +380,11 @@ section p{
         width: 85%
     }
 
+    #menu-izq{
+        width: 97%;
+        margin-right: 2%;
+    }
+
     .errores{
         width: 60%;
         margin: 0.8% 20%;
@@ -406,6 +416,11 @@ section p{
 
     #contenido{
         width: 100%
+    }
+
+    #menu-izq{
+        width: 97%;
+        margin-right: 2%;
     }
 
     .errores{

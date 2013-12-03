@@ -21,13 +21,16 @@ class cambiarContraCtl extends CtlEstandar{
 			$user=$this->getUser();
 			if(strcmp($vieja, $user['contrasena'])==0){
 
-				if($this->isAdmi())
+				if($this->isAdmi()){
 					$r=$this -> modelo -> contraAdmi($user['codigo'],$nueva);
-				if($this->isTeacher())
-					$r=$this -> modelo -> contraMaes($user['codigo'],$nueva);
-				if($this->isStudent())
-					$r=$this -> modelo -> contraAlum($user['codigo'],$nueva);
+				}
 
+				if($this->isTeacher()){
+					$r=$this -> modelo -> contraMaes($user['codigo'],$nueva);
+				}
+				if($this->isStudent()){
+					$r=$this -> modelo -> contraAlum($user['codigo'],$nueva);
+				}
 				if($r==false)
 					require_once('Vistas/Error.html');
 

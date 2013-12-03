@@ -47,9 +47,12 @@ class maestroMdl{
 			$this -> driver -> query($query);
 	}
 
-	function listaCurso(){
-		$query = 'SELECT * FROM curso';
+	function listaCurso($codigo){
+		$query = "SELECT c.idCurso, c.seccion,c.idCiclo ,c.NRC,m.nombre  FROM curso c, materia m where c.idMateria=m.idMateria and c.codigo='$codigo'";
 		$r = $this -> driver -> query($query);
+
+		if($r->num_rows==0)
+			return false;
 		
 		while($row = $r -> fetch_assoc())
 			$rows[] = $row;
@@ -62,7 +65,7 @@ class maestroMdl{
 		return $r= $this -> driver -> query($query);
 	}
 
-	function altaAlumno($codigo, $contrasena, $nombre, $apellidop, $apellidom, $carrera, $correo, $status){
+	function altaAlumno($contrasena, $nombre, $apellidop, $apellidom, $carrera, $correo, $status, $celular, $github, $webpage){
 		$query =
 			"INSERT INTO
 			alumno(codigo, contrasena, nombre, apellidoP, apellidoM, carrera, correo, status, Github, celular, WebPage)
@@ -109,6 +112,20 @@ class maestroMdl{
 		$r = $this -> driver -> query($query);
 		return $rows=$this->procesarResultado($r);
 	}
+	
+	function listaMateria($idMateria){
+		$query = "SELECT nombre FROM materia WHERE idMateria = '$idMateria'";
+		$r = $this -> driver -> query($query);
+		return $r -> fetch_assoc();
+	}
+
+	function listaMatriculados($idMateria){
+
+		$query = "SELECT a.codigo, a.nombre, a.apellidoP, a.apellidoM FROM alumno a, matriculado m WHERE m.idCurso = '$idMateria' and a.codigo = m.codigo";
+		$r = $this -> driver -> query($query);
+		return $r -> fetch_assoc();
+	}
+
 }
 
 ?>

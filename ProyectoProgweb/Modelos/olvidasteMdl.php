@@ -19,18 +19,24 @@ class olvidasteMdl{
 
 	function getUser($correo){
 		$admi=$this->administrativo($correo);
-		if($admi!=false)
+		if($admi!=false){
+			$admi['is']='admi';
 			return $admi;
+		}
 
 
 		$maes=$this->maestro($correo);
-		if($maes!=false)
+		if($maes!=false){
+			$maes['is']='maes';
 			return $maes;
+		}
 
 
 		$alum=$this->alumno($correo);
-		if($alum!=false)
+		if($alum!=false){
+			$alum['is']='alum';
 			return $alum;
+		}
 
 		return false;
 		
@@ -74,6 +80,24 @@ class olvidasteMdl{
 		}
 
 		return false;
+	}
+
+	function contraAdmi($codigo,$contrasena){
+		$query =
+			"UPDATE administrativo SET contrasena='$contrasena' where codigo='$codigo'";
+		return $r = $this -> driver -> query($query);
+	}
+
+	function contraMaes($codigo,$contrasena){
+		$query =
+			"UPDATE maestro SET contrasena='$contrasena' where codigo='$codigo'";
+		return $r = $this -> driver -> query($query);
+	}
+
+	function contraAlum($codigo,$contrasena){
+		$query =
+			"UPDATE alumno SET contrasena='$contrasena' where codigo='$codigo'";
+		return $r = $this -> driver -> query($query);
 	}
 
 

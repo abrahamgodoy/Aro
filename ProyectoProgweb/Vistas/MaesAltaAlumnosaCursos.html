@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="./www/css/normalize.css">
         <link rel="stylesheet" href="./www/css/MaesAltaAlumnosaCursos.css">
         <link rel="stylesheet" href="./www/css/Session.css">
+        <link rel="stylesheet" href="./www/css/aside.css">
         <script src="./www/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -46,16 +47,15 @@
         
         <nav>
             <ul>
-                <li><a href="MaesAltaCursos.html">Alta de Cursos</a></li>
-                <li><a href="MaesAltaAlumno.html">Alta de Alumnos</a></li>
-                <li><a href="MaesAltaAlumnosaCursos.html">Matricular Alumno</a></li>
+                <li><a href="index.php?ctl=maestro&act=listaCurso">Cursos</a></li>
+                <li><a href="index.php?ctl=maestro&act=listaAlumno">Alumnos</a></li>
+                <li><a href="index.php?ctl=maestro&act=matricular">Matricular Alumno a Curso</a></li>
                 <li><a href="MaesAsistencias.html">Lista de Asistencias</a></li>
                 <li><a href="MaesCalificaciones.html">Calificaciones</a></li>
-                <li><a href="index.html">Salir</a></li>
+                <li><a href="index.php?ctl=logout">Salir</a></li>
                 <div class="clear"></div>
             </ul>
         </nav>
-
 
         <section id="contenido">
                 <fieldset class="fieldsetf">
@@ -63,29 +63,22 @@
                     <form id="formulario" method="post" action="#">
                         <div>
                             <label class="labelform" for="curso">Curso</label>
-                            <select class="selectform" name="curso">
+                            <select id="cursos" class="selectform" name="curso" onchange="mostrarAlumnos()">
                                 <option selected value="0">Elige un curso</option>  
-                                <option id="M">{materia}</option id="M">
+                                <option value="{idCurso}">{curso}</option>
                             </select>
                         </div>
                         <div class="divListas">
                             <select class="listas" id="listaIzquierda" size="15" multiple>
-                                <option id="A">{alumno}</option id="A">
+                                
                             </select>
                             <input class="btnCentro" type="button" id="btnIzquierda" value="&lt;&lt;" />
                             <input class="btnCentro" type="button" id="btnDerecha"  value="&gt;&gt;" />
+                            
                             <select class="listas" id="listaDerecha" size="15" multiple>
-                                <option id="B">{alumno}</option id="B">
+                                
                             </select>
                         </div>
-<!--                        <div>
-                            <label class="labelform" for="codigo">Codigo</label>
-                            <input class="formatinput" type="text" id="cod" name="codigo" />
-                        </div>
-                        <div>
-                            <label class="labelform" for="nombre">Nombre</label>
-                            <input class="formatinput" type="text" id="nom" name="nombre" />
-                        </div>-->
                         <div>
                             <button class="boton" type="submit">Matricular</button>
                         </div>
@@ -109,8 +102,52 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="./www/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="./www/js/plugins.js"></script>
-        <script src="./www/js/main.js"></script>
+        <script src="./www/js/ajax.js"></script>
         <script src="./www/js/MaesAltaAlumnosaCursos.js"></script>
+
+        <script>
+
+        function mostrarAlumnos(){
+            var id = document.getElementById('cursos').value;
+            $.ajax({
+                type: 'POST',
+                data: {'idCurso':id},
+                url: 'mAlumno.php',
+                dataType: 'json',
+                success: function(json){
+                    var select = document.getElementById("listaDerecha");
+                    while(select.hasChildNodes())
+                        select.removeChild(select.firstChild);
+                    for(i in json){
+                    var texto=document.createTextNode(json[i].nombre+" "+json[i].apellidoP+" "+json[i].apellidoM);
+                    var option=document.createElement('option');
+                    option.setAttribute('value', json[i].codigo)
+                    option.appendChild(texto);
+                    select.appendChild(option);
+                    }
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                data: {'idCurso':id},
+                url: 'nmAlumno.php',
+                dataType: 'json',
+                success: function(json){
+                    var select = document.getElementById("listaIzquierda");
+                    while(select.hasChildNodes())
+                        select.removeChild(select.firstChild);
+                    for(i in json){
+                    var texto=document.createTextNode(json[i].nombre+" "+json[i].apellidoP+" "+json[i].apellidoM);
+                    var option=document.createElement('option');
+                    option.setAttribute('value', json[i].codigo)
+                    option.appendChild(texto);
+                    select.appendChild(option);
+                    }
+                }
+            });
+        }
+        </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

@@ -50,7 +50,7 @@ $("#btnRegistrar").click(function (){
 		$("#errorNombre").fadeOut();
 		if(!exprNombre.test($nombre))
 		{
-			$("#errorNombre").replaceWith("<div class=\"errores\" id=\"errorNombre\">Nombre inválido</div>");
+			$("#errorNombre").replaceWith("<div class=\"errores\" id=\"errorNombre\">Nombre inválido. Solo letras del alfabeto</div>");
 			$("#errorNombre").fadeIn("slow");
 			error = true;
 		}
@@ -67,7 +67,7 @@ $("#btnRegistrar").click(function (){
 		$("#errorSeccion").fadeOut();
 		if(!exprSecc.test($seccion))
 		{
-			$("#errorSeccion").replaceWith("<div class=\"errores\" id=\"errorSeccion\">Sección inválida</div>");
+			$("#errorSeccion").replaceWith("<div class=\"errores\" id=\"errorSeccion\">Sección inválida. Formato: D[numero][numero]</div>");
 			$("#errorSeccion").fadeIn("slow");
 			error = true;
 		}
@@ -84,7 +84,7 @@ $("#btnRegistrar").click(function (){
 		$("#errorNrc").fadeOut();
 		if(!exprNrc.test($nrc))
 		{
-			$("#errorNrc").replaceWith("<div class=\"errores\" id=\"errorNrc\">NRC inválido</div>");
+			$("#errorNrc").replaceWith("<div class=\"errores\" id=\"errorNrc\">NRC inválido. Formato: [num][num][num][num]</div>");
 			$("#errorNrc").fadeIn("slow");
 			error = true;
 		}
@@ -116,7 +116,7 @@ $("#btnRegistrar").click(function (){
 			$("div#"+id+" div#errorHora").fadeOut();
 			if(!exprHora.test($hora) || !exprHora.test($hora2))
 			{
-				$("div#"+id+" div#errorHora").replaceWith("<div class=\"errores\" id=\"errorHora\">Hora inválida</div>");
+				$("div#"+id+" div#errorHora").replaceWith("<div class=\"errores\" id=\"errorHora\">Hora inválida.Formato: [num][num]:[num][num]</div>");
 				$("div#"+id+" div#errorHora").fadeIn("slow");
 				error = true;
 			}
@@ -140,7 +140,7 @@ $("#btnRegistrar").click(function (){
 			$("div#"+id+" div#errorCriterio").fadeOut();
 			if(!exprCriterio.test($criterio) || !exprPts.test($puntos))
 			{
-				$("div#"+id+" div#errorCriterio").replaceWith("<div class=\"errores\" id=\"errorCriterio\">Criterio inválido</div>");
+				$("div#"+id+" div#errorCriterio").replaceWith("<div class=\"errores\" id=\"errorCriterio\">Criterio inválido.Criterio:[letras]-Pts:[num][num]</div>");
 				$("div#"+id+" div#errorCriterio").fadeIn("slow");
 				error = true;
 			}

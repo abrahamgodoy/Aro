@@ -15,6 +15,10 @@ class maestroCtl extends CtlEstandar{
 
 		require_once("Modelos/maestroMdl.php");
 		$this -> modelo = new maestroMdl();
+
+		require_once("Mailer.php");
+		$this-> mailer = new Mailer();
+		
 		switch($_GET['act']){
 			case "altaCurso":
 				if(empty($_POST)){
@@ -52,9 +56,9 @@ class maestroCtl extends CtlEstandar{
 					echo $this->datosUsuarioVista($vista);
 				}
 				else{
-					$ciclo = 45682;//$_POST["ciclo"];
+					$ciclo = $_POST["ciclo"];
 					$academia = $_POST["academia"];
-					$materia = 5;//$_POST["materia"];
+					$materia = $_POST["materia"];
 					$seccion = $_POST["seccion"];
 					$nrc = $_POST["nrc"];
 					$hora1 = $_POST["hora1"];
@@ -63,7 +67,7 @@ class maestroCtl extends CtlEstandar{
 					$criterio = $_POST["criterio"];
 					$pts = $_POST["pts"];
 
-					$r = $this -> modelo -> altaCurso($ciclo, $materia, $seccion, $nrc,200000004);
+					$r = $this -> modelo -> altaCurso($ciclo, $materia, $seccion, $nrc, $_SESSION['user']);
 
 					if($r == true){
 						$idCurso = $this ->modelo -> getIdCurso();
@@ -92,17 +96,18 @@ class maestroCtl extends CtlEstandar{
 				$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
 
 				//Genero las filas
-				$ciclos = $this -> modelo -> listaCurso();
+				$cursos = $this -> modelo -> listaCurso($_SESSION['user']);
 
 				$filas='';
 
-				foreach ($ciclos as $row) {
+				if ($cursos!=false) {
+				foreach ($cursos as $row) {
 					$new_fila = $fila;
-					$diccionario = array('{idCurso}' => $row['idCurso'], '{curso}' => $row['nombre'],'{seccion}'=>$row['seccion'], '{nrc}' => $row['NRC']);
+					$diccionario = array('{curso}' => $row['nombre'],'{seccion}'=>$row['seccion'], '{nrc}' => $row['NRC']);
 					$new_fila = strtr($new_fila,$diccionario);
 					$filas .= $new_fila;
 				}
-				
+				}
 				//Reemplazo en mi vista una fila por todas las filas
 				$vista = str_replace($fila, $filas, $vista);
 
@@ -152,7 +157,7 @@ class maestroCtl extends CtlEstandar{
 
 			case "altaAlumno":
 				if(empty($_POST)){
-					$vista=$this->datosUsuarioVista(file_get_contents("Vistas/AdmiAltaAlumno.html"));
+					$vista=$this->datosUsuarioVista(file_get_contents("Vistas/MaesAltaAlumno.html"));
 					echo $vista;
 				}
 				else{
@@ -178,7 +183,7 @@ class maestroCtl extends CtlEstandar{
 
 					if($codigo!=false){
 						$subject = "Alta de alumno";
-						$body = "<h1>¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$carrera}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo} <br />Contraseña: {$contra}</p>";
+						$body = "<h1>Â¡Hola {$nombre}!</h1><p>Bienvenido a <strong>Harvard University</strong>, has sido dado de alta satisfactoriamente con los siguientes datos: <br /> {$nombre} {$apellidop} {$apellidom}<br />{$carrera}<br />{$correo}</p><p>Te recordamos que para ingresar a tu cuenta deberas loggearte con los siguientes datos:<br />Codigo: {$codigo} <br />ContraseÃ±a: {$contra}</p>";
 						$this->mailer->enviarCorreo($subject, $body, $correo);
 						
 					
@@ -258,33 +263,30 @@ class maestroCtl extends CtlEstandar{
 			break;
 
 			case 'matricular':
-				$vista = file_get_contents('Vistas/MaesAltaAlumnosaCursos.html');
-				$inicio_fila = strrpos($vista,'<option id="A">');
-				$final_fila = strrpos($vista,'</option id="A">') + 16;
-				$fila = substr($vista,$inicio_fila,$final_fila-$inicio_fila);
-				$alumnos = $this -> modelo -> listaAlumno();
-				$filas='';
-				foreach ($alumnos as $row) {
-					$new_fila = $fila;
-					$diccionario = array('{alumno}' => $row['nombre']." ".$row['apellidoP']." ".$row['apellidoM']);
-					$new_fila = strtr($new_fila,$diccionario);
-					$filas .= $new_fila;;
+				if(empty($_POST)){
+					$vista = file_get_contents('Vistas/MaesAltaAlumnosaCursos.html');
+					
+					$inicio_lista = strrpos($vista,'<option value="{idCurso}">');
+					$final_lista = strrpos($vista,'{curso}</option>') + 16;
+					$lista = substr($vista,$inicio_lista,$final_lista-$inicio_lista);
+					
+					$cursos = $this -> modelo -> listaCurso($_SESSION['user']);
+					$listas='';
+
+					if ($cursos!=false) {
+					foreach ($cursos as $row) {
+						$new_lista = $lista;
+						$diccionario = array('{idCurso}' => $row['idCurso'], '{curso}' => $row['nombre']);
+						$new_lista = strtr($new_lista,$diccionario);
+						$listas .= $new_lista;
+					}
+					}
+					$vista = str_replace($lista, $listas, $vista);				
+					echo $this->datosUsuarioVista($vista);
 				}
-				$vista = str_replace($fila, $filas, $vista);
-				//Obtener Materias para el select
-				$inicio_lista = strrpos($vista,'<option id="M">');
-				$final_lista = strrpos($vista,'</option id="M">') + 16;
-				$lista = substr($vista,$inicio_lista,$final_lista-$inicio_lista);
-				$cursos = $this -> modelo -> listaCurso();
-				$listas='';
-				foreach ($cursos as $row) {
-					$new_lista = $lista;
-					$diccionario = array('{materia}' => $row['idMateria']);
-					$new_lista = strtr($new_lista,$diccionario);
-					$listas .= $new_lista;
+				else{
+					header('Location: index.php?ctl=maestro&act=matricular');
 				}
-				$vista = str_replace($lista, $listas, $vista);				
-				echo $this->datosUsuarioVista($vista);
 			break;
 		}
 	}
